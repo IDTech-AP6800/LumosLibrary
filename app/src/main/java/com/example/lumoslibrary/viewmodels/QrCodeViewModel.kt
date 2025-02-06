@@ -1,4 +1,4 @@
-package com.example.lumoslibrary
+package com.example.lumoslibrary.viewmodels
 
 import android.graphics.Rect
 import android.view.MotionEvent

@@ -6,6 +6,7 @@ import android.graphics.ColorFilter
 import android.graphics.Paint
 import android.graphics.PixelFormat
 import android.graphics.drawable.Drawable
+import com.example.lumoslibrary.viewmodels.QrCodeViewModel
 
 // Adds the bounding box around the Qr code
 // Help from: https://github.com/android/camera-samples/blob/main/CameraX-MLKit/app/src/main/java/com/example/camerax_mlkit/QrCodeDrawable.kt
