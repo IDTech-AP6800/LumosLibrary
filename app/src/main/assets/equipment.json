@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Apple M2 Macbook",
+    "category": "laptop",
+    "description": "Apple MacBook with M2 chip, 13-inch Retina display, 256GB SSD, and 8GB RAM.",
+    "amount": 2,
+    "isAvailable": true
+  },
+  {
+    "name": "Dell Chromebook",
+    "category": "laptop",
+    "description": "Dell Chromebook with Intel Celeron processor, 11.6-inch HD display, and 32GB eMMC storage.",
+    "amount": 2,
+    "isAvailable": true
+  },
+  {
+    "name": "Nintendo Switch",
+    "category": "game console",
+    "description": "Portable gaming console with detachable Joy-Con controllers and a 6.2-inch LCD screen.",
+    "amount": 1,
+    "isAvailable": true
+  },
+  {
+    "name": "Sony PlayStation 4",
+    "category": "game console",
+    "description": "Next-gen gaming console with ultra-fast SSD, ray tracing support, and a DualSense controller.",
+    "amount": 0,
+    "isAvailable": false
+  },
+  {
+    "name": "Microsoft Xbox Series X",
+    "category": "game console",
+    "description": "Powerful gaming console with 4K gaming capabilities, 1TB SSD, and Xbox Game Pass support.",
+    "amount": 2,
+    "isAvailable": true
+  },
+  {
+    "name": "Logitech MX Master 3S",
+    "category": "accessory",
+    "description": "Ergonomic wireless mouse with fast scrolling and multi-device support.",
+    "amount": 3,
+    "isAvailable": true
+  },
+  {
+    "name": "Apple iPad Air",
+    "category": "tablet",
+    "description": "10.9-inch Liquid Retina display, M1 chip, and Apple Pencil (2nd gen) support.",
+    "amount": 2,
+    "isAvailable": true
+  },
+  {
+    "name": "Samsung Galaxy Tab S8",
+    "category": "tablet",
+    "description": "11-inch LCD display, Snapdragon 8 Gen 1 processor, and S Pen support.",
+    "amount": 3,
+    "isAvailable": true
+  },
+  {
+    "name": "Razer BlackWidow V4 Pro",
+    "category": "accessory",
+    "description": "Mechanical gaming keyboard with customizable RGB lighting and programmable macros.",
+    "amount": 4,
+    "isAvailable": true
+  },
+  {
+    "name": "Sony WH-1000XM5",
+    "category": "accessory",
+    "description": "Wireless noise-canceling headphones with superior sound quality and long battery life.",
+    "amount": 3,
+    "isAvailable": true
+  }
+]
