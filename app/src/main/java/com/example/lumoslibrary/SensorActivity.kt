@@ -34,32 +34,31 @@ class SensorActivity : Activity(), SensorEventListener {
         //TODO? Do something if accuracy changes
     }
 
-    //@RequiresApi(Build.VERSION_CODES.M) //-> Uncomment when doing screen brightness
+    @RequiresApi(Build.VERSION_CODES.M) //-> Uncomment when doing screen brightness
     override fun onSensorChanged(event: SensorEvent?) {
         val distance = event!!.values[0]
         Log.d(TAG, "distance=$distance")
 
 
-        //TODO: Change brightness when distance val reaches some val
-    /*  //Brightness val: 0 - 255 (no brightness to full)
+      //Brightness val: 0 - 255 (no brightness to full)
 
         val context = applicationContext
         val settingsCanWrite = hasWriteSettingsPermission(context)
         // These values are hypothetical, and control brightness
-        var farValue = 100
+        var farValue = 50
         var closeValue = 255
         if (!settingsCanWrite) {
             changeWriteSettingsPermission(context)
         }else {
-            if (distance < 8) {
-            //8 is hypothetical and refers to 8 cm
+            if (distance < 50) {
+            //50 is hypothetical and refers to 50 cm
                 changeScreenBrightness(context, closeValue)
             }
             else {
                 changeScreenBrightness(context, farValue)
             }
         }
-    */
+
 
 
     }
