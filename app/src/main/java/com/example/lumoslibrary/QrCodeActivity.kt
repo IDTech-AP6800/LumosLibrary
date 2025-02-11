@@ -141,40 +141,6 @@ class QrCodeActivity : AppCompatActivity() {
             baseContext, it) == PackageManager.PERMISSION_GRANTED
     }
 
-    /*Car moving vertically animation
-* Uses code from Park Buddy Swipe Animation*/
-    private fun startAnimations(car: ImageView, cam: PreviewView) {
-
-        car.post {
-            val startPos = car.y
-            val endPos = (cam.y + cam.height) - car.height
-            Log.d("Debug", "Start: $startPos, End: $endPos")
-
-
-            // Car Swipe Indication Animations
-            // 0  - 150
-            val moveDown = ObjectAnimator.ofFloat(car, "y", endPos).apply {
-                duration = 3000
-            }
-
-            val moveUp = ObjectAnimator.ofFloat(car, "y", startPos).apply {
-                duration = 3000
-            }
-
-            val rotationTop = ObjectAnimator.ofFloat(car, "rotationX", 0f, 180f)
-            val rotationBottom = ObjectAnimator.ofFloat(car, "rotationX", 180f, 0f)
-
-            val swipeIndicationSet = AnimatorSet().apply {
-                playSequentially(moveDown, rotationTop, moveUp, rotationBottom)
-                addListener(object : AnimatorListenerAdapter() {
-                    override fun onAnimationEnd(animation: Animator) {
-                        start() // Restart the animation loop
-                    }
-                })
-                start()
-            }
-        }
-    }
 
     override fun onDestroy() {
         super.onDestroy()
