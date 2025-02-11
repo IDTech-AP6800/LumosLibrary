@@ -45,13 +45,19 @@ class SensorActivity : Activity(), SensorEventListener {
 
         val context = applicationContext
         val settingsCanWrite = hasWriteSettingsPermission(context)
-        var brightnessValue = 255 //Can change this
+        // These values are hypothetical, and control brightness
+        var farValue = 100
+        var closeValue = 255
         if (!settingsCanWrite) {
             changeWriteSettingsPermission(context)
         }else {
-            //If distance < "x val" :
-            changeScreenBrightness(context, brightnessValue)
-            //else changeScreenBrigtness to some other value
+            if (distance < 8) {
+            //8 is hypothetical and refers to 8 cm
+                changeScreenBrightness(context, closeValue)
+            }
+            else {
+                changeScreenBrightness(context, farValue)
+            }
         }
     */
 
