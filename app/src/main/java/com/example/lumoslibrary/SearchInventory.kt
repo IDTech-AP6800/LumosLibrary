@@ -1,6 +1,7 @@
 package com.example.lumoslibrary
 
 import android.content.Context
+import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -16,6 +17,7 @@ class SearchInventory(_context: Context, _fileName: String) {
     private var items: List<Item>
 
     init{
+        Log.d(TAG, "Initializing ...")
         this.fileName = _fileName
         this.context = _context
         this.items = parseJsonToModel(readInventory())
@@ -24,6 +26,7 @@ class SearchInventory(_context: Context, _fileName: String) {
     // Searches the inventory and returns the item based on title
     // TODO: Add a way to search for more diff categories
     public fun search(query: String): List<Item> {
+        Log.d(TAG, "Searching ...")
         val found = items.filter{it.title == query}
         return found
     }
@@ -37,5 +40,9 @@ class SearchInventory(_context: Context, _fileName: String) {
     private fun parseJsonToModel(jsonString: String): List<Item> {
         val gson = Gson()
         return gson.fromJson(jsonString, object : TypeToken<List<Item>>() {}.type)
+    }
+
+    companion object{
+        private const val TAG = "SearchInventory"
     }
 }
