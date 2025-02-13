@@ -31,6 +31,13 @@ class SearchInventory(_context: Context, _fileName: String) {
         return found
     }
 
+    // Searches the inventory and returns the item based on ISBN-13
+    fun searchByISBN(query: String): Item? {
+        Log.d(TAG, "Searching by ISBN: $query")
+        return items.find { it.isbn13 == query }
+    }
+
+
     //Reads the inventory
     private fun readInventory(): String{
         return context.assets.open(fileName).bufferedReader().use {it.readText()}
