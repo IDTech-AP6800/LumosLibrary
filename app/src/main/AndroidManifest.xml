@@ -13,6 +13,33 @@
         android:theme="@style/Theme.LumosLibrary"
         tools:targetApi="31">
         <activity
+            android:name=".ReturnConfirmationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReturnScanItemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RentConfirmationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ScanToPayActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TapSwipeInsertPaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RentScanItemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SearchResultsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LandingPageActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
