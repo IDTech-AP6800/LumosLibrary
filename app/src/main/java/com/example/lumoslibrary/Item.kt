@@ -10,7 +10,8 @@ data class Item(
     val isAvailable: Boolean,
     val tag: String,
     val image: String,
-    val description: String
+    val description: String,
+    val isbn13: String
 )
 
 //Questions:
