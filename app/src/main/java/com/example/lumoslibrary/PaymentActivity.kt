@@ -61,10 +61,10 @@ class PaymentActivity : AppCompatActivity() {
 
                 Log.d(TAG,"Gonna start command")
                 // Start the transaction
-                val startTransCmd = Client.StartTransactionAsync(
+                val startTransCmd = Client.StartEMVTransactionAsync(
                     deviceId,
-                    amount, amountOther, transType, transTimeout,
-                    transInterfaceType.toUByte(), 3000
+                    amount, amountOther, transType, transTime, false,
+                    3000
                 )
 
                     /*Client.StartTransactionAsync(
@@ -73,8 +73,9 @@ class PaymentActivity : AppCompatActivity() {
                     transInterfaceType.toUByte(), 3000
                 )*/
 
-
+                Log.d(TAG, "Before wait")
                 startTransCmd.waitForCompletion()
+                Log.d(TAG, "After wait")
 
                 // Check the transaction status
                 val resultData: StartTransactionResponseData? = startTransCmd.getResultData()
