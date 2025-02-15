@@ -7,5 +7,7 @@ class RentScanItemActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rent_scan_item)
+
+        HelpButton(this)
     }
 }
