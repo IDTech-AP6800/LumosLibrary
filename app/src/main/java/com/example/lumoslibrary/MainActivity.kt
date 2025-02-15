@@ -9,15 +9,5 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        // Tapping Help Button navigates to Help Page
-        val helpButton = findViewById<ImageView>(R.id.help_button)
-        helpButton.setOnClickListener{
-            val intent = Intent(this@MainActivity, HelpPageActivity::class.java)
-            startActivity(intent)
-        }
     }
-
-
-
 }
