@@ -22,7 +22,7 @@
         android:text="Book"
         android:textSize="12sp"
         android:textColor="@color/primaryBlue"
-        android:fontFamily="@font/robotslab_regular"
+        android:fontFamily="@font/robotoslab_regular"
         app:layout_constraintTop_toTopOf="@id/display_image_item"
         app:layout_constraintBottom_toTopOf="@id/display_text_name"
         app:layout_constraintStart_toEndOf="@id/display_image_item"/>

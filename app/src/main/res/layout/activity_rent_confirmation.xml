@@ -51,7 +51,7 @@
         android:padding="10dp"
         android:text="@string/logout_button"
         android:textSize="20sp"
-        android:fontFamily="@font/robotslab_regular"
+        android:fontFamily="@font/robotoslab_regular"
         android:textAllCaps="false"
         android:background="@drawable/blue_rounded_square"
         app:layout_constraintBottom_toBottomOf="parent"
