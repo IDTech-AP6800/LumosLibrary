@@ -2,6 +2,8 @@ package com.example.lumoslibrary
 
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import android.Manifest
@@ -25,6 +27,11 @@ class ItemScanActivity : AppCompatActivity() {
     private lateinit var imageCam: PreviewView
     private lateinit var searchInventory: SearchInventory
     private val scannedItemsList = mutableListOf<Item>()
+    private val scannedItemsSet = mutableSetOf<String>()
+
+    private var isScanning = false
+    private val scanDelayHandler = Handler(Looper.getMainLooper())
+    private val delayScanTime : Long = 3000 // 3 seconds
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +41,6 @@ class ItemScanActivity : AppCompatActivity() {
 
         searchInventory = SearchInventory(this, "items.json")
 
-        // Request camera permissions
         if (allPermissionsGranted()) {
             startCamera()
             Log.e(TAG, "All Permissions Granted")
@@ -60,7 +66,7 @@ class ItemScanActivity : AppCompatActivity() {
         val options = BarcodeScannerOptions.Builder()
             .setBarcodeFormats(
                 Barcode.FORMAT_EAN_13, // ISBN-13 format
-                Barcode.FORMAT_CODE_128, // Linear barcode format
+                Barcode.FORMAT_CODE_128 // Linear barcode format
             )
             .build()
 
@@ -73,32 +79,26 @@ class ItemScanActivity : AppCompatActivity() {
                 COORDINATE_SYSTEM_VIEW_REFERENCED,
                 ContextCompat.getMainExecutor(this)
             ) { result: MlKitAnalyzer.Result? ->
-                val barcodeResults =
-                    result?.getValue(barcodeScanner)
-                val barcodeValue =
-                    barcodeResults?.getOrNull(0)?.displayValue
-                val barcodeFormat =
-                    barcodeResults?.getOrNull(0)?.format
-                if ((barcodeResults == null) ||
-                    (barcodeResults.size == 0) ||
-                    (barcodeResults.first() == null)){
+                val barcodeResults = result?.getValue(barcodeScanner)
+                val barcodeValue = barcodeResults?.getOrNull(0)?.displayValue
+                val barcodeFormat = barcodeResults?.getOrNull(0)?.format
+
+                if (barcodeResults.isNullOrEmpty()) {
                     previewView.overlay.clear()
                     previewView.setOnTouchListener{_, _ -> false}
                     return@MlKitAnalyzer
                 }
-                if (barcodeValue != null) {
+
+                if (barcodeValue != null && !isScanning) {
+                    isScanning = true // Prevent further scans
+                    scanDelayHandler.postDelayed({ isScanning = false }, delayScanTime) // Able to scan again after 3 seconds
 
                     // Handle different barcode formats
                     when (barcodeFormat) {
                         Barcode.FORMAT_EAN_13 -> handleISBNBarcode(barcodeValue)
-                        Barcode.FORMAT_CODE_128-> handleLinearBarcode(barcodeValue)
+                        Barcode.FORMAT_CODE_128 -> handleLinearBarcode(barcodeValue)
                         else -> Log.d(TAG, "Unsupported barcode format")
                     }
-
-                    /*TODO: Link to other page we end up adding
-                    val intent = Intent(this, NextActivity::class.java)
-                    startActivity(intent)
-                     */
                 }
 
                 val qrCodeViewModel = QrCodeViewModel(barcodeResults[0])
@@ -107,15 +107,10 @@ class ItemScanActivity : AppCompatActivity() {
                 previewView.overlay.clear()
                 previewView.overlay.add(qrCodeDrawable)
             }
-
         )
 
         cameraController.bindToLifecycle(this)
-        previewView.setController(cameraController)
-
-        /* The back camera is the one for qr codes
-           If you want to use the front camera, change the selector
-           to use DEFAULT_FRONT_CAMERA */
+        previewView.controller = cameraController
         cameraController.cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
     }
 
@@ -124,7 +119,6 @@ class ItemScanActivity : AppCompatActivity() {
 
         if (matchedItem != null) {
             addScannedItem(matchedItem)
-
             Toast.makeText(this, "Scanned: ${matchedItem.title}", Toast.LENGTH_LONG).show()
             Log.d(TAG, "Matched Book: ${matchedItem.title}, Location: ${matchedItem.location}")
         } else {
@@ -139,7 +133,6 @@ class ItemScanActivity : AppCompatActivity() {
         if (matchedItems.isNotEmpty()) {
             val matchedItem = matchedItems.first()
             addScannedItem(matchedItem)
-
             Toast.makeText(this, "Scanned: ${matchedItem.title}", Toast.LENGTH_LONG).show()
             Log.d(TAG, "Matched Equipment: ${matchedItem.title}, Location: ${matchedItem.location}")
         } else {
@@ -149,8 +142,7 @@ class ItemScanActivity : AppCompatActivity() {
     }
 
     private fun addScannedItem(item: Item) {
-        // Avoid duplicate scans
-        if (!scannedItemsList.any { it.title == item.title }) {
+        if (scannedItemsSet.add(item.title)) {
             scannedItemsList.add(item)
         } else {
             Toast.makeText(this, "Item already scanned", Toast.LENGTH_SHORT).show()
@@ -160,6 +152,7 @@ class ItemScanActivity : AppCompatActivity() {
     private fun requestPermissions() {
         activityResultLauncher.launch(REQUIRED_PERMISSIONS)
     }
+
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(
             baseContext, it) == PackageManager.PERMISSION_GRANTED
