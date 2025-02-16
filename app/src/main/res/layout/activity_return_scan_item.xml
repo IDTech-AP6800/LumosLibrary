@@ -6,4 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".ReturnScanItemActivity">
 
+    <!-- Help Button Icon -->
+    <include
+        android:id="@+id/help_button_include"
+        layout="@layout/help_button" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
