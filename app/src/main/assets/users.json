@@ -1,0 +1,32 @@
+[
+    {
+      "userId": "00000001",
+      "checkedOutItems": [
+        {
+          "name": "Introduction to Database Systems",
+          "isReturned": false,
+          "isLate": true
+        },
+        {
+          "name": "HP Chromebook",
+          "isReturned": false,
+          "isLate": false
+        }
+      ]
+    },
+    {
+      "userId": "00000002",
+      "checkedOutItems": [
+        {
+          "name": "Harry Potter and the Philosopher's Stone",
+          "isReturned": false,
+          "isLate": false
+        },
+        {
+          "name": "Apple iPad Air",
+          "isReturned": false,
+          "isLate": false
+        }
+      ]
+    }
+]
