@@ -68,6 +68,10 @@
             android:name=".ItemScanActivity"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".UserScanActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>
