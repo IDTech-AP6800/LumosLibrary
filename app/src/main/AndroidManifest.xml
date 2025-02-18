@@ -32,7 +32,7 @@
             android:exported="false" />
         <activity
             android:name=".TapSwipeInsertPaymentActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".RentScanItemActivity"
             android:exported="true" />
