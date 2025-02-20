@@ -30,6 +30,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var imageCam: PreviewView
     private lateinit var continueButton: Button
     private lateinit var userIdEditText: EditText
+    private lateinit var searchUsers: UserData
     private var userID: String? = null
 
     private var isProcessingScan = false
@@ -37,6 +38,8 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        searchUsers = UserData(this, "users.json")
 
         imageCam = findViewById(R.id.camera_preview)
         continueButton = findViewById(R.id.login_continue)
@@ -82,7 +85,7 @@ class LoginActivity : AppCompatActivity() {
                 userID = enteredId
                 nextActivity()
             } else {
-                Toast.makeText(this, "Invalid User ID. Must be 8 digits.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Invalid User ID", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -141,11 +144,11 @@ class LoginActivity : AppCompatActivity() {
 
         cameraController.bindToLifecycle(this)
         previewView.controller = cameraController
-        cameraController.cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+        cameraController.cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
     }
 
     private fun isValidUserID(id: String?): Boolean {
-        return id != null && id.length == 8 && id.all { it.isDigit() }
+        return id != null && id.length == 8 && id.all { it.isDigit() } && searchUsers.searchByUserId(id) != null
     }
 
     private fun stopScanning() {
