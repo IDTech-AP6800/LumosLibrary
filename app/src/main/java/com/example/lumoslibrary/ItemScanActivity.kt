@@ -36,6 +36,7 @@ class ItemScanActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item_scan)
+        HelpButton(this)
 
         imageCam = findViewById(R.id.item_camera_preview)
 
