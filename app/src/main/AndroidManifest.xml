@@ -16,6 +16,43 @@
         android:theme="@style/Theme.LumosLibrary"
         tools:targetApi="31">
         <activity
+            android:name=".BackButton"
+            android:exported="true" />
+        <activity
+            android:name=".HelpButton"
+            android:exported="false" />
+        <activity
+            android:name=".HelpPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReturnConfirmationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReturnScanItemActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RentConfirmationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ScanToPayActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TapSwipeInsertPaymentActivity"
+            android:exported="true"/>
+
+        <activity
+            android:name=".RentScanItemActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SearchResultsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LandingPageActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

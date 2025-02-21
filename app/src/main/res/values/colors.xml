@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="lumosWhite">#FDFFEF</color>
+    <color name="red">#FA6057</color>
+    <color name="green">#21CA8B</color>
+    <color name="orange">#FF9E42</color>
+    <color name="background">#22262F</color>
+    <color name="primaryBlue">#56678D</color>
+    <color name="secondaryBlue">#A7C2FF</color>
 </resources>

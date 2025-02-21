@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.lumoslibrary.viewmodels.MainViewModel
 import com.idtech.zsdk_client.Client
 import com.idtech.zsdk_client.GetDevicesAsync
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.ImageView
 
 class MainActivity : AppCompatActivity() {
 
