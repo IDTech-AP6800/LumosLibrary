@@ -107,6 +107,8 @@
             android:id="@id/img_book_astrophysics_for_people_in_a_hurry"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
@@ -116,6 +118,7 @@
             android:id="@id/img_book_advanced_potion_making"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_marginEnd="18dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toStartOf="@id/img_book_astrophysics_for_people_in_a_hurry"
             motion:layout_constraintTop_toTopOf="parent"/>
@@ -124,6 +127,8 @@
             android:id="@id/img_book_calculus_early_transcendentals"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintStart_toEndOf="@id/img_book_astrophysics_for_people_in_a_hurry"
             motion:layout_constraintTop_toTopOf="parent"/>
@@ -132,6 +137,8 @@
             android:id="@id/img_book_harry_potter_philosophers_stone"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintStart_toEndOf="@id/img_book_calculus_early_transcendentals"
             motion:layout_constraintTop_toTopOf="parent"/>
@@ -139,6 +146,7 @@
             android:id="@id/img_book_project_hail_mary"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_marginStart="18dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintStart_toEndOf="@id/img_book_harry_potter_philosophers_stone"
             motion:layout_constraintTop_toTopOf="parent"/>
@@ -150,6 +158,7 @@
             android:id="@id/img_book_advanced_potion_making"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_marginEnd="18dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toStartOf="@id/img_book_astrophysics_for_people_in_a_hurry"
             motion:layout_constraintTop_toTopOf="parent"/>
@@ -157,6 +166,8 @@
             android:id="@id/img_book_astrophysics_for_people_in_a_hurry"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toStartOf="@id/img_book_calculus_early_transcendentals"
             motion:layout_constraintTop_toTopOf="parent"/>
@@ -164,6 +175,8 @@
             android:id="@id/img_book_calculus_early_transcendentals"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
@@ -173,6 +186,8 @@
             android:id="@id/img_book_harry_potter_philosophers_stone"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintStart_toEndOf="@id/img_book_calculus_early_transcendentals"
             motion:layout_constraintTop_toTopOf="parent"/>
@@ -180,6 +195,7 @@
             android:id="@id/img_book_project_hail_mary"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_marginStart="18dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintStart_toEndOf="@id/img_book_harry_potter_philosophers_stone"
             motion:layout_constraintTop_toTopOf="parent"/>
@@ -191,6 +207,7 @@
             android:id="@id/img_book_advanced_potion_making"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_marginEnd="18dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toStartOf="@id/img_book_astrophysics_for_people_in_a_hurry"
             motion:layout_constraintTop_toTopOf="parent"/>
@@ -198,6 +215,8 @@
             android:id="@id/img_book_astrophysics_for_people_in_a_hurry"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toStartOf="@id/img_book_calculus_early_transcendentals"
             motion:layout_constraintTop_toTopOf="parent"/>
@@ -205,6 +224,8 @@
             android:id="@id/img_book_calculus_early_transcendentals"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toStartOf="@id/img_book_harry_potter_philosophers_stone"
             motion:layout_constraintTop_toTopOf="parent" />
@@ -212,6 +233,8 @@
             android:id="@id/img_book_harry_potter_philosophers_stone"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
@@ -220,6 +243,7 @@
             android:id="@id/img_book_project_hail_mary"
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_marginStart="18dp"
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintStart_toEndOf="@id/img_book_harry_potter_philosophers_stone"
             motion:layout_constraintTop_toTopOf="parent"/>

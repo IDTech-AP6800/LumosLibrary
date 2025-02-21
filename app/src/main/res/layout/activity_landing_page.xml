@@ -8,20 +8,6 @@
     android:background="@color/background"
     tools:context=".LandingPageActivity">
 
-
-
-    <!--Background (Hardcoded b/c MotionLayout)-->
-<!--    <ImageView-->
-<!--        android:id="@+id/image_background"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:src="@drawable/bubble_background_1"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintLeft_toLeftOf="parent"-->
-<!--        />-->
-
-
     <!-- Lumos Library Logo -->
     <ImageView
         android:id="@+id/lumos_logo"
@@ -157,7 +143,6 @@
             android:id="@+id/img_book_astrophysics_for_people_in_a_hurry"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginHorizontal="10dp"
             android:src="@drawable/book_astrophysics_for_people_in_a_hurry"
             android:scaleType="centerCrop"
             />
@@ -352,7 +337,6 @@
             android:id="@+id/img_eq_ipad"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginHorizontal="10dp"
             android:src="@drawable/equipment_apple_ipad_air"
             android:scaleType="centerCrop"
             />
