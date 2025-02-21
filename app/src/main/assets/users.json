@@ -1,18 +1,7 @@
 [
     {
       "userId": "00000001",
-      "checkedOutItems": [
-        {
-          "name": "Introduction to Database Systems",
-          "isReturned": false,
-          "isLate": true
-        },
-        {
-          "name": "HP Chromebook",
-          "isReturned": false,
-          "isLate": false
-        }
-      ]
+      "checkoutItems": []
     },
     {
       "userId": "00000002",
@@ -24,6 +13,21 @@
         },
         {
           "name": "Apple iPad Air",
+          "isReturned": false,
+          "isLate": false
+        }
+      ]
+    },
+    {
+      "userId": "00000003",
+      "checkedOutItems": [
+        {
+          "name": "Introduction to Database Systems",
+          "isReturned": false,
+          "isLate": true
+        },
+        {
+          "name": "HP Chromebook",
           "isReturned": false,
           "isLate": false
         }

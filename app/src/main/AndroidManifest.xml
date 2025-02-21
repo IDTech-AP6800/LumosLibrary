@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools" >
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <uses-feature android:name="android.hardware.camera.any" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -19,12 +22,7 @@
         <activity
             android:name=".HelpPageActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-
         <activity
             android:name=".ReturnConfirmationActivity"
             android:exported="false" />
@@ -54,7 +52,19 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".QrCodeActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="true">
         </activity>
     </application>
 
