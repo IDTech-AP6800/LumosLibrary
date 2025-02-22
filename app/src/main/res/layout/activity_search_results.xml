@@ -4,11 +4,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".SearchResultsActivity">
+
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="373dp"
+        android:layout_height="555dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Search_bar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Add your UI elements here -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/book_computer_science_an_overview" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/book_the_art_of_computer_programming" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/book_computational_thinking" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/equipment_dell_xps_laptop" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/equipment_ti_89_graphing_calculator" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/book_quantum_computing_for_everyone" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/book_computer_science_an_overview" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
 
     <!-- Help Button Icon -->
     <include
         android:id="@+id/help_button_include"
         layout="@layout/help_button" />
+
+    <!-- Back Button -->
+    <ImageButton
+        android:id="@+id/back_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/back_arrow"
+        android:contentDescription="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <!--User ID Text Box-->
+    <EditText
+        android:id="@+id/Search_bar"
+        android:layout_width="380dp"
+        android:layout_height="50dp"
+        android:background="@drawable/search_bar"
+        android:digits="0123456789"
+        android:fontFamily="@font/robotoslab_light"
+        android:inputType="number"
+        android:maxLength="10"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/background"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/help_button_include"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/help_button_include"
+        app:layout_constraintVertical_bias="0.101" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
