@@ -39,13 +39,10 @@
             android:name=".TapSwipeInsertPaymentActivity"
             android:exported="false" />
         <activity
-            android:name=".RentScanItemActivity"
-            android:exported="true" />
-        <activity
             android:name=".LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".ItemScanActivity"
+            android:name=".RentScanActivity"
             android:exported="true"/>
         <activity
             android:name=".SearchResultsActivity"

@@ -21,7 +21,7 @@ import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 
-class ItemScanActivity : AppCompatActivity() {
+class RentScanActivity : AppCompatActivity() {
 
     private lateinit var barcodeScanner: BarcodeScanner
     private lateinit var imageCam: PreviewView
@@ -165,7 +165,7 @@ class ItemScanActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val TAG = "ItemScanActivity"
+        private const val TAG = "RentScanActivity"
         private val REQUIRED_PERMISSIONS =
             mutableListOf (
                 Manifest.permission.CAMERA
