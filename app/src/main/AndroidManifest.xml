@@ -44,7 +44,9 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true" />
-
+        <activity
+            android:name=".ItemScanActivity"
+            android:exported="true"/>
         <activity
             android:name=".SearchResultsActivity"
             android:exported="true">

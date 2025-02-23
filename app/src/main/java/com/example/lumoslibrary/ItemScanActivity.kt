@@ -35,7 +35,7 @@ class ItemScanActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_item_scan)
+        setContentView(R.layout.activity_rent_scan_item)
         HelpButton(this)
 
         imageCam = findViewById(R.id.item_camera_preview)
@@ -112,7 +112,7 @@ class ItemScanActivity : AppCompatActivity() {
 
         cameraController.bindToLifecycle(this)
         previewView.controller = cameraController
-        cameraController.cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+        cameraController.cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
     }
 
     private fun handleISBNBarcode(value: String) {
