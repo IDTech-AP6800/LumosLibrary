@@ -152,52 +152,44 @@ class RentScanActivity : AppCompatActivity() {
     private fun addScannedItem(item: Item) {
         if (scannedItemsSet.add(item.title)) {
             scannedItemsList.add(item)
-            inflateItemCard(item) // Update UI with scanned item details
+            updateItemCards()
         } else {
             Toast.makeText(this, "Item already scanned", Toast.LENGTH_SHORT).show()
         }
     }
 
-//    private fun updateItemCard(item: Item) {
-//        runOnUiThread {
-//            findViewById<TextView>(R.id.card_category).text = item.category
-//            findViewById<TextView>(R.id.card_title).text = item.title
-//            findViewById<TextView>(R.id.card_author).text = item.author
-//            findViewById<TextView>(R.id.card_location).text = "Location: ${item.location}"
-//
-//            val imageView = findViewById<ImageView>(R.id.card_image)
-//            val imageResId = resources.getIdentifier(item.image.replace(".jpg", ""), "drawable", packageName)
-//
-//            if (imageResId != 0) {
-//                imageView.setImageResource(imageResId)
-//            }
-//        }
-//    }
+    private fun removeScannedItem(item: Item) {
+        if (scannedItemsSet.remove(item.title)) {
+            scannedItemsList.remove(item)
+            updateItemCards()
+        }
+    }
 
-    private fun inflateItemCard(item: Item) {
+    private fun updateItemCards() {
         runOnUiThread {
+            itemCardContainer.removeAllViews()
             val inflater = LayoutInflater.from(this)
-            val itemView = inflater.inflate(R.layout.item_card, itemCardContainer, false)
 
-            // Populate with scanned item details
-            itemView.findViewById<TextView>(R.id.card_category).text = item.category
-            itemView.findViewById<TextView>(R.id.card_title).text = item.title
-            itemView.findViewById<TextView>(R.id.card_author).text = item.author
-            itemView.findViewById<TextView>(R.id.card_location).text = "Location: ${item.location}"
+            for (item in scannedItemsList) {
+                val itemView = inflater.inflate(R.layout.item_card, itemCardContainer, false)
+                itemView.findViewById<TextView>(R.id.card_tag).text = item.tag
+                itemView.findViewById<TextView>(R.id.card_title).text = item.title
+                itemView.findViewById<TextView>(R.id.card_author).text = item.author
 
-            // Set item image dynamically
-            val imageView = itemView.findViewById<ImageView>(R.id.card_image)
-            val imageResId = resources.getIdentifier(item.image.replace(".jpg", ""), "drawable", packageName)
-            if (imageResId != 0) {
-                imageView.setImageResource(imageResId)
+                val imageView = itemView.findViewById<ImageView>(R.id.card_image)
+                val imageResId =
+                    resources.getIdentifier(item.image.replace(".jpg", ""), "drawable", packageName)
+                if (imageResId != 0) {
+                    imageView.setImageResource(imageResId)
+                }
+
+                val deleteButton = itemView.findViewById<ImageView>(R.id.delete_icon)
+                deleteButton.setOnClickListener {
+                    removeScannedItem(item)
+                }
+
+                itemCardContainer.addView(itemView)
             }
-
-            // Add a fade-in animation
-            itemView.alpha = 0f
-            itemView.animate().alpha(1f).setDuration(300).start()
-
-            // Add the inflated view to the container
-            itemCardContainer.addView(itemView)
         }
     }
 

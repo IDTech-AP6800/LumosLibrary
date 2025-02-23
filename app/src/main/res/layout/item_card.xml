@@ -9,8 +9,8 @@
     <!-- Image on the left -->
     <ImageView
         android:id="@+id/card_image"
-        android:layout_width="104dp"
-        android:layout_height="113dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_marginEnd="16dp"
         android:contentDescription="Item Image"
         android:scaleType="centerCrop"
@@ -18,38 +18,57 @@
 
     <!-- Text Layout -->
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/card_category"
+            android:id="@+id/card_tag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Category"
-            android:textSize="16sp"
-            android:fontFamily="@font/robotoslab_medium"/>
+            android:textColor="@color/secondaryBlue"
+            android:textSize="12sp"
+            android:fontFamily="@font/robotoslab_light"
+            android:ellipsize="end"
+            android:maxLines="1"/>
 
         <TextView
             android:id="@+id/card_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Title"
-            android:textSize="14sp" />
+            android:textColor="@color/white"
+            android:fontFamily="@font/robotoslab_bold"
+            android:textSize="16sp"
+            android:ellipsize="end"
+            android:maxLines="1"/>
 
         <TextView
             android:id="@+id/card_author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:fontFamily="@font/robotoslab_light"
+            android:textSize="16sp"
             android:text="Author"
-            android:textSize="14sp" />
+            android:ellipsize="end"
+            android:maxLines="1"/>
+    </LinearLayout>
 
-        <TextView
-            android:id="@+id/card_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Location"
-            android:textSize="14sp" />
+    <!-- Delete Button Wrapper -->
+    <LinearLayout
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/delete_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/delete_icon"
+            android:contentDescription="Delete Item"/>
     </LinearLayout>
 
 </LinearLayout>
