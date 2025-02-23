@@ -159,7 +159,7 @@ class LoginActivity : AppCompatActivity() {
     private fun nextActivity() {
         CurrentSession.userID = userID.toString()
         val intent = if (CurrentSession.state == 1) { // Return
-            Intent(this, RentScanItemActivity::class.java)
+            Intent(this, RentScanActivity::class.java)
         } else { // Rent
             Intent(this, ReturnScanItemActivity::class.java)
         }

@@ -8,6 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import android.Manifest
 import android.util.Log
+import android.view.LayoutInflater
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.CameraSelector
@@ -26,6 +30,7 @@ class RentScanActivity : AppCompatActivity() {
     private lateinit var barcodeScanner: BarcodeScanner
     private lateinit var imageCam: PreviewView
     private lateinit var searchInventory: SearchInventory
+    private lateinit var itemCardContainer: LinearLayout
     private val scannedItemsList = mutableListOf<Item>()
     private val scannedItemsSet = mutableSetOf<String>()
 
@@ -39,6 +44,8 @@ class RentScanActivity : AppCompatActivity() {
         HelpButton(this)
 
         imageCam = findViewById(R.id.item_camera_preview)
+
+        itemCardContainer = findViewById(R.id.item_card_container)
 
         searchInventory = SearchInventory(this, "items.json")
 
@@ -145,8 +152,52 @@ class RentScanActivity : AppCompatActivity() {
     private fun addScannedItem(item: Item) {
         if (scannedItemsSet.add(item.title)) {
             scannedItemsList.add(item)
+            inflateItemCard(item) // Update UI with scanned item details
         } else {
             Toast.makeText(this, "Item already scanned", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+//    private fun updateItemCard(item: Item) {
+//        runOnUiThread {
+//            findViewById<TextView>(R.id.card_category).text = item.category
+//            findViewById<TextView>(R.id.card_title).text = item.title
+//            findViewById<TextView>(R.id.card_author).text = item.author
+//            findViewById<TextView>(R.id.card_location).text = "Location: ${item.location}"
+//
+//            val imageView = findViewById<ImageView>(R.id.card_image)
+//            val imageResId = resources.getIdentifier(item.image.replace(".jpg", ""), "drawable", packageName)
+//
+//            if (imageResId != 0) {
+//                imageView.setImageResource(imageResId)
+//            }
+//        }
+//    }
+
+    private fun inflateItemCard(item: Item) {
+        runOnUiThread {
+            val inflater = LayoutInflater.from(this)
+            val itemView = inflater.inflate(R.layout.item_card, itemCardContainer, false)
+
+            // Populate with scanned item details
+            itemView.findViewById<TextView>(R.id.card_category).text = item.category
+            itemView.findViewById<TextView>(R.id.card_title).text = item.title
+            itemView.findViewById<TextView>(R.id.card_author).text = item.author
+            itemView.findViewById<TextView>(R.id.card_location).text = "Location: ${item.location}"
+
+            // Set item image dynamically
+            val imageView = itemView.findViewById<ImageView>(R.id.card_image)
+            val imageResId = resources.getIdentifier(item.image.replace(".jpg", ""), "drawable", packageName)
+            if (imageResId != 0) {
+                imageView.setImageResource(imageResId)
+            }
+
+            // Add a fade-in animation
+            itemView.alpha = 0f
+            itemView.animate().alpha(1f).setDuration(300).start()
+
+            // Add the inflated view to the container
+            itemCardContainer.addView(itemView)
         }
     }
 
