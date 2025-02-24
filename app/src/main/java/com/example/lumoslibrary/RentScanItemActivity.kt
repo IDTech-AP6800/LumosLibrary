@@ -8,6 +8,6 @@ class RentScanItemActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rent_scan_item)
 
-        HelpButton(this)
+        //HelpButton(this)
     }
 }
