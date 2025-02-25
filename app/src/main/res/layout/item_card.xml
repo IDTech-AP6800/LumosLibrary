@@ -24,7 +24,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/card_tag"
+            android:id="@+id/card_field1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Category"
@@ -35,7 +35,7 @@
             android:maxLines="1"/>
 
         <TextView
-            android:id="@+id/card_title"
+            android:id="@+id/card_field2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Title"
@@ -46,7 +46,7 @@
             android:maxLines="1"/>
 
         <TextView
-            android:id="@+id/card_author"
+            android:id="@+id/card_field3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"

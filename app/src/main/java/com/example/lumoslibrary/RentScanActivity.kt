@@ -172,13 +172,10 @@ class RentScanActivity : AppCompatActivity() {
 
             for (item in scannedItemsList) {
                 val itemView = inflater.inflate(R.layout.item_card, itemCardContainer, false)
-                itemView.findViewById<TextView>(R.id.card_tag).text = item.tag
-                itemView.findViewById<TextView>(R.id.card_title).text = item.title
-                itemView.findViewById<TextView>(R.id.card_author).text = item.author
+                itemView.findViewById<TextView>(R.id.card_field2).text = item.title
 
                 val imageView = itemView.findViewById<ImageView>(R.id.card_image)
-                val imageResId =
-                    resources.getIdentifier(item.image.replace(".jpg", ""), "drawable", packageName)
+                val imageResId = resources.getIdentifier(item.image.replace(".jpg", ""), "drawable", packageName)
                 if (imageResId != 0) {
                     imageView.setImageResource(imageResId)
                 }
@@ -188,10 +185,20 @@ class RentScanActivity : AppCompatActivity() {
                     removeScannedItem(item)
                 }
 
+                if (item.itemType == "book") {
+                    itemView.findViewById<TextView>(R.id.card_field1).text = item.itemType
+                    itemView.findViewById<TextView>(R.id.card_field3).text = item.author
+                }
+                else if (item.itemType == "equipment") {
+                    itemView.findViewById<TextView>(R.id.card_field1).text = item.itemType
+                    itemView.findViewById<TextView>(R.id.card_field3).text = "Security Deposit: $${item.security_deposit.toString()}"
+                }
+
                 itemCardContainer.addView(itemView)
             }
         }
     }
+
 
     private fun requestPermissions() {
         activityResultLauncher.launch(REQUIRED_PERMISSIONS)
