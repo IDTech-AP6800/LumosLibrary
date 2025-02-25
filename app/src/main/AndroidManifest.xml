@@ -40,6 +40,7 @@
             android:exported="true" />
         <activity
             android:name=".RentConfirmationActivity"
+            android:launchMode="singleInstance"
             android:exported="false" />
         <activity
             android:name=".ScanToPayActivity"
@@ -63,10 +64,6 @@
 
         <activity
             android:name=".QrCodeActivity"
-            android:exported="true">
-        </activity>
-        <activity
-            android:name=".PaymentActivity"
             android:exported="true">
         </activity>
     </application>
