@@ -15,6 +15,7 @@ class TapSwipeInsertPaymentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tap_swipe_insert_payment)
+        BackButton(this)
 
         insertCardOption = findViewById(R.id.insert_card_option)
         swipeCardOption = findViewById(R.id.swipe_card_option)
