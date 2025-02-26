@@ -48,6 +48,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
 
+    implementation 'org.apache.commons:commons-text:1.10.0'
     implementation 'com.google.code.gson:gson:2.11.0'
     implementation 'org.zeromq:jeromq:0.6.0'
     implementation 'androidx.fragment:fragment-ktx:1.5.7'
