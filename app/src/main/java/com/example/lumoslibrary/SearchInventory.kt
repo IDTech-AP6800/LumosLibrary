@@ -27,7 +27,6 @@ class SearchInventory(private val context: Context, private val fileName: String
                     it.category.lowercase(Locale.getDefault()).contains(searchQuery) ||
                     it.author?.lowercase(Locale.getDefault())?.contains(searchQuery) ?: false ||
                     it.location.lowercase(Locale.getDefault()).contains(searchQuery) ||
-                    it.tag.lowercase(Locale.getDefault()).contains(searchQuery) ||
                     it.isbn13?.lowercase(Locale.getDefault())?.contains(searchQuery) ?: false ||
                     it.description?.lowercase(Locale.getDefault())?.contains(searchQuery) ?: false
         }
