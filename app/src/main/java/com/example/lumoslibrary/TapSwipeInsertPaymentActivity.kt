@@ -30,7 +30,8 @@ class TapSwipeInsertPaymentActivity : AppCompatActivity() {
 
     private var devices: List<String> = emptyList()
     private var connectedDeviceId: String? = null
-    private var currPayment: Int? = null
+    //Start w/MSR
+    private var currPayment: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,27 +43,28 @@ class TapSwipeInsertPaymentActivity : AppCompatActivity() {
         tapCardOption = findViewById(R.id.tap_card_option)
         qrCodeButton = findViewById(R.id.qr_code_button)
 
+        //First time select payment method to be swipe
+        selectPaymentMethod(swipeCardOption, "Swipe")
 
-        startTransaction(currPayment!!)
         // This area changes the UI + The calls to the ZSDK
         // 1 = MSR, 2 = CTLS, 4 = EMV
         insertCardOption.setOnClickListener {
             selectPaymentMethod(insertCardOption, "Insert")
             cancelTransaction() // Need to test this
-            currPayment = 2
-            startTransaction(currPayment!!)
+            currPayment = 4
+            startTransaction(currPayment)
         }
         swipeCardOption.setOnClickListener {
             selectPaymentMethod(swipeCardOption, "Swipe")
             cancelTransaction()
             currPayment = 1
-            startTransaction(currPayment!!)
+            startTransaction(currPayment)
         }
         tapCardOption.setOnClickListener {
             selectPaymentMethod(tapCardOption, "Tap")
             cancelTransaction()
-            currPayment = 4
-            startTransaction(currPayment!!)
+            currPayment = 2
+            startTransaction(currPayment)
         }
 
         // qrCodeButton Navigates to pay with scanner
@@ -85,6 +87,7 @@ class TapSwipeInsertPaymentActivity : AppCompatActivity() {
 
     private fun resetAllOptions() {
         // Dim the unselected options
+        // Default is MSR
         insertCardOption.alpha = 0.5f
         swipeCardOption.alpha = 0.5f
         tapCardOption.alpha = 0.5f
@@ -170,7 +173,7 @@ class TapSwipeInsertPaymentActivity : AppCompatActivity() {
         super.onResume()
 
         //When the activity is resumed, start the transaction again
-        startTransaction(currPayment!!)
+        startTransaction(currPayment)
     }
 
     override fun onDestroy() {
