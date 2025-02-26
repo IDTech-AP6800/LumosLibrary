@@ -21,20 +21,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_margin="10dp"/>
 
-    <!-- Search Bar -->
-<!--    <SearchView-->
-<!--        android:id="@+id/search_bar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginLeft="30dp"-->
-<!--        android:layout_marginRight="30dp"-->
-<!--        android:layout_marginTop="30dp"-->
-<!--        android:layout_marginBottom="30dp"-->
-<!--        android:background="@color/lumosWhite"-->
-<!--        app:layout_constraintHorizontal_bias="0.5"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/lumos_logo" />-->
-
+    <!-- Search Button -->
     <Button
         android:id="@+id/search_bar"
         android:layout_width="match_parent"
@@ -44,10 +31,39 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
         android:background="@color/lumosWhite"
-        android:text="🔎"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lumos_logo" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/search_icon"
+        app:layout_constraintTop_toTopOf="@id/search_bar"
+        app:layout_constraintLeft_toLeftOf="@id/search_bar"
+        app:layout_constraintBottom_toBottomOf="@id/search_bar"
+        android:paddingLeft="15dp"
+        android:elevation="5dp"
+        />
+
+<!--    android:translationZ="@dimen/cardview_default_elevation"-->
+
+
+    <!--    <ImageButton-->
+<!--        android:id="@+id/search_bar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="30dp"-->
+<!--        android:background="@color/lumosWhite"-->
+<!--        android:padding="10dp"-->
+<!--        app:layout_constraintHorizontal_bias="0.5"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/lumos_logo"-->
+<!--        android:src="@drawable/search_icon" />-->
+
+<!--    android:layout_alignParentTop="true"-->
+<!--    android:layout_alignParentRight="true"-->
+<!--    android:src="@android:drawable/ic_menu_search"-->
 
     <!-- Rent & Return Buttons -->
     <GridLayout
@@ -119,14 +135,30 @@
 
         <!-- Carousel Book Images -->
         <!-- book 1 -->
-        <ImageView
+        <FrameLayout
             android:id="@+id/img_book_advanced_potion_making"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/book_advanced_potion_making"
-            android:scaleType="centerCrop"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/img_book_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/book_advanced_potion_making"
+                android:scaleType="centerCrop"
+                android:paddingTop="55dp"
             />
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/book_item_img_border"
+                android:layout_gravity="center"
+            />
+        </FrameLayout>
+
+        <!-- book 1 text -->
         <TextView
             android:id="@+id/title_potion"
             android:layout_width="wrap_content"
@@ -138,6 +170,7 @@
             app:layout_constraintLeft_toLeftOf="@+id/img_book_advanced_potion_making"
             />
 
+        <!-- book 1 location -->
         <TextView
             android:id="@+id/aisle_1"
             android:layout_width="wrap_content"
@@ -153,16 +186,30 @@
             app:layout_constraintLeft_toLeftOf="@+id/title_potion"
             />
 
-
         <!-- book 2 -->
-        <ImageView
+        <FrameLayout
             android:id="@+id/img_book_astrophysics_for_people_in_a_hurry"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/book_astrophysics_for_people_in_a_hurry"
-            android:scaleType="centerCrop"
-            />
+            android:layout_gravity="center">
 
+            <ImageView
+                android:id="@+id/img_book_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/book_astrophysics_for_people_in_a_hurry"
+                android:scaleType="centerCrop"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/book_item_img_border"
+                android:layout_gravity="center"
+                />
+        </FrameLayout>
+
+        <!-- book 2 text -->
         <TextView
             android:id="@+id/title_astro"
             android:layout_width="wrap_content"
@@ -174,6 +221,7 @@
             app:layout_constraintLeft_toLeftOf="@+id/img_book_astrophysics_for_people_in_a_hurry"
             />
 
+        <!-- book 2 location -->
         <TextView
             android:id="@+id/aisle_2"
             android:layout_width="wrap_content"
@@ -190,14 +238,29 @@
             />
 
         <!-- book 3 -->
-        <ImageView
+        <FrameLayout
             android:id="@+id/img_book_calculus_early_transcendentals"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/book_calculus_early_transcendentals"
-            android:scaleType="centerCrop"
-            />
+            android:layout_gravity="center">
 
+            <ImageView
+                android:id="@+id/img_book_3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/book_calculus_early_transcendentals"
+                android:scaleType="centerCrop"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/book_item_img_border"
+                android:layout_gravity="center"
+                />
+        </FrameLayout>
+
+        <!-- book 3 text -->
         <TextView
             android:id="@+id/title_calc"
             android:layout_width="wrap_content"
@@ -209,6 +272,7 @@
             app:layout_constraintLeft_toLeftOf="@+id/img_book_calculus_early_transcendentals"
             />
 
+        <!-- book 3 location -->
         <TextView
             android:id="@+id/aisle_3"
             android:layout_width="wrap_content"
@@ -225,14 +289,30 @@
             />
 
         <!-- book 4 -->
-        <ImageView
+        <FrameLayout
             android:id="@+id/img_book_harry_potter_philosophers_stone"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/book_harry_potter_philosophers_stone"
-            android:scaleType="centerCrop"
-            />
+            android:layout_gravity="center">
 
+            <ImageView
+                android:id="@+id/img_book_4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/book_harry_potter_philosophers_stone"
+                android:scaleType="centerCrop"
+                android:paddingTop="55dp"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/book_item_img_border"
+                android:layout_gravity="center"
+                />
+        </FrameLayout>
+
+        <!-- book 4 text -->
         <TextView
             android:id="@+id/title_harry"
             android:layout_width="wrap_content"
@@ -244,6 +324,7 @@
             app:layout_constraintLeft_toLeftOf="@+id/img_book_harry_potter_philosophers_stone"
             />
 
+        <!-- book 4 location -->
         <TextView
             android:id="@+id/aisle_4"
             android:layout_width="wrap_content"
@@ -260,14 +341,29 @@
             />
 
         <!-- book 5 -->
-        <ImageView
+        <FrameLayout
             android:id="@+id/img_book_project_hail_mary"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/book_project_hail_mary"
-            android:scaleType="centerCrop"
-            />
+            android:layout_gravity="center">
 
+            <ImageView
+                android:id="@+id/img_book_5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/book_project_hail_mary"
+                android:scaleType="centerCrop"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/book_item_img_border"
+                android:layout_gravity="center"
+                />
+        </FrameLayout>
+
+        <!-- book 5 text -->
         <TextView
             android:id="@+id/title_hail"
             android:layout_width="wrap_content"
@@ -279,6 +375,7 @@
             app:layout_constraintLeft_toLeftOf="@+id/img_book_project_hail_mary"
             />
 
+        <!-- book 5 location -->
         <TextView
             android:id="@+id/aisle_5"
             android:layout_width="wrap_content"
@@ -323,14 +420,29 @@
 
         <!-- Carousel Item Images -->
         <!-- item 1 -->
-        <ImageView
+        <FrameLayout
             android:id="@+id/img_eq_macbook"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/equipment_macbook_m2"
-            android:scaleType="centerCrop"
-            />
+            android:layout_gravity="center">
 
+            <ImageView
+                android:id="@+id/img_item_1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/equipment_macbook_m2"
+                android:scaleType="centerCrop"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/book_item_img_border"
+                android:layout_gravity="center"
+                />
+        </FrameLayout>
+
+        <!-- item 1 text -->
         <TextView
             android:id="@+id/title_mac"
             android:layout_width="wrap_content"
@@ -342,6 +454,7 @@
             app:layout_constraintLeft_toLeftOf="@+id/img_eq_macbook"
             />
 
+        <!-- item 1 location -->
         <TextView
             android:id="@+id/aisle_front_1"
             android:layout_width="wrap_content"
@@ -359,14 +472,30 @@
 
 
         <!-- item 2 -->
-        <ImageView
+        <FrameLayout
             android:id="@+id/img_eq_ipad"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/equipment_apple_ipad_air"
-            android:scaleType="centerCrop"
-            />
+            android:layout_gravity="center">
 
+            <ImageView
+                android:id="@+id/img_item_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/equipment_apple_ipad_air"
+                android:scaleType="centerCrop"
+                android:paddingTop="15dp"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/book_item_img_border"
+                android:layout_gravity="center"
+                />
+        </FrameLayout>
+
+        <!-- item 2 text -->
         <TextView
             android:id="@+id/title_ipad"
             android:layout_width="wrap_content"
@@ -378,6 +507,7 @@
             app:layout_constraintLeft_toLeftOf="@+id/img_eq_ipad"
             />
 
+        <!-- item 2 location -->
         <TextView
             android:id="@+id/aisle_front_2"
             android:layout_width="wrap_content"
@@ -394,14 +524,29 @@
             />
 
         <!-- item 3 -->
-        <ImageView
+        <FrameLayout
             android:id="@+id/img_ps4"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/equipment_sony_playstation_4"
-            android:scaleType="centerCrop"
-            />
+            android:layout_gravity="center">
 
+            <ImageView
+                android:id="@+id/img_item_3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/equipment_sony_playstation_4"
+                android:scaleType="centerCrop"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/book_item_img_border"
+                android:layout_gravity="center"
+                />
+        </FrameLayout>
+
+        <!-- item 3 text -->
         <TextView
             android:id="@+id/title_ps4"
             android:layout_width="wrap_content"
@@ -413,6 +558,7 @@
             app:layout_constraintLeft_toLeftOf="@+id/img_ps4"
             />
 
+        <!-- item 3 location -->
         <TextView
             android:id="@+id/aisle_front_3"
             android:layout_width="wrap_content"
@@ -429,14 +575,29 @@
             />
 
         <!-- item 4 -->
-        <ImageView
+        <FrameLayout
             android:id="@+id/img_nintendo_switch"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/equipment_nintendo_switch"
-            android:scaleType="centerCrop"
-            />
+            android:layout_gravity="center">
 
+            <ImageView
+                android:id="@+id/img_item_4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/equipment_nintendo_switch"
+                android:scaleType="centerCrop"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/book_item_img_border"
+                android:layout_gravity="center"
+                />
+        </FrameLayout>
+
+        <!-- item 4 text -->
         <TextView
             android:id="@+id/title_nintendo_switch"
             android:layout_width="wrap_content"
@@ -448,6 +609,7 @@
             app:layout_constraintLeft_toLeftOf="@+id/img_nintendo_switch"
             />
 
+        <!-- item 4 location -->
         <TextView
             android:id="@+id/aisle_front_4"
             android:layout_width="wrap_content"
@@ -464,14 +626,29 @@
             />
 
         <!-- item 5 -->
-        <ImageView
+        <FrameLayout
             android:id="@+id/img_1000xm5"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/equipment_sony_wh_1000xm5"
-            android:scaleType="centerCrop"
-            />
+            android:layout_gravity="center">
 
+            <ImageView
+                android:id="@+id/img_item_5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/equipment_sony_wh_1000xm5"
+                android:scaleType="centerCrop"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/book_item_img_border"
+                android:layout_gravity="center"
+                />
+        </FrameLayout>
+
+        <!-- item 5 text -->
         <TextView
             android:id="@+id/title_1000xm5"
             android:layout_width="wrap_content"
@@ -483,6 +660,7 @@
             app:layout_constraintLeft_toLeftOf="@+id/img_1000xm5"
             />
 
+        <!-- item 5 location -->
         <TextView
             android:id="@+id/aisle_front_5"
             android:layout_width="wrap_content"
