@@ -8,6 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import android.Manifest
 import android.util.Log
+import android.view.LayoutInflater
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.CameraSelector
@@ -21,11 +25,12 @@ import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 
-class ItemScanActivity : AppCompatActivity() {
+class RentScanActivity : AppCompatActivity() {
 
     private lateinit var barcodeScanner: BarcodeScanner
     private lateinit var imageCam: PreviewView
     private lateinit var searchInventory: SearchInventory
+    private lateinit var itemCardContainer: LinearLayout
     private val scannedItemsList = mutableListOf<Item>()
     private val scannedItemsSet = mutableSetOf<String>()
 
@@ -35,10 +40,12 @@ class ItemScanActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_item_scan)
+        setContentView(R.layout.activity_rent_scan_item)
         HelpButton(this)
 
         imageCam = findViewById(R.id.item_camera_preview)
+
+        itemCardContainer = findViewById(R.id.item_card_container)
 
         searchInventory = SearchInventory(this, "items.json")
 
@@ -112,7 +119,7 @@ class ItemScanActivity : AppCompatActivity() {
 
         cameraController.bindToLifecycle(this)
         previewView.controller = cameraController
-        cameraController.cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+        cameraController.cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
     }
 
     private fun handleISBNBarcode(value: String) {
@@ -145,10 +152,53 @@ class ItemScanActivity : AppCompatActivity() {
     private fun addScannedItem(item: Item) {
         if (scannedItemsSet.add(item.title)) {
             scannedItemsList.add(item)
+            updateItemCards()
         } else {
             Toast.makeText(this, "Item already scanned", Toast.LENGTH_SHORT).show()
         }
     }
+
+    private fun removeScannedItem(item: Item) {
+        if (scannedItemsSet.remove(item.title)) {
+            scannedItemsList.remove(item)
+            updateItemCards()
+        }
+    }
+
+    private fun updateItemCards() {
+        runOnUiThread {
+            itemCardContainer.removeAllViews()
+            val inflater = LayoutInflater.from(this)
+
+            for (item in scannedItemsList) {
+                val itemView = inflater.inflate(R.layout.item_card, itemCardContainer, false)
+                itemView.findViewById<TextView>(R.id.card_field2).text = item.title
+
+                val imageView = itemView.findViewById<ImageView>(R.id.card_image)
+                val imageResId = resources.getIdentifier(item.image.replace(".jpg", ""), "drawable", packageName)
+                if (imageResId != 0) {
+                    imageView.setImageResource(imageResId)
+                }
+
+                val deleteButton = itemView.findViewById<ImageView>(R.id.delete_icon)
+                deleteButton.setOnClickListener {
+                    removeScannedItem(item)
+                }
+
+                if (item.itemType == "book") {
+                    itemView.findViewById<TextView>(R.id.card_field1).text = item.itemType
+                    itemView.findViewById<TextView>(R.id.card_field3).text = item.author
+                }
+                else if (item.itemType == "equipment") {
+                    itemView.findViewById<TextView>(R.id.card_field1).text = item.itemType
+                    itemView.findViewById<TextView>(R.id.card_field3).text = "Security Deposit: $${item.security_deposit.toString()}"
+                }
+
+                itemCardContainer.addView(itemView)
+            }
+        }
+    }
+
 
     private fun requestPermissions() {
         activityResultLauncher.launch(REQUIRED_PERMISSIONS)
@@ -165,7 +215,7 @@ class ItemScanActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val TAG = "ItemScanActivity"
+        private const val TAG = "RentScanActivity"
         private val REQUIRED_PERMISSIONS =
             mutableListOf (
                 Manifest.permission.CAMERA
