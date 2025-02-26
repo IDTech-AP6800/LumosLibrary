@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
-    <!-- 2nd book to 3rd book, 3rd book to 2nd book-->
+    <!-- 2nd item to 3rd item, 3rd item to 2nd item-->
     <Transition
         motion:constraintSetEnd="@+id/next"
         motion:constraintSetStart="@id/start"
@@ -16,7 +16,7 @@
 
     <!-- 3rd to 4th -->
     <Transition
-        motion:constraintSetEnd="@+id/next_book"
+        motion:constraintSetEnd="@+id/next_item"
         motion:constraintSetStart="@id/next"
         motion:duration="1000"
         android:id="@+id/three_to_four">
@@ -25,7 +25,7 @@
             motion:touchAnchorSide="left"/>
     </Transition>
 
-    <!-- 2nd book Emphasized -->
+    <!-- 2nd item Emphasized -->
     <ConstraintSet android:id = "@id/start">
         <Constraint
             android:id="@id/img_eq_ipad"
@@ -66,6 +66,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintStart_toEndOf="@id/img_ps4"
             motion:layout_constraintTop_toTopOf="parent"/>
+
         <Constraint
             android:id="@id/img_1000xm5"
             android:layout_width="100dp"
@@ -76,7 +77,7 @@
             motion:layout_constraintTop_toTopOf="parent"/>
     </ConstraintSet>
 
-    <!-- 3rd book Emphasized -->
+    <!-- 3rd item Emphasized -->
     <ConstraintSet android:id = "@id/next">
         <Constraint
             android:id="@id/img_eq_macbook"
@@ -86,6 +87,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toStartOf="@id/img_eq_ipad"
             motion:layout_constraintTop_toTopOf="parent"/>
+
         <Constraint
             android:id="@id/img_eq_ipad"
             android:layout_width="100dp"
@@ -95,6 +97,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toStartOf="@id/img_ps4"
             motion:layout_constraintTop_toTopOf="parent"/>
+
         <Constraint
             android:id="@id/img_ps4"
             android:layout_width="100dp"
@@ -115,6 +118,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintStart_toEndOf="@id/img_ps4"
             motion:layout_constraintTop_toTopOf="parent"/>
+
         <Constraint
             android:id="@id/img_1000xm5"
             android:layout_width="100dp"
@@ -125,8 +129,8 @@
             motion:layout_constraintTop_toTopOf="parent"/>
     </ConstraintSet>
 
-    <!-- 4th book Emphasized -->
-    <ConstraintSet android:id="@id/next_book">
+    <!-- 4th item Emphasized -->
+    <ConstraintSet android:id="@id/next_item">
         <Constraint
             android:id="@id/img_eq_macbook"
             android:layout_width="100dp"
@@ -135,6 +139,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toStartOf="@id/img_eq_ipad"
             motion:layout_constraintTop_toTopOf="parent"/>
+
         <Constraint
             android:id="@id/img_eq_ipad"
             android:layout_width="100dp"
@@ -144,6 +149,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toStartOf="@id/img_ps4"
             motion:layout_constraintTop_toTopOf="parent"/>
+
         <Constraint
             android:id="@id/img_ps4"
             android:layout_width="100dp"
@@ -153,6 +159,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toStartOf="@id/img_nintendo_switch"
             motion:layout_constraintTop_toTopOf="parent" />
+
         <Constraint
             android:id="@id/img_nintendo_switch"
             android:layout_width="100dp"
@@ -163,6 +170,7 @@
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toTopOf="parent" />
+
         <Constraint
             android:id="@id/img_1000xm5"
             android:layout_width="100dp"

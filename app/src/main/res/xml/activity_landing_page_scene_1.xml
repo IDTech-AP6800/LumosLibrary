@@ -66,6 +66,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintStart_toEndOf="@id/img_book_calculus_early_transcendentals"
             motion:layout_constraintTop_toTopOf="parent"/>
+
         <Constraint
             android:id="@id/img_book_project_hail_mary"
             android:layout_width="100dp"
@@ -86,6 +87,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toStartOf="@id/img_book_astrophysics_for_people_in_a_hurry"
             motion:layout_constraintTop_toTopOf="parent"/>
+
         <Constraint
             android:id="@id/img_book_astrophysics_for_people_in_a_hurry"
             android:layout_width="100dp"
@@ -95,6 +97,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toStartOf="@id/img_book_calculus_early_transcendentals"
             motion:layout_constraintTop_toTopOf="parent"/>
+
         <Constraint
             android:id="@id/img_book_calculus_early_transcendentals"
             android:layout_width="100dp"
@@ -115,6 +118,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintStart_toEndOf="@id/img_book_calculus_early_transcendentals"
             motion:layout_constraintTop_toTopOf="parent"/>
+
         <Constraint
             android:id="@id/img_book_project_hail_mary"
             android:layout_width="100dp"
@@ -135,6 +139,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toStartOf="@id/img_book_astrophysics_for_people_in_a_hurry"
             motion:layout_constraintTop_toTopOf="parent"/>
+
         <Constraint
             android:id="@id/img_book_astrophysics_for_people_in_a_hurry"
             android:layout_width="100dp"
@@ -144,6 +149,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toStartOf="@id/img_book_calculus_early_transcendentals"
             motion:layout_constraintTop_toTopOf="parent"/>
+
         <Constraint
             android:id="@id/img_book_calculus_early_transcendentals"
             android:layout_width="100dp"
@@ -153,6 +159,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintEnd_toStartOf="@id/img_book_harry_potter_philosophers_stone"
             motion:layout_constraintTop_toTopOf="parent" />
+
         <Constraint
             android:id="@id/img_book_harry_potter_philosophers_stone"
             android:layout_width="100dp"
@@ -163,6 +170,7 @@
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toTopOf="parent" />
+
         <Constraint
             android:id="@id/img_book_project_hail_mary"
             android:layout_width="100dp"
