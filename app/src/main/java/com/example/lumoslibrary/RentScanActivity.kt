@@ -7,8 +7,12 @@ import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import android.Manifest
+import android.content.Intent
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -29,6 +33,7 @@ class RentScanActivity : AppCompatActivity() {
 
     private lateinit var barcodeScanner: BarcodeScanner
     private lateinit var imageCam: PreviewView
+    private lateinit var totalDueAmount: TextView
     private lateinit var searchInventory: SearchInventory
     private lateinit var itemCardContainer: LinearLayout
     private val scannedItemsList = mutableListOf<Item>()
@@ -41,13 +46,17 @@ class RentScanActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rent_scan_item)
-        HelpButton(this)
+//        HelpButton(this)
 
         imageCam = findViewById(R.id.item_camera_preview)
 
         itemCardContainer = findViewById(R.id.item_card_container)
 
         searchInventory = SearchInventory(this, "items.json")
+
+        totalDueAmount = findViewById(R.id.total_due_amount)
+
+        listenContinueButton()
 
         if (allPermissionsGranted()) {
             startCamera()
@@ -156,6 +165,7 @@ class RentScanActivity : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Item already scanned", Toast.LENGTH_SHORT).show()
         }
+        calculateSecurityDepositTotal()
     }
 
     private fun removeScannedItem(item: Item) {
@@ -163,6 +173,7 @@ class RentScanActivity : AppCompatActivity() {
             scannedItemsList.remove(item)
             updateItemCards()
         }
+        calculateSecurityDepositTotal()
     }
 
     private fun updateItemCards() {
@@ -197,6 +208,48 @@ class RentScanActivity : AppCompatActivity() {
                 itemCardContainer.addView(itemView)
             }
         }
+    }
+
+    //Creates listener for the continue button
+    private fun listenContinueButton() {
+        val continueButton = findViewById<Button>(R.id.continue_button)
+        continueButton.setOnClickListener {
+            val depositTotal = findViewById<View>(R.id.total_due_amount) as TextView
+            val totalDueString = depositTotal.text.toString()
+                .replace("Total due: $", "")
+                .trim()
+
+            RentSession.totalDue = totalDueString.toDouble()
+
+            // Create an Intent to navigate to the PaymentOptions activity
+            val intent = Intent(this@RentScanActivity, TapSwipeInsertPaymentActivity::class.java)
+            startActivity(intent)
+
+        }
+    }
+
+    private fun calculateSecurityDepositTotal() {
+//        val totalDeposit = scannedItemsList.sumOf { it.security_deposit }
+//        Log.d(TAG, "calculateSecurityDepositTotal: $totalDeposit")
+
+        val depositTotal = findViewById<View>(R.id.total_due_amount) as TextView
+
+        var total = 0f
+
+        Log.d(TAG, "in here!")
+        for (item in scannedItemsList) {
+            if (item.security_deposit > 0) {
+//                Log.d(TAG, "${item.title}: has desposit of ${item.security_deposit}")
+                total += item.security_deposit
+            }
+        }
+
+        val totalText = String.format("$%.2f", total)
+        depositTotal.text = totalText
+
+//        Log.d(TAG, "total is: $total")
+//        val totalText = String.format("%.2f", totalDeposit)
+//        totalDueAmount.text = totalText
     }
 
 
