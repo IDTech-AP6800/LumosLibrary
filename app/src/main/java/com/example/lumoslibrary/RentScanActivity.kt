@@ -233,6 +233,7 @@ class RentScanActivity : AppCompatActivity() {
             Handler(Looper.getMainLooper()).postDelayed({
                 startActivity(Intent(this, TapSwipeInsertPaymentActivity::class.java))
                 Log.d("RentScanActivity", "Navigating to NextActivity after delay")
+                Log.d(TAG, "RentSession - totalDue: ${RentSession.totalDue}")
                 finish()
             }, 300) // Delay by 300ms
         }
