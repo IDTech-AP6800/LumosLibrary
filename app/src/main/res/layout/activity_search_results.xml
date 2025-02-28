@@ -12,59 +12,19 @@
         android:id="@+id/scroll_view"
         android:layout_width="373dp"
         android:layout_height="555dp"
+        android:layout_marginTop="60dp"
+        android:paddingBottom="62dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Search_bar">
+        app:layout_constraintTop_toBottomOf="@+id/search_bar">
 
+        <!-- Container for searched item cards -->
         <LinearLayout
+            android:id="@+id/searched_item_card_containers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- Add your UI elements here -->
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:src="@drawable/book_computer_science_an_overview" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:src="@drawable/book_the_art_of_computer_programming" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:src="@drawable/book_computational_thinking" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:src="@drawable/equipment_dell_xps_laptop" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:src="@drawable/equipment_ti_89_graphing_calculator" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:src="@drawable/book_quantum_computing_for_everyone" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:src="@drawable/book_computer_science_an_overview" />
-
+            android:orientation="vertical" >
 
         </LinearLayout>
 
@@ -91,13 +51,13 @@
 
     <!--User ID Text Box-->
     <EditText
-        android:id="@+id/Search_bar"
+        android:id="@+id/search_bar"
         android:layout_width="380dp"
         android:layout_height="50dp"
         android:background="@drawable/search_bar"
         android:inputType="text"
         android:fontFamily="@font/robotoslab_light"
-        android:maxLength="10"
+        android:maxLength="50"
         android:paddingStart="40dp"
         android:paddingEnd="20dp"
         android:layout_marginBottom="20dp"
@@ -108,6 +68,9 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/help_button_include"
-        app:layout_constraintVertical_bias="0.101" />
+        app:layout_constraintVertical_bias="0.101"
+        android:hint="Search"
+        android:imeOptions="actionSearch" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

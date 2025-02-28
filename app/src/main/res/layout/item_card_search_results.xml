@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:gravity="center_vertical">
+
+    <!-- Image on the left -->
+    <ImageView
+        android:id="@+id/card_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="Item Image"
+        android:scaleType="centerCrop"
+        android:src="@drawable/book_harry_potter_philosophers_stone" />
+
+    <!-- Text Layout -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/card_field1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category"
+            android:textColor="@color/secondaryBlue"
+            android:textSize="12sp"
+            android:fontFamily="@font/robotoslab_light"
+            android:ellipsize="end"
+            android:maxLines="1"/>
+
+        <TextView
+            android:id="@+id/card_field2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textColor="@color/white"
+            android:fontFamily="@font/robotoslab_bold"
+            android:textSize="16sp"
+            android:ellipsize="end"
+            android:maxLines="1"/>
+
+        <TextView
+            android:id="@+id/card_field3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:fontFamily="@font/robotoslab_light"
+            android:textSize="16sp"
+            android:text="Author"
+            android:ellipsize="end"
+            android:maxLines="1"/>
+
+        <TextView
+            android:id="@+id/card_field4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/background"
+            android:fontFamily="@font/robotoslab_light"
+            android:textSize="16sp"
+            android:text="Location"
+            android:ellipsize="end"
+            android:background="@drawable/blue_rounded_square"
+            android:padding="4dp"
+            android:maxLines="1"/>
+
+    </LinearLayout>
+
+</LinearLayout>
