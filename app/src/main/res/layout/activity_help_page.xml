@@ -55,14 +55,14 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="What are the library hours?" />
+            android:text="How can I resolve a late fee" />
 
         <Button
             android:id="@+id/query_3"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="How do I renew a book?" />
+            android:text="Suggest a book for me" />
     </LinearLayout>
 
     <ScrollView
