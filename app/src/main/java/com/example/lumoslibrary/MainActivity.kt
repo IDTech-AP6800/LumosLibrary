@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         val rootView = findViewById<View>(android.R.id.content)
         rootView.setOnClickListener {
             // Launch PaymentActivity on tap
-            val intent = Intent(this, PaymentActivity::class.java)
+            val intent = Intent(this, QrCodeActivity::class.java)
             startActivity(intent)
         }
     }
