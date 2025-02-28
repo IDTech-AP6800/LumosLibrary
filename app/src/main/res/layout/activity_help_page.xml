@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -21,36 +20,68 @@
 
     <EditText
         android:id="@+id/input_field"
-        android:layout_width="387dp"
-        android:layout_height="134dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:hint="Enter your question"
         android:padding="10dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/help_text" />
+        android:imeOptions="actionDone"
+    android:inputType="text"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/help_text" />
 
-    <Button
-        android:id="@+id/send_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Send"
-        app:layout_constraintTop_toBottomOf="@id/input_field"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="10dp"/>
-
-    <TextView
-        android:id="@+id/response_text"
+    <!-- Suggested Query Buttons -->
+    <LinearLayout
+        android:id="@+id/suggested_queries_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Response will appear here"
-        android:padding="10dp"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/send_button"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="20dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/input_field"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <Button
+            android:id="@+id/query_1"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="How do I rent a book?" />
+
+        <Button
+            android:id="@+id/query_2"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="How can I resolve a late fee" />
+
+        <Button
+            android:id="@+id/query_3"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Suggest a book for me" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_margin="20dp"
-        android:scrollbars="vertical"/>
+        app:layout_constraintTop_toBottomOf="@id/suggested_queries_layout">
+
+        <TextView
+            android:id="@+id/response_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Response will appear here"
+            android:textSize="16sp" />
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
