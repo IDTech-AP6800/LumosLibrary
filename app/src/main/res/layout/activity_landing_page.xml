@@ -33,8 +33,10 @@
         android:background="@color/lumosWhite"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lumos_logo" />
+        app:layout_constraintTop_toBottomOf="@id/lumos_logo"
+        />
 
+    <!-- Search Icon Image -->
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -46,26 +48,7 @@
         android:elevation="5dp"
         />
 
-<!--    android:translationZ="@dimen/cardview_default_elevation"-->
-
-
-    <!--    <ImageButton-->
-<!--        android:id="@+id/search_bar"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_margin="30dp"-->
-<!--        android:background="@color/lumosWhite"-->
-<!--        android:padding="10dp"-->
-<!--        app:layout_constraintHorizontal_bias="0.5"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/lumos_logo"-->
-<!--        android:src="@drawable/search_icon" />-->
-
-<!--    android:layout_alignParentTop="true"-->
-<!--    android:layout_alignParentRight="true"-->
-<!--    android:src="@android:drawable/ic_menu_search"-->
-
-    <!-- Rent & Return Buttons -->
+    <!-- Rent & Return Buttons GridLayout wrapper -->
     <GridLayout
         android:id="@+id/buttons_grid"
         android:layout_width="0dp"
@@ -82,7 +65,7 @@
             android:id="@+id/rent_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/landing_pg_btn_bground"
+            android:background="@drawable/big_btn_bground"
             android:text="Rent"
             android:textColor="@color/white"
             android:textSize="22sp"
@@ -97,7 +80,7 @@
             android:id="@+id/return_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/landing_pg_btn_bground"
+            android:background="@drawable/big_btn_bground"
             android:text="Return"
             android:textColor="@color/white"
             android:textSize="22sp"
@@ -109,7 +92,7 @@
     </GridLayout>
 
 
-    <!-- Top Reads -->
+    <!-- Top Reads Text -->
     <TextView
         android:id="@+id/top_reads_text"
         android:layout_width="wrap_content"
@@ -134,13 +117,14 @@
         app:layoutDescription="@xml/activity_landing_page_scene_1">
 
         <!-- Carousel Book Images -->
-        <!-- book 1 -->
+        <!-- book 1 FrameLayout wrapper -->
         <FrameLayout
             android:id="@+id/img_book_advanced_potion_making"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center">
 
+            <!-- book 1 image -->
             <ImageView
                 android:id="@+id/img_book_1"
                 android:layout_width="match_parent"
@@ -150,6 +134,7 @@
                 android:paddingTop="55dp"
             />
 
+            <!-- white border -->
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -175,9 +160,12 @@
             android:id="@+id/aisle_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:background="@color/secondaryBlue"
-            android:text="Aisle B4"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="8dp"
+            android:background="@drawable/blue_rounded_square"
+            android:text="📍Aisle B4"
             android:textColor="@color/black"
             android:textSize="10sp"
             android:fontFamily="@font/robotoslab_regular"
@@ -186,13 +174,14 @@
             app:layout_constraintLeft_toLeftOf="@+id/title_potion"
             />
 
-        <!-- book 2 -->
+        <!-- book 2 FrameLayout wrapper -->
         <FrameLayout
             android:id="@+id/img_book_astrophysics_for_people_in_a_hurry"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center">
 
+            <!-- book 2 image -->
             <ImageView
                 android:id="@+id/img_book_2"
                 android:layout_width="match_parent"
@@ -201,6 +190,7 @@
                 android:scaleType="centerCrop"
                 />
 
+            <!-- white border -->
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -226,9 +216,12 @@
             android:id="@+id/aisle_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:background="@color/secondaryBlue"
-            android:text="Aisle A12"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="8dp"
+            android:background="@drawable/blue_rounded_square"
+            android:text="📍Aisle A12"
             android:textColor="@color/black"
             android:textSize="10sp"
             android:fontFamily="@font/robotoslab_regular"
@@ -237,13 +230,14 @@
             app:layout_constraintLeft_toLeftOf="@+id/title_astro"
             />
 
-        <!-- book 3 -->
+        <!-- book 3 FrameLayout wrapper -->
         <FrameLayout
             android:id="@+id/img_book_calculus_early_transcendentals"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center">
 
+            <!-- book 3 image -->
             <ImageView
                 android:id="@+id/img_book_3"
                 android:layout_width="match_parent"
@@ -252,6 +246,7 @@
                 android:scaleType="centerCrop"
                 />
 
+            <!-- white border -->
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -277,9 +272,12 @@
             android:id="@+id/aisle_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:background="@color/secondaryBlue"
-            android:text="Aisle J18"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="8dp"
+            android:background="@drawable/blue_rounded_square"
+            android:text="📍Aisle J18"
             android:textColor="@color/black"
             android:textSize="10sp"
             android:fontFamily="@font/robotoslab_regular"
@@ -288,13 +286,14 @@
             app:layout_constraintLeft_toLeftOf="@+id/title_calc"
             />
 
-        <!-- book 4 -->
+        <!-- book 4 FrameLayout wrapper -->
         <FrameLayout
             android:id="@+id/img_book_harry_potter_philosophers_stone"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center">
 
+            <!-- book 4 image -->
             <ImageView
                 android:id="@+id/img_book_4"
                 android:layout_width="match_parent"
@@ -304,6 +303,7 @@
                 android:paddingTop="55dp"
                 />
 
+            <!-- white border -->
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -329,9 +329,12 @@
             android:id="@+id/aisle_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:background="@color/secondaryBlue"
-            android:text="Aisle K12"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="8dp"
+            android:background="@drawable/blue_rounded_square"
+            android:text="📍Aisle K12"
             android:textColor="@color/black"
             android:textSize="10sp"
             android:fontFamily="@font/robotoslab_regular"
@@ -340,13 +343,14 @@
             app:layout_constraintLeft_toLeftOf="@+id/title_harry"
             />
 
-        <!-- book 5 -->
+        <!-- book 5 FrameLayout wrapper -->
         <FrameLayout
             android:id="@+id/img_book_project_hail_mary"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center">
 
+            <!-- book 5 image -->
             <ImageView
                 android:id="@+id/img_book_5"
                 android:layout_width="match_parent"
@@ -355,6 +359,7 @@
                 android:scaleType="centerCrop"
                 />
 
+            <!-- white border -->
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -380,9 +385,12 @@
             android:id="@+id/aisle_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:background="@color/secondaryBlue"
-            android:text="Aisle D11"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="8dp"
+            android:background="@drawable/blue_rounded_square"
+            android:text="📍Aisle D11"
             android:textColor="@color/black"
             android:textSize="10sp"
             android:fontFamily="@font/robotoslab_regular"
@@ -394,7 +402,7 @@
     </androidx.constraintlayout.motion.widget.MotionLayout>
 
 
-    <!-- Popular Items -->
+    <!-- Popular Items Text -->
     <TextView
         android:id="@+id/popular_items_text"
         android:layout_width="wrap_content"
@@ -419,13 +427,14 @@
         app:layoutDescription="@xml/activity_landing_page_scene_2">
 
         <!-- Carousel Item Images -->
-        <!-- item 1 -->
+        <!-- item 1 FrameLayout wrapper -->
         <FrameLayout
             android:id="@+id/img_eq_macbook"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center">
 
+            <!-- item 1 image -->
             <ImageView
                 android:id="@+id/img_item_1"
                 android:layout_width="match_parent"
@@ -434,6 +443,7 @@
                 android:scaleType="centerCrop"
                 />
 
+            <!-- white border -->
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -459,8 +469,11 @@
             android:id="@+id/aisle_front_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:background="@color/secondaryBlue"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="8dp"
+            android:background="@drawable/blue_rounded_square"
             android:text="📍Front Desk"
             android:textColor="@color/black"
             android:textSize="10sp"
@@ -471,13 +484,14 @@
             />
 
 
-        <!-- item 2 -->
+        <!-- item 2 FrameLayout wrapper -->
         <FrameLayout
             android:id="@+id/img_eq_ipad"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center">
 
+            <!-- item 2 image -->
             <ImageView
                 android:id="@+id/img_item_2"
                 android:layout_width="match_parent"
@@ -487,6 +501,7 @@
                 android:paddingTop="15dp"
                 />
 
+            <!-- white border -->
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -512,8 +527,11 @@
             android:id="@+id/aisle_front_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:background="@color/secondaryBlue"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="8dp"
+            android:background="@drawable/blue_rounded_square"
             android:text="📍Front Desk"
             android:textColor="@color/black"
             android:textSize="10sp"
@@ -523,13 +541,14 @@
             app:layout_constraintLeft_toLeftOf="@+id/title_ipad"
             />
 
-        <!-- item 3 -->
+        <!-- item 3 FrameLayout wrapper -->
         <FrameLayout
             android:id="@+id/img_ps4"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center">
 
+            <!-- item 3 image -->
             <ImageView
                 android:id="@+id/img_item_3"
                 android:layout_width="match_parent"
@@ -538,6 +557,7 @@
                 android:scaleType="centerCrop"
                 />
 
+            <!-- white border -->
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -563,8 +583,11 @@
             android:id="@+id/aisle_front_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:background="@color/secondaryBlue"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="8dp"
+            android:background="@drawable/blue_rounded_square"
             android:text="📍Front Desk"
             android:textColor="@color/black"
             android:textSize="10sp"
@@ -574,13 +597,14 @@
             app:layout_constraintLeft_toLeftOf="@+id/title_ps4"
             />
 
-        <!-- item 4 -->
+        <!-- item 4 FrameLayout wrapper -->
         <FrameLayout
             android:id="@+id/img_nintendo_switch"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center">
 
+            <!-- item 4 image -->
             <ImageView
                 android:id="@+id/img_item_4"
                 android:layout_width="match_parent"
@@ -589,6 +613,7 @@
                 android:scaleType="centerCrop"
                 />
 
+            <!-- white border -->
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -614,8 +639,11 @@
             android:id="@+id/aisle_front_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:background="@color/secondaryBlue"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="8dp"
+            android:background="@drawable/blue_rounded_square"
             android:text="📍Front Desk"
             android:textColor="@color/black"
             android:textSize="10sp"
@@ -625,13 +653,14 @@
             app:layout_constraintLeft_toLeftOf="@+id/title_nintendo_switch"
             />
 
-        <!-- item 5 -->
+        <!-- item 5 FrameLayout wrapper -->
         <FrameLayout
             android:id="@+id/img_1000xm5"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center">
 
+            <!-- item 5 image -->
             <ImageView
                 android:id="@+id/img_item_5"
                 android:layout_width="match_parent"
@@ -640,6 +669,7 @@
                 android:scaleType="centerCrop"
                 />
 
+            <!-- white border -->
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -665,8 +695,11 @@
             android:id="@+id/aisle_front_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="4dp"
-            android:background="@color/secondaryBlue"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="8dp"
+            android:background="@drawable/blue_rounded_square"
             android:text="📍Front Desk"
             android:textColor="@color/black"
             android:textSize="10sp"
