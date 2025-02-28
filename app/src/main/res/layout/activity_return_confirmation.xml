@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".ReturnConfirmationActivity">
+
+    <!--Guidelines -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/returnConf_horizGuideline_div"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="350dp"/>
+
+    <!--Thank you message + Heading text-->
+    <TextView
+        android:id="@+id/returnConf_text_thanks"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="25dp"
+        android:text="Thank you!"
+        android:textSize="32sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/robotoslab_medium"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/returnConf_text_refund"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Card will be refunded in 2-3 business days"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/robotoslab_light"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/returnConf_text_thanks"
+        app:layout_constraintStart_toStartOf="@id/returnConf_text_thanks"
+        app:layout_constraintEnd_toEndOf="@id/returnConf_text_thanks"/>
+
+    <TextView
+        android:id="@+id/returnConf_text_instructions"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:paddingBottom="25dp"
+        android:text="Please drop off the following item at the designated return area"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/robotoslab_medium"
+        app:layout_constraintTop_toBottomOf="@id/returnConf_text_refund"
+        app:layout_constraintStart_toStartOf="@id/returnConf_text_refund"
+        app:layout_constraintEnd_toEndOf="@id/returnConf_text_refund"/>
+
+    <!--Returned Items-->
+
+    <ImageView
+        android:id="@+id/display_image_item"
+        android:layout_height="100dp"
+        android:layout_width="100dp"
+        android:src="@drawable/equipment_apple_ipad_air"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/returnConf_text_instructions"
+       />
+
+    <TextView
+        android:id="@+id/display_text_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Device"
+        android:textSize="12sp"
+        android:textColor="@color/primaryBlue"
+        android:fontFamily="@font/robotoslab_regular"
+        app:layout_constraintTop_toTopOf="@id/display_image_item"
+        app:layout_constraintBottom_toTopOf="@id/display_text_name"
+        app:layout_constraintStart_toEndOf="@id/display_image_item"/>
+
+    <TextView
+        android:id="@+id/display_text_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Device Name"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/robotoslab_bold"
+        app:layout_constraintTop_toBottomOf="@id/display_text_type"
+        app:layout_constraintBottom_toTopOf="@id/display_text_loan"
+        app:layout_constraintStart_toEndOf="@id/display_image_item"/>
+
+    <TextView
+        android:id="@+id/display_text_loan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Return Area: Front Desk"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/robotoslab_light"
+        app:layout_constraintTop_toBottomOf="@id/display_text_name"
+        app:layout_constraintStart_toEndOf="@id/display_image_item"/>
+
+
+    <View
+        android:id="@+id/returnConf_div"
+        android:layout_width="400dp"
+        android:layout_height="2dp"
+
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/returnConf_horizGuideline_div"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <!--Checked out items-->
+    <TextView
+        android:id="@+id/returnConf_text_checked"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="25dp"
+        android:paddingBottom="25dp"
+        android:text="Currently checked out:"
+        android:textSize="24sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/robotoslab_medium"
+        app:layout_constraintTop_toBottomOf="@id/returnConf_div"
+        app:layout_constraintStart_toStartOf="@id/returnConf_div"
+        app:layout_constraintEnd_toEndOf="@id/returnConf_div"
+        />
+
+    <include layout="@layout/item_display_due_date"
+        android:id="@+id/returnConf_item"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/returnConf_text_checked"
+        app:layout_constraintStart_toStartOf="@id/returnConf_text_checked"
+        />
+
+
+
+    <!--Logout Button-->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/returnConf_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/logout_button"
+        android:textSize="20sp"
+        android:fontFamily="@font/robotoslab_regular"
+        android:textAllCaps="false"
+        android:background="@drawable/blue_rounded_square"
+        app:layout_constraintTop_toBottomOf="@id/returnConf_item"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

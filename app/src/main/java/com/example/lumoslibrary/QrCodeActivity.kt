@@ -9,7 +9,9 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.util.Log
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -30,15 +32,23 @@ import com.google.mlkit.vision.barcode.common.Barcode
     This code handles the QR Code Payment Backend, as well as the other payment methods  */
 class QrCodeActivity : AppCompatActivity() {
 
-    lateinit var barcodeScanner : BarcodeScanner
+    private lateinit var barcodeScanner : BarcodeScanner
     private lateinit var imageCam: PreviewView
+    private lateinit var cardButton: ImageButton
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_qr_code)
+        setContentView(R.layout.activity_scan_to_pay)
 
         imageCam = findViewById(R.id.camera_preview)
+        cardButton = findViewById(R.id.card_button)
+
+        // Return back to other types of payments
+        cardButton.setOnClickListener{
+            val intent = Intent(this, TapSwipeInsertPaymentActivity::class.java)
+            startActivity(intent)
+        }
 
         /* TODO: Set text for value above payment
         private lateinit var amountText: TextView
@@ -110,10 +120,8 @@ class QrCodeActivity : AppCompatActivity() {
                     Log.d(TAG, "startCamera:\ncodeValue:$barcodeValue" +
                             "\nbarcodeFormat:$barcodeFormat")
 
-                    /*TODO: Link to other page we end up adding
-                    val intent = Intent(this@QrCodeActivity, PaymentProcessingActivity::class.java)
+                    val intent = Intent(this@QrCodeActivity, RentConfirmationActivity::class.java)
                     startActivity(intent)
-                     */
                 }
 
                 val qrCodeViewModel = QrCodeViewModel(barcodeResults[0])
@@ -141,40 +149,6 @@ class QrCodeActivity : AppCompatActivity() {
             baseContext, it) == PackageManager.PERMISSION_GRANTED
     }
 
-    /*Car moving vertically animation
-* Uses code from Park Buddy Swipe Animation*/
-    private fun startAnimations(car: ImageView, cam: PreviewView) {
-
-        car.post {
-            val startPos = car.y
-            val endPos = (cam.y + cam.height) - car.height
-            Log.d("Debug", "Start: $startPos, End: $endPos")
-
-
-            // Car Swipe Indication Animations
-            // 0  - 150
-            val moveDown = ObjectAnimator.ofFloat(car, "y", endPos).apply {
-                duration = 3000
-            }
-
-            val moveUp = ObjectAnimator.ofFloat(car, "y", startPos).apply {
-                duration = 3000
-            }
-
-            val rotationTop = ObjectAnimator.ofFloat(car, "rotationX", 0f, 180f)
-            val rotationBottom = ObjectAnimator.ofFloat(car, "rotationX", 180f, 0f)
-
-            val swipeIndicationSet = AnimatorSet().apply {
-                playSequentially(moveDown, rotationTop, moveUp, rotationBottom)
-                addListener(object : AnimatorListenerAdapter() {
-                    override fun onAnimationEnd(animation: Animator) {
-                        start() // Restart the animation loop
-                    }
-                })
-                start()
-            }
-        }
-    }
 
     override fun onDestroy() {
         super.onDestroy()

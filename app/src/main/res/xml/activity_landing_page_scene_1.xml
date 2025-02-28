@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <!-- 2nd book to 3rd book, 3rd book to 2nd book-->
+    <Transition
+        motion:constraintSetEnd="@+id/next"
+        motion:constraintSetStart="@id/start"
+        motion:duration="1000"
+        android:id="@+id/forward">
+        <OnSwipe
+            motion:dragDirection="dragLeft"
+            motion:touchAnchorSide="left"/>
+    </Transition>
+
+    <!-- 3rd to 4th -->
+    <Transition
+        motion:constraintSetEnd="@+id/next_book"
+        motion:constraintSetStart="@id/next"
+        motion:duration="1000"
+        android:id="@+id/three_to_four">
+        <OnSwipe
+            motion:dragDirection="dragLeft"
+            motion:touchAnchorSide="left"/>
+    </Transition>
+
+    <!-- 2nd book Emphasized -->
+    <ConstraintSet android:id = "@id/start">
+        <Constraint
+            android:id="@id/img_book_astrophysics_for_people_in_a_hurry"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"/>
+
+        <Constraint
+            android:id="@id/img_book_advanced_potion_making"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="18dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toStartOf="@id/img_book_astrophysics_for_people_in_a_hurry"
+            motion:layout_constraintTop_toTopOf="parent"/>
+
+        <Constraint
+            android:id="@id/img_book_calculus_early_transcendentals"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintStart_toEndOf="@id/img_book_astrophysics_for_people_in_a_hurry"
+            motion:layout_constraintTop_toTopOf="parent"/>
+
+        <Constraint
+            android:id="@id/img_book_harry_potter_philosophers_stone"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintStart_toEndOf="@id/img_book_calculus_early_transcendentals"
+            motion:layout_constraintTop_toTopOf="parent"/>
+        <Constraint
+            android:id="@id/img_book_project_hail_mary"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="18dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintStart_toEndOf="@id/img_book_harry_potter_philosophers_stone"
+            motion:layout_constraintTop_toTopOf="parent"/>
+    </ConstraintSet>
+
+    <!-- 3rd book Emphasized -->
+    <ConstraintSet android:id = "@id/next">
+        <Constraint
+            android:id="@id/img_book_advanced_potion_making"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="18dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toStartOf="@id/img_book_astrophysics_for_people_in_a_hurry"
+            motion:layout_constraintTop_toTopOf="parent"/>
+        <Constraint
+            android:id="@id/img_book_astrophysics_for_people_in_a_hurry"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toStartOf="@id/img_book_calculus_early_transcendentals"
+            motion:layout_constraintTop_toTopOf="parent"/>
+        <Constraint
+            android:id="@id/img_book_calculus_early_transcendentals"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@id/img_book_harry_potter_philosophers_stone"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintStart_toEndOf="@id/img_book_calculus_early_transcendentals"
+            motion:layout_constraintTop_toTopOf="parent"/>
+        <Constraint
+            android:id="@id/img_book_project_hail_mary"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="18dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintStart_toEndOf="@id/img_book_harry_potter_philosophers_stone"
+            motion:layout_constraintTop_toTopOf="parent"/>
+    </ConstraintSet>
+
+    <!-- 4th book Emphasized -->
+    <ConstraintSet android:id="@id/next_book">
+        <Constraint
+            android:id="@id/img_book_advanced_potion_making"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginEnd="18dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toStartOf="@id/img_book_astrophysics_for_people_in_a_hurry"
+            motion:layout_constraintTop_toTopOf="parent"/>
+        <Constraint
+            android:id="@id/img_book_astrophysics_for_people_in_a_hurry"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toStartOf="@id/img_book_calculus_early_transcendentals"
+            motion:layout_constraintTop_toTopOf="parent"/>
+        <Constraint
+            android:id="@id/img_book_calculus_early_transcendentals"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toStartOf="@id/img_book_harry_potter_philosophers_stone"
+            motion:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@id/img_book_harry_potter_philosophers_stone"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@id/img_book_project_hail_mary"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="18dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintStart_toEndOf="@id/img_book_harry_potter_philosophers_stone"
+            motion:layout_constraintTop_toTopOf="parent"/>
+    </ConstraintSet>
+
+</MotionScene>
