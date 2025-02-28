@@ -219,6 +219,7 @@ class RentScanActivity : AppCompatActivity() {
                 .replace("Total due: $", "")
                 .trim()
 
+            CurrentSession.checkedOut = scannedItemsList
             RentSession.totalDue = totalDueString.toDouble()
 
             // Create an Intent to navigate to the PaymentOptions activity
