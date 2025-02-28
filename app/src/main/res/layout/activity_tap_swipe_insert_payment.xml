@@ -3,7 +3,224 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/background"
     android:layout_height="match_parent"
+
     tools:context=".TapSwipeInsertPaymentActivity">
+
+
+    <include layout="@layout/back_button"/>
+
+    <!-- Total Due text-->
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/robotoslab_medium"
+        android:text="Total Due: $10.00"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/subheading"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="32dp"
+        android:fontFamily="@font/robotoslab_light"
+        android:text="Payment will be refunded on return"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/heading"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Choose payment method text-->
+    <TextView
+        android:id="@+id/choose_payment_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginHorizontal="32dp"
+        android:fontFamily="@font/robotoslab_regular"
+        android:text="Choose a payment method"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/subheading"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Payment Options -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/payment_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/choose_payment_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="25dp">
+
+        <!-- Insert Card -->
+        <LinearLayout
+            android:id="@+id/insert_card_option"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/payment_options_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/swipe_card_option"
+            app:layout_constraintHorizontal_chainStyle="spread">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/insert_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Insert"
+                android:fontFamily="@font/robotoslab_regular"
+                android:textColor="@color/background"
+                android:textSize="16sp"
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+
+        <!-- Swipe -->
+        <LinearLayout
+            android:id="@+id/swipe_card_option"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/payment_options_button"
+            app:layout_constraintStart_toEndOf="@id/insert_card_option"
+            app:layout_constraintEnd_toStartOf="@id/tap_card_option"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/swipe_icon"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Swipe"
+                android:fontFamily="@font/robotoslab_regular"
+                android:textColor="@color/background"
+                android:textSize="16sp"
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+
+        <!-- Tap -->
+        <LinearLayout
+            android:id="@+id/tap_card_option"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/payment_options_button"
+            app:layout_constraintStart_toEndOf="@id/swipe_card_option"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/tap_icon"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tap"
+                android:fontFamily="@font/robotoslab_regular"
+                android:textColor="@color/background"
+                android:textSize="16sp"
+                android:layout_marginTop="5dp"/>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Left line-->
+    <View
+        android:id="@+id/left_line"
+        android:layout_width="140dp"
+        android:layout_height="2dp"
+        android:background="@android:color/white"
+        android:layout_marginTop="65dp"
+        app:layout_constraintTop_toBottomOf="@id/payment_options"
+        app:layout_constraintStart_toStartOf="@id/choose_payment_text"/>
+
+    <!-- Right line-->
+    <View
+        android:id="@+id/right_line"
+        android:layout_width="140dp"
+        android:layout_height="2dp"
+        android:background="@android:color/white"
+        android:layout_marginTop="65dp"
+        app:layout_constraintTop_toBottomOf="@id/payment_options"
+        app:layout_constraintEnd_toEndOf="@id/choose_payment_text"/>
+
+    <!-- OR text -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OR"
+        android:fontFamily="@font/robotoslab_medium"
+        android:textSize="24dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@id/payment_options"
+        app:layout_constraintStart_toStartOf="@id/left_line"
+        app:layout_constraintEnd_toEndOf="@id/right_line" />
+
+    <TextView
+        android:id="@+id/qr_code_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/robotoslab_regular"
+        android:text="Pay with QR Code"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.177"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/left_line" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/qr_code_text"
+        app:layout_constraintRight_toLeftOf="@+id/qr_code_button"
+        app:layout_constraintBottom_toTopOf="@id/qr_code_button"
+        app:srcCompat="@drawable/arrow"/>
+
+    <ImageButton
+        android:id="@+id/qr_code_button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/qr_code_button"
+        android:contentDescription="qr code button"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

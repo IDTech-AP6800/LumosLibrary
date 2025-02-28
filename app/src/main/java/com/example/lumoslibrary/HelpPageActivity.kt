@@ -1,9 +1,15 @@
 package com.example.lumoslibrary
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import android.view.KeyEvent
+import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
@@ -11,6 +17,8 @@ import okhttp3.Request
 import okhttp3.RequestBody
 import org.json.JSONArray
 import org.json.JSONObject
+import java.io.BufferedReader
+import java.io.InputStreamReader
 import kotlin.concurrent.thread
 
 class HelpPageActivity : AppCompatActivity() {
@@ -21,221 +29,72 @@ class HelpPageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_help_page)
 
+        val jsonData = loadJSONFromAssets("items.json")
+
         val inputField: EditText = findViewById(R.id.input_field)
-        val sendButton: Button = findViewById(R.id.send_button)
         val responseText: TextView = findViewById(R.id.response_text)
 
-        sendButton.setOnClickListener {
-            val userInput = inputField.text.toString()
-            inputField.text.clear() // Clear input field on submit
-            fetchAIResponse(userInput, responseText)
+        val query1: Button = findViewById(R.id.query_1)
+        val query2: Button = findViewById(R.id.query_2)
+        val query3: Button = findViewById(R.id.query_3)
+
+        // Handle Enter key press
+        inputField.setOnEditorActionListener { _, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_DONE ||
+                (event?.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_ENTER)) {
+                val userInput = inputField.text.toString().trim()
+                if (userInput.isNotEmpty()) {
+                    inputField.text.clear()
+                    hideKeyboard(inputField)
+                    checkInternetAndFetchResponse(userInput, jsonData, responseText)
+                }
+                return@setOnEditorActionListener true
+            }
+            false
+        }
+
+        // Handle Suggested Query Button Clicks
+        val queryButtons = listOf(query1, query2, query3)
+        queryButtons.forEach { button ->
+            button.setOnClickListener {
+                inputField.setText(button.text.toString())
+                hideKeyboard(inputField)
+                checkInternetAndFetchResponse(button.text.toString(), jsonData, responseText)
+            }
         }
     }
 
-    private fun fetchAIResponse(userInput: String, responseText: TextView) {
+    private fun checkInternetAndFetchResponse(userInput: String, jsonData:String, responseText: TextView) {
+        if (!isInternetAvailable()) {
+            showNoInternetPopup()
+        } else {
+            fetchAIResponse(userInput, jsonData, responseText)
+        }
+    }
+
+    private fun fetchAIResponse(userInput: String, jsonData: String, responseText: TextView) {
         thread {
             try {
                 val client = OkHttpClient()
                 val json = JSONObject()
+                val items = JSONArray(jsonData)
 
-                // Use `messages` array for chat-based models
                 json.put("model", "gpt-4")
                 json.put("messages", JSONArray().apply {
                     put(JSONObject().apply {
                         put("role", "system")
-                        put("content", "You are a Library assistant. These are books and items that you have in your library [\n" +
-                                "  {\n" +
-                                "    \"name\": \"Introduction to Database Systems\",\n" +
-                                "    \"category\": \"textbook\",\n" +
-                                "    \"author\": \"C.J. Date\",\n" +
-                                "    \"location\": \"F3\",\n" +
-                                "    \"amount\": 3,\n" +
-                                "    \"isAvailable\": true,\n" +
-                                "    \"tag\": \"book\",\n" +
-                                "    \"image\": \"book_introduction_to_database_systems.jpg\"\n" +
-                                "  },\n" +
-                                "  {\n" +
-                                "    \"name\": \"Calculus: Early Transcendentals\",\n" +
-                                "    \"category\": \"textbook\",\n" +
-                                "    \"author\": \"James Stewart\",\n" +
-                                "    \"location\": \"H2\",\n" +
-                                "    \"amount\": 2,\n" +
-                                "    \"isAvailable\": true,\n" +
-                                "    \"tag\": \"book\",\n" +
-                                "    \"image\": \"book_calculus_early_transcendentals.jpg\"\n" +
-                                "  },\n" +
-                                "  {\n" +
-                                "    \"name\": \"Harry Potter and the Philosopher's Stone\",\n" +
-                                "    \"category\": \"fantasy\",\n" +
-                                "    \"author\": \"J. K. Rowling\",\n" +
-                                "    \"location\": \"J1\",\n" +
-                                "    \"amount\": 1,\n" +
-                                "    \"isAvailable\": true,\n" +
-                                "    \"tag\": \"book\",\n" +
-                                "    \"image\": \"book_harry_potter_philosophers_stone.jpg\"\n" +
-                                "  },\n" +
-                                "  {\n" +
-                                "    \"name\": \"Advanced Potion Making\",\n" +
-                                "    \"category\": \"textbook\",\n" +
-                                "    \"author\": \"Libatius Borage\",\n" +
-                                "    \"location\": \"C5\",\n" +
-                                "    \"amount\": 1,\n" +
-                                "    \"isAvailable\": true,\n" +
-                                "    \"tag\": \"book\",\n" +
-                                "    \"image\": \"book_advanced_potion_making.jpg\"\n" +
-                                "  },\n" +
-                                "  {\n" +
-                                "    \"name\": \"Project Hail Mary\",\n" +
-                                "    \"category\": \"fiction\",\n" +
-                                "    \"author\": \"Andy Weir\",\n" +
-                                "    \"location\": \"E3\",\n" +
-                                "    \"amount\": 4,\n" +
-                                "    \"isAvailable\": true,\n" +
-                                "    \"tag\": \"book\",\n" +
-                                "    \"image\": \"book_project_hail_mary.jpg\"\n" +
-                                "  },\n" +
-                                "  {\n" +
-                                "    \"name\": \"Sapiens: A Brief History of Humankind\",\n" +
-                                "    \"category\": \"non-fiction\",\n" +
-                                "    \"author\": \"Yuval Noah Harari\",\n" +
-                                "    \"location\": \"D3\",\n" +
-                                "    \"amount\": 3,\n" +
-                                "    \"isAvailable\": true,\n" +
-                                "    \"tag\": \"book\",\n" +
-                                "    \"image\": \"book_sapiens_brief_history_of_humankind.jpg\"\n" +
-                                "  },\n" +
-                                "  {\n" +
-                                "    \"name\": \"The Midnight Library\",\n" +
-                                "    \"category\": \"fiction\",\n" +
-                                "    \"author\": \"Matt Haig\",\n" +
-                                "    \"location\": \"E4\",\n" +
-                                "    \"amount\": 5,\n" +
-                                "    \"isAvailable\": true,\n" +
-                                "    \"tag\": \"book\",\n" +
-                                "    \"image\": \"book_midnight_library.jpg\"\n" +
-                                "  },\n" +
-                                "  {\n" +
-                                "    \"name\": \"Thinking, Fast and Slow\",\n" +
-                                "    \"category\": \"psychology\",\n" +
-                                "    \"author\": \"Daniel Kahneman\",\n" +
-                                "    \"location\": \"D4\",\n" +
-                                "    \"amount\": 2,\n" +
-                                "    \"isAvailable\": true,\n" +
-                                "    \"tag\": \"book\",\n" +
-                                "    \"image\": \"book_thinking_fast_and_slow.jpg\"\n" +
-                                "  },\n" +
-                                "  {\n" +
-                                "    \"name\": \"Astrophysics for People in a Hurry\",\n" +
-                                "    \"category\": \"science\",\n" +
-                                "    \"author\": \"Neil deGrasse Tyson\",\n" +
-                                "    \"location\": \"G3\",\n" +
-                                "    \"amount\": 3,\n" +
-                                "    \"isAvailable\": true,\n" +
-                                "    \"tag\": \"book\",\n" +
-                                "    \"image\": \"book_astrophysics_for_people_in_a_hurry.jpg\"\n" +
-                                "  },\n" +
-                                "  {\n" +
-                                "    \"name\": \"The Silent Patient\",\n" +
-                                "    \"category\": \"mystery\",\n" +
-                                "    \"author\": \"Alex Michaelides\",\n" +
-                                "    \"location\": \"D5\",\n" +
-                                "    \"amount\": 2,\n" +
-                                "    \"isAvailable\": true,\n" +
-                                "    \"tag\": \"book\",\n" +
-                                "    \"image\": \"book_the_silent_patient.jpg\"\n" +
-                                "  },\n" +
-                                "  {\n" +
-                                "    \"name\": \"Apple M2 Macbook\",\n" +
-                                "    \"category\": \"laptop\",\n" +
-                                "    \"description\": \"Apple MacBook with M2 chip, 13-inch Retina display, 256GB SSD, and 8GB RAM.\",\n" +
-                                "    \"amount\": 2,\n" +
-                                "    \"isAvailable\": true,\n" +
-                                "    \"tag\": \"equipment\",\n" +
-                                "    \"image\": \"equipment_macbook_m2.jpg\"\n" +
-                                "  },\n" +
-                                "  {\n" +
-                                "    \"name\": \"HP Chromebook\",\n" +
-                                "    \"category\": \"laptop\",\n" +
-                                "    \"description\": \"HP Chromebook with Intel Celeron processor, 14-inch HD display, and 64GB eMMC storage.\",\n" +
-                                "    \"amount\": 2,\n" +
-                                "    \"isAvailable\": true,\n" +
-                                "    \"tag\": \"equipment\",\n" +
-                                "    \"image\": \"equipment_hp_chromebook.jpg\"\n" +
-                                "  },\n" +
-                                "  {\n" +
-                                "    \"name\": \"Nintendo Switch\",\n" +
-                                "    \"category\": \"game console\",\n" +
-                                "    \"description\": \"Portable gaming console with detachable Joy-Con controllers and a 6.2-inch LCD screen.\",\n" +
-                                "    \"amount\": 1,\n" +
-                                "    \"isAvailable\": true,\n" +
-                                "    \"tag\": \"equipment\",\n" +
-                                "    \"image\": \"equipment_nintendo_switch.jpg\"\n" +
-                                "  },\n" +
-                                "  {\n" +
-                                "    \"name\": \"Sony PlayStation 4\",\n" +
-                                "    \"category\": \"game console\",\n" +
-                                "    \"description\": \"Next-gen gaming console with ultra-fast SSD, ray tracing support, and a DualSense controller.\",\n" +
-                                "    \"amount\": 0,\n" +
-                                "    \"isAvailable\": false,\n" +
-                                "    \"tag\": \"equipment\",\n" +
-                                "    \"image\": \"equipment_sony_playstation_4.jpg\"\n" +
-                                "  },\n" +
-                                "  {\n" +
-                                "    \"name\": \"Microsoft Xbox Series X\",\n" +
-                                "    \"category\": \"game console\",\n" +
-                                "    \"description\": \"Powerful gaming console with 4K gaming capabilities, 1TB SSD, and Xbox Game Pass support.\",\n" +
-                                "    \"amount\": 1,\n" +
-                                "    \"isAvailable\": true,\n" +
-                                "    \"tag\": \"equipment\",\n" +
-                                "    \"image\": \"equipment_xbox_series_x.jpg\"\n" +
-                                "  },\n" +
-                                "  {\n" +
-                                "    \"name\": \"Logitech MX Master 3S\",\n" +
-                                "    \"category\": \"accessory\",\n" +
-                                "    \"description\": \"Ergonomic wireless mouse with fast scrolling and multi-device support.\",\n" +
-                                "    \"amount\": 3,\n" +
-                                "    \"isAvailable\": true,\n" +
-                                "    \"tag\": \"equipment\",\n" +
-                                "    \"image\": \"equipment_logitech_mx_master_3s.jpg\"\n" +
-                                "  },\n" +
-                                "  {\n" +
-                                "    \"name\": \"Apple iPad Air\",\n" +
-                                "    \"category\": \"tablet\",\n" +
-                                "    \"description\": \"10.9-inch Liquid Retina display, M1 chip, and Apple Pencil (2nd gen) support.\",\n" +
-                                "    \"amount\": 2,\n" +
-                                "    \"isAvailable\": true,\n" +
-                                "    \"tag\": \"equipment\",\n" +
-                                "    \"image\": \"equipment_apple_ipad_air.jpg\"\n" +
-                                "  },\n" +
-                                "  {\n" +
-                                "    \"name\": \"Samsung Galaxy Tab S8\",\n" +
-                                "    \"category\": \"tablet\",\n" +
-                                "    \"description\": \"11-inch LCD display, Snapdragon 8 Gen 1 processor, and S Pen support.\",\n" +
-                                "    \"amount\": 3,\n" +
-                                "    \"isAvailable\": true,\n" +
-                                "    \"tag\": \"equipment\",\n" +
-                                "    \"image\": \"equipment_samsung_galaxy_tab_s8.jpg\"\n" +
-                                "  },\n" +
-                                "  {\n" +
-                                "    \"name\": \"Logitech K780\",\n" +
-                                "    \"category\": \"accessory\",\n" +
-                                "    \"description\": \"Wireless multi-device keyboard with quiet keys and an integrated phone and tablet stand.\",\n" +
-                                "    \"amount\": 2,\n" +
-                                "    \"isAvailable\": true,\n" +
-                                "    \"tag\": \"equipment\",\n" +
-                                "    \"image\": \"equipment_logitech_k780.jpg\"\n" +
-                                "  },\n" +
-                                "  {\n" +
-                                "    \"name\": \"Sony WH-1000XM5\",\n" +
-                                "    \"category\": \"accessory\",\n" +
-                                "    \"description\": \"Wireless noise-canceling headphones with superior sound quality and long battery life.\",\n" +
-                                "    \"amount\": 3,\n" +
-                                "    \"isAvailable\": true,\n" +
-                                "    \"tag\": \"equipment\",\n" +
-                                "    \"image\": \"equipment_sony_wh_1000xm5.jpg\"\n" +
-                                "  }\n" +
-                                "] Answer questions about them and direct people to them." +
-                                "refer toyourself as a cutting edge AI Assistant")
+                        put("content", "You are a NAITHAN, AI assistant for LumosLibrary. Provide answers based on available books and equipment.")
+                    })
+                    put(JSONObject().apply {
+                        put("role", "system")
+                        put("content", "Library Items: $items")
+                    })
+                    put(JSONObject().apply {
+                        put("role", "system")
+                        put("content", "Instructions:\n" +
+                                "- **Search:** Use the search bar under the LumosLibrary logo on the home page to access the Search page. Users can search by category, author, location, ISBN-13, or description. You cannot rent or return book when searching for books and items\n" +
+                                "- **Rent:** Click the left button below the search bar to access the Scan User ID page. Users scan their barcode ID or enter an 8-digit ID. Next, they scan the item, proceed to payment (a refundable deposit is required), and confirm the rental.\n" +
+                                "- **Return:** Click the right button below the search bar to return items. Users scan their ID, scan items to return, and confirm. Late fees are applied if overdue.")
                     })
                     put(JSONObject().apply {
                         put("role", "user")
@@ -285,5 +144,43 @@ class HelpPageActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun loadJSONFromAssets(filename: String): String {
+        return try {
+            val inputStream = assets.open(filename)
+            val reader = BufferedReader(InputStreamReader(inputStream))
+            val stringBuilder = StringBuilder()
+            var line: String?
+            while (reader.readLine().also { line = it } != null) {
+                stringBuilder.append(line)
+            }
+            reader.close()
+            stringBuilder.toString()
+        } catch (e: Exception) {
+            "{}" // Return an empty JSON object if file not found
+        }
+    }
+
+    private fun isInternetAvailable(): Boolean {
+        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val network = connectivityManager.activeNetwork ?: return false
+        val capabilities = connectivityManager.getNetworkCapabilities(network) ?: return false
+        return capabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+    }
+
+    private fun showNoInternetPopup() {
+        runOnUiThread {
+            AlertDialog.Builder(this)
+                .setTitle("No Internet Connection")
+                .setMessage("Please check your internet connection and try again.")
+                .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+                .show()
+        }
+    }
+
+    private fun hideKeyboard(view: View) {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }

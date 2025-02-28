@@ -7,7 +7,15 @@ import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import android.Manifest
+import android.content.Intent
+import android.graphics.Color
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.CameraSelector
@@ -21,11 +29,13 @@ import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 
-class ItemScanActivity : AppCompatActivity() {
+class RentScanActivity : AppCompatActivity() {
 
     private lateinit var barcodeScanner: BarcodeScanner
     private lateinit var imageCam: PreviewView
+    private lateinit var totalDueAmount: TextView
     private lateinit var searchInventory: SearchInventory
+    private lateinit var itemCardContainer: LinearLayout
     private val scannedItemsList = mutableListOf<Item>()
     private val scannedItemsSet = mutableSetOf<String>()
 
@@ -35,12 +45,18 @@ class ItemScanActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_item_scan)
-        HelpButton(this)
+        setContentView(R.layout.activity_rent_scan_item)
+//        HelpButton(this)
 
         imageCam = findViewById(R.id.item_camera_preview)
 
+        itemCardContainer = findViewById(R.id.item_card_container)
+
         searchInventory = SearchInventory(this, "items.json")
+
+        totalDueAmount = findViewById(R.id.total_due_amount)
+
+        listenContinueButton()
 
         if (allPermissionsGranted()) {
             startCamera()
@@ -112,7 +128,7 @@ class ItemScanActivity : AppCompatActivity() {
 
         cameraController.bindToLifecycle(this)
         previewView.controller = cameraController
-        cameraController.cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+        cameraController.cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
     }
 
     private fun handleISBNBarcode(value: String) {
@@ -145,10 +161,108 @@ class ItemScanActivity : AppCompatActivity() {
     private fun addScannedItem(item: Item) {
         if (scannedItemsSet.add(item.title)) {
             scannedItemsList.add(item)
+            updateItemCards()
         } else {
             Toast.makeText(this, "Item already scanned", Toast.LENGTH_SHORT).show()
         }
+        calculateSecurityDepositTotal()
     }
+
+    private fun removeScannedItem(item: Item) {
+        if (scannedItemsSet.remove(item.title)) {
+            scannedItemsList.remove(item)
+            updateItemCards()
+        }
+        calculateSecurityDepositTotal()
+    }
+
+    private fun updateItemCards() {
+        runOnUiThread {
+            itemCardContainer.removeAllViews()
+            val inflater = LayoutInflater.from(this)
+
+            for (item in scannedItemsList) {
+                val itemView = inflater.inflate(R.layout.item_card, itemCardContainer, false)
+                itemView.findViewById<TextView>(R.id.card_field2).text = item.title
+
+                val imageView = itemView.findViewById<ImageView>(R.id.card_image)
+                val imageResId = resources.getIdentifier(item.image.replace(".jpg", ""), "drawable", packageName)
+                if (imageResId != 0) {
+                    imageView.setImageResource(imageResId)
+                }
+
+                val deleteButton = itemView.findViewById<ImageView>(R.id.delete_icon)
+                deleteButton.setOnClickListener {
+                    removeScannedItem(item)
+                }
+
+                if (item.itemType == "book") {
+                    itemView.findViewById<TextView>(R.id.card_field1).text = item.itemType
+                    itemView.findViewById<TextView>(R.id.card_field3).text = item.author
+                }
+                else if (item.itemType == "equipment") {
+                    itemView.findViewById<TextView>(R.id.card_field1).text = item.itemType
+                    itemView.findViewById<TextView>(R.id.card_field3).text = "Security Deposit: $${item.security_deposit.toString()}"
+                }
+
+                itemCardContainer.addView(itemView)
+            }
+        }
+    }
+
+    //Creates listener for the continue button
+    private fun listenContinueButton() {
+        val continueButton = findViewById<Button>(R.id.continue_button)
+        continueButton.setOnClickListener {
+            val depositTotal = findViewById<View>(R.id.total_due_amount) as TextView
+            val totalDueString = depositTotal.text.toString()
+//                .replace("$0.00", "")
+                .replace(Regex("[^0-9.]"), "")
+                .trim()
+
+            CurrentSession.checkedOut = scannedItemsList
+            RentSession.totalDue = totalDueString.toDouble()
+
+            Log.d(TAG, "depositTotal: ${depositTotal.text} /n " +
+                    "totalDueString: $totalDueString")
+
+            // Create an Intent to navigate to the PaymentOptions activity
+//            val intent = Intent(this@RentScanActivity, TapSwipeInsertPaymentActivity::class.java)
+//            startActivity(intent)
+
+            Handler(Looper.getMainLooper()).postDelayed({
+                startActivity(Intent(this, TapSwipeInsertPaymentActivity::class.java))
+                Log.d("RentScanActivity", "Navigating to NextActivity after delay")
+                Log.d(TAG, "RentSession - totalDue: ${RentSession.totalDue}")
+                finish()
+            }, 300) // Delay by 300ms
+        }
+    }
+
+    private fun calculateSecurityDepositTotal() {
+//        val totalDeposit = scannedItemsList.sumOf { it.security_deposit }
+//        Log.d(TAG, "calculateSecurityDepositTotal: $totalDeposit")
+
+        val depositTotal = findViewById<View>(R.id.total_due_amount) as TextView
+
+        var total = 0f
+
+//        Log.d(TAG, "in here!")
+        for (item in scannedItemsList) {
+            if (item.security_deposit > 0) {
+//                Log.d(TAG, "${item.title}: has desposit of ${item.security_deposit}")
+                total += item.security_deposit
+            }
+        }
+
+        val totalText = String.format("$%.2f", total)
+        depositTotal.text = totalText
+
+//        Log.d(TAG, "total is: $total")
+//        val totalText = String.format("%.2f", totalDeposit)
+//        totalDueAmount.text = totalText
+    }
+
 
     private fun requestPermissions() {
         activityResultLauncher.launch(REQUIRED_PERMISSIONS)
@@ -161,11 +275,12 @@ class ItemScanActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        Log.d("RentScanActivity", "RentScanActivity is being destroyed")
         barcodeScanner.close()
     }
 
     companion object {
-        private const val TAG = "ItemScanActivity"
+        private const val TAG = "RentScanActivity"
         private val REQUIRED_PERMISSIONS =
             mutableListOf (
                 Manifest.permission.CAMERA

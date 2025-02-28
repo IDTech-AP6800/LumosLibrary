@@ -14,16 +14,6 @@
             motion:touchAnchorSide="left"/>
     </Transition>
 
-    <!-- 2nd to 1st book, 1st to 2nd book -->
-<!--    <Transition-->
-<!--        motion:constraintSetEnd="@+id/previous"-->
-<!--        motion:constraintSetStart="@id/start"-->
-<!--        android:id="@+id/backward">-->
-<!--        <OnSwipe-->
-<!--            motion:dragDirection="dragRight"-->
-<!--            motion:touchAnchorSide="right"/>-->
-<!--    </Transition>-->
-
     <!-- 3rd to 4th -->
     <Transition
         motion:constraintSetEnd="@+id/next_book"
@@ -34,72 +24,6 @@
             motion:dragDirection="dragLeft"
             motion:touchAnchorSide="left"/>
     </Transition>
-
-    <!-- 4th to 5th -->
-<!--    <Transition-->
-<!--        motion:constraintSetEnd="@+id/next_book_book"-->
-<!--        motion:constraintSetStart="@id/next_book"-->
-<!--        motion:duration="1000"-->
-<!--        android:id="@+id/four_to_five">-->
-<!--        <OnSwipe-->
-<!--            motion:dragDirection="dragLeft"-->
-<!--            motion:touchAnchorSide="left"/>-->
-<!--    </Transition>-->
-
-    <!-- 5th to 4th -->
-<!--        <Transition-->
-<!--            motion:constraintSetEnd="@id/next_book"-->
-<!--            motion:constraintSetStart="@id/next_book_book"-->
-<!--            motion:duration="1000"-->
-<!--            android:id="@+id/backward_from_last">-->
-<!--            <OnSwipe-->
-<!--                motion:dragDirection="dragRight"-->
-<!--                motion:touchAnchorSide="right"/>-->
-<!--        </Transition>-->
-
-<!--    &lt;!&ndash; 1st book Emphasized &ndash;&gt;-->
-<!--    <ConstraintSet android:id = "@id/previous">-->
-<!--        <Constraint-->
-<!--            android:id="@id/img_book_astrophysics_for_people_in_a_hurry"-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="100dp"-->
-<!--            motion:layout_constraintBottom_toBottomOf="parent"-->
-<!--            motion:layout_constraintStart_toEndOf="@+id/img_book_advanced_potion_making"-->
-<!--            motion:layout_constraintTop_toTopOf="parent"-->
-<!--            />-->
-
-<!--        <Constraint-->
-<!--            android:id="@id/img_book_advanced_potion_making"-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="100dp"-->
-<!--            motion:layout_constraintBottom_toBottomOf="parent"-->
-<!--            motion:layout_constraintEnd_toEndOf="parent"-->
-<!--            motion:layout_constraintStart_toStartOf="parent"-->
-<!--            motion:layout_constraintTop_toTopOf="parent"-->
-<!--            />-->
-<!--        <Constraint-->
-<!--            android:id="@id/img_book_calculus_early_transcendentals"-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="100dp"-->
-<!--            motion:layout_constraintBottom_toBottomOf="parent"-->
-<!--            motion:layout_constraintStart_toEndOf="@id/img_book_astrophysics_for_people_in_a_hurry"-->
-<!--            motion:layout_constraintTop_toTopOf="parent"/>-->
-<!--        <Constraint-->
-<!--            android:id="@id/img_book_harry_potter_philosophers_stone"-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="100dp"-->
-<!--            motion:layout_constraintBottom_toBottomOf="parent"-->
-<!--            motion:layout_constraintStart_toEndOf="@id/img_book_calculus_early_transcendentals"-->
-<!--            motion:layout_constraintTop_toTopOf="parent"/>-->
-<!--        <Constraint-->
-<!--            android:id="@id/img_book_project_hail_mary"-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="100dp"-->
-<!--            motion:layout_constraintBottom_toBottomOf="parent"-->
-<!--            motion:layout_constraintStart_toEndOf="@id/img_book_harry_potter_philosophers_stone"-->
-<!--            motion:layout_constraintTop_toTopOf="parent"/>-->
-
-<!--    </ConstraintSet>-->
 
     <!-- 2nd book Emphasized -->
     <ConstraintSet android:id = "@id/start">
@@ -248,46 +172,5 @@
             motion:layout_constraintStart_toEndOf="@id/img_book_harry_potter_philosophers_stone"
             motion:layout_constraintTop_toTopOf="parent"/>
     </ConstraintSet>
-
-
-<!--    &lt;!&ndash; 5th book Emphasized &ndash;&gt;-->
-<!--    <ConstraintSet android:id="@id/next_book_book">-->
-<!--        <Constraint-->
-<!--            android:id="@id/img_book_advanced_potion_making"-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="100dp"-->
-<!--            motion:layout_constraintBottom_toBottomOf="parent"-->
-<!--            motion:layout_constraintEnd_toStartOf="@id/img_book_astrophysics_for_people_in_a_hurry"-->
-<!--            motion:layout_constraintTop_toTopOf="parent"/>-->
-<!--        <Constraint-->
-<!--            android:id="@id/img_book_astrophysics_for_people_in_a_hurry"-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="100dp"-->
-<!--            motion:layout_constraintBottom_toBottomOf="parent"-->
-<!--            motion:layout_constraintEnd_toStartOf="@id/img_book_calculus_early_transcendentals"-->
-<!--            motion:layout_constraintTop_toTopOf="parent"/>-->
-<!--        <Constraint-->
-<!--            android:id="@id/img_book_calculus_early_transcendentals"-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="100dp"-->
-<!--            motion:layout_constraintBottom_toBottomOf="parent"-->
-<!--            motion:layout_constraintEnd_toStartOf="@id/img_book_harry_potter_philosophers_stone"-->
-<!--            motion:layout_constraintTop_toTopOf="parent" />-->
-<!--        <Constraint-->
-<!--            android:id="@id/img_book_harry_potter_philosophers_stone"-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="100dp"-->
-<!--            motion:layout_constraintBottom_toBottomOf="parent"-->
-<!--            motion:layout_constraintEnd_toStartOf="@id/img_book_project_hail_mary"-->
-<!--            motion:layout_constraintTop_toTopOf="parent"/>-->
-<!--        <Constraint-->
-<!--            android:id="@id/img_book_project_hail_mary"-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="100dp"-->
-<!--            motion:layout_constraintBottom_toBottomOf="parent"-->
-<!--            motion:layout_constraintEnd_toEndOf="parent"-->
-<!--            motion:layout_constraintStart_toStartOf="parent"-->
-<!--            motion:layout_constraintTop_toTopOf="parent" />-->
-<!--    </ConstraintSet>-->
 
 </MotionScene>

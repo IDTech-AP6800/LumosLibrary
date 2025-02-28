@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.lumoslibrary.viewmodels.MainViewModel
 import com.idtech.zsdk_client.Client
 import com.idtech.zsdk_client.GetDevicesAsync
+import android.widget.ImageView
+import androidx.activity.viewModels
+import com.idtech.zsdk_client.GetDevicesAsync
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         val rootView = findViewById<View>(android.R.id.content)
         rootView.setOnClickListener {
             // Launch PaymentActivity on tap
-            val intent = Intent(this, PaymentActivity::class.java)
+            val intent = Intent(this, TapSwipeInsertPaymentActivity::class.java)
             startActivity(intent)
         }
     }

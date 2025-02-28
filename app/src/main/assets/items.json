@@ -4,9 +4,9 @@
     "category": "textbook",
     "author": "C.J. Date",
     "location": "F3",
-    "amount": 3,
+    "security_deposit": 0,
     "isAvailable": true,
-    "tag": "book",
+    "itemType": "book",
     "image": "book_introduction_to_database_systems.jpg",
     "isbn13": "9780321197849"
   },
@@ -15,9 +15,9 @@
     "category": "textbook",
     "author": "James Stewart",
     "location": "H2",
-    "amount": 2,
+    "security_deposit": 0,
     "isAvailable": true,
-    "tag": "book",
+    "itemType": "book",
     "image": "book_calculus_early_transcendentals.jpg",
     "isbn13": "9781337613927"
   },
@@ -26,9 +26,9 @@
     "category": "fantasy",
     "author": "J. K. Rowling",
     "location": "J1",
-    "amount": 1,
+    "security_deposit": 0,
     "isAvailable": true,
-    "tag": "book",
+    "itemType": "book",
     "image": "book_harry_potter_philosophers_stone.jpg",
     "isbn13": "9781408855652"
   },
@@ -37,9 +37,9 @@
     "category": "textbook",
     "author": "Libatius Borage",
     "location": "C5",
-    "amount": 1,
+    "security_deposit": 0,
     "isAvailable": true,
-    "tag": "book",
+    "itemType": "book",
     "image": "book_advanced_potion_making.jpg",
     "isbn13": ""
   },
@@ -48,9 +48,9 @@
     "category": "fiction",
     "author": "Andy Weir",
     "location": "E3",
-    "amount": 4,
+    "security_deposit": 0,
     "isAvailable": true,
-    "tag": "book",
+    "itemType": "book",
     "image": "book_project_hail_mary.jpg",
     "isbn13": "9780593135204"
   },
@@ -59,9 +59,9 @@
     "category": "non-fiction",
     "author": "Yuval Noah Harari",
     "location": "D3",
-    "amount": 3,
+    "security_deposit": 0,
     "isAvailable": true,
-    "tag": "book",
+    "itemType": "book",
     "image": "book_sapiens_brief_history_of_humankind.jpg",
     "isbn13": "9780062316097"
   },
@@ -70,9 +70,9 @@
     "category": "fiction",
     "author": "Matt Haig",
     "location": "E4",
-    "amount": 5,
+    "security_deposit": 0,
     "isAvailable": true,
-    "tag": "book",
+    "itemType": "book",
     "image": "book_midnight_library.jpg",
     "isbn13": "9780525559474"
   },
@@ -81,9 +81,9 @@
     "category": "psychology",
     "author": "Daniel Kahneman",
     "location": "D4",
-    "amount": 2,
+    "security_deposit": 0,
     "isAvailable": true,
-    "tag": "book",
+    "itemType": "book",
     "image": "book_thinking_fast_and_slow.jpg",
     "isbn13": "9780374533557"
   },
@@ -92,9 +92,9 @@
     "category": "science",
     "author": "Neil deGrasse Tyson",
     "location": "G3",
-    "amount": 3,
+    "security_deposit": 0,
     "isAvailable": true,
-    "tag": "book",
+    "itemType": "book",
     "image": "book_astrophysics_for_people_in_a_hurry.jpg",
     "isbn13": "9780393609394"
   },
@@ -103,9 +103,9 @@
     "category": "mystery",
     "author": "Alex Michaelides",
     "location": "D5",
-    "amount": 2,
+    "security_deposit": 0,
     "isAvailable": true,
-    "tag": "book",
+    "itemType": "book",
     "image": "book_the_silent_patient.jpg",
     "isbn13": "9781250301697"
   },
@@ -114,9 +114,9 @@
     "category": "laptop",
     "description": "Apple MacBook with M2 chip, 13-inch Retina display, 256GB SSD, and 8GB RAM.",
     "location": "Front Desk",
-    "amount": 2,
+    "security_deposit": 10,
     "isAvailable": true,
-    "tag": "equipment",
+    "itemType": "equipment",
     "image": "equipment_macbook_m2.jpg"
   },
   {
@@ -124,9 +124,9 @@
     "category": "laptop",
     "description": "HP Chromebook with Intel Celeron processor, 14-inch HD display, and 64GB eMMC storage.",
     "location": "Front Desk",
-    "amount": 2,
+    "security_deposit": 10,
     "isAvailable": true,
-    "tag": "equipment",
+    "itemType": "equipment",
     "image": "equipment_hp_chromebook.jpg"
   },
   {
@@ -134,9 +134,9 @@
     "category": "game console",
     "description": "Portable gaming console with detachable Joy-Con controllers and a 6.2-inch LCD screen.",
     "location": "Front Desk",
-    "amount": 1,
+    "security_deposit": 10,
     "isAvailable": true,
-    "tag": "equipment",
+    "itemType": "equipment",
     "image": "equipment_nintendo_switch.jpg"
   },
   {
@@ -144,9 +144,9 @@
     "category": "game console",
     "description": "Next-gen gaming console with ultra-fast SSD, ray tracing support, and a DualSense controller.",
     "location": "Front Desk",
-    "amount": 0,
+    "security_deposit": 10,
     "isAvailable": false,
-    "tag": "equipment",
+    "itemType": "equipment",
     "image": "equipment_sony_playstation_4.jpg"
   },
   {
@@ -154,9 +154,9 @@
     "category": "game console",
     "description": "Powerful gaming console with 4K gaming capabilities, 1TB SSD, and Xbox Game Pass support.",
     "location": "Front Desk",
-    "amount": 1,
+    "security_deposit": 10,
     "isAvailable": true,
-    "tag": "equipment",
+    "itemType": "equipment",
     "image": "equipment_xbox_series_x.jpg"
   },
   {
@@ -164,9 +164,9 @@
     "category": "accessory",
     "description": "Ergonomic wireless mouse with fast scrolling and multi-device support.",
     "location": "Front Desk",
-    "amount": 3,
+    "security_deposit": 10,
     "isAvailable": true,
-    "tag": "equipment",
+    "itemType": "equipment",
     "image": "equipment_logitech_mx_master_3s.jpg"
   },
   {
@@ -174,9 +174,9 @@
     "category": "tablet",
     "description": "10.9-inch Liquid Retina display, M1 chip, and Apple Pencil (2nd gen) support.",
     "location": "Front Desk",
-    "amount": 2,
+    "security_deposit": 10,
     "isAvailable": true,
-    "tag": "equipment",
+    "itemType": "equipment",
     "image": "equipment_apple_ipad_air.jpg"
   },
   {
@@ -184,9 +184,9 @@
     "category": "tablet",
     "description": "11-inch LCD display, Snapdragon 8 Gen 1 processor, and S Pen support.",
     "location": "Front Desk",
-    "amount": 3,
+    "security_deposit": 10,
     "isAvailable": true,
-    "tag": "equipment",
+    "itemType": "equipment",
     "image": "equipment_samsung_galaxy_tab_s8.jpg"
   },
   {
@@ -194,9 +194,9 @@
     "category": "accessory",
     "description": "Wireless multi-device keyboard with quiet keys and an integrated phone and tablet stand.",
     "location": "Front Desk",
-    "amount": 2,
+    "security_deposit": 10,
     "isAvailable": true,
-    "tag": "equipment",
+    "itemType": "equipment",
     "image": "equipment_logitech_k780.jpg"
   },
   {
@@ -204,9 +204,9 @@
     "category": "accessory",
     "description": "Wireless noise-canceling headphones with superior sound quality and long battery life.",
     "location": "Front Desk",
-    "amount": 3,
+    "security_deposit": 10,
     "isAvailable": true,
-    "tag": "equipment",
+    "itemType": "equipment",
     "image": "equipment_sony_wh_1000xm5.jpg"
   }
 ]

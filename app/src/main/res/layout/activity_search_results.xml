@@ -4,11 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".SearchResultsActivity">
+
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="373dp"
+        android:layout_height="555dp"
+        android:layout_marginTop="60dp"
+        android:paddingBottom="62dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_bar">
+
+        <!-- Container for searched item cards -->
+        <LinearLayout
+            android:id="@+id/searched_item_card_containers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+        </LinearLayout>
+
+    </ScrollView>
 
     <!-- Help Button Icon -->
     <include
         android:id="@+id/help_button_include"
         layout="@layout/help_button" />
+
+    <!-- Back Button -->
+    <ImageButton
+        android:id="@+id/back_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/back_arrow"
+        android:contentDescription="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <!--User ID Text Box-->
+    <EditText
+        android:id="@+id/search_bar"
+        android:layout_width="380dp"
+        android:layout_height="50dp"
+        android:background="@drawable/search_bar"
+        android:inputType="text"
+        android:fontFamily="@font/robotoslab_light"
+        android:maxLength="50"
+        android:paddingStart="40dp"
+        android:paddingEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/background"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/help_button_include"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/help_button_include"
+        app:layout_constraintVertical_bias="0.101"
+        android:hint="Search"
+        android:imeOptions="actionSearch" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
