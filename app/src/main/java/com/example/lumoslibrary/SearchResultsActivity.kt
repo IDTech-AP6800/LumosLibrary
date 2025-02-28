@@ -20,6 +20,8 @@ class SearchResultsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_results)
 
+        HelpButton(this)
+
         // Initialize searchInventory and itemCardContainer
         searchInventory = SearchInventory(this, "items.json")
         itemCardContainer = findViewById(R.id.searched_item_card_containers) // Ensure this ID exists in your layout
@@ -38,7 +40,6 @@ class SearchResultsActivity : AppCompatActivity() {
             }
         }
 
-        HelpButton(this)  // Assuming this is a custom function to handle help button actions
     }
 
     private fun updateItemCards() {
