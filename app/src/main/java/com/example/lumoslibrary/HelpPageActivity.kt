@@ -5,10 +5,10 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.view.KeyEvent
+import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import android.view.inputmethod.InputMethodManager
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import okhttp3.MediaType.Companion.toMediaType
@@ -41,6 +41,7 @@ class HelpPageActivity : AppCompatActivity() {
                 val userInput = inputField.text.toString().trim()
                 if (userInput.isNotEmpty()) {
                     inputField.text.clear()
+                    hideKeyboard(inputField)
                     checkInternetAndFetchResponse(userInput, responseText)
                 }
                 return@setOnEditorActionListener true
@@ -49,17 +50,13 @@ class HelpPageActivity : AppCompatActivity() {
         }
 
         // Handle Suggested Query Button Clicks
-        query1.setOnClickListener {
-            inputField.setText(query1.text.toString())
-            checkInternetAndFetchResponse(query1.text.toString(), responseText)
-        }
-        query2.setOnClickListener {
-            inputField.setText(query2.text.toString())
-            checkInternetAndFetchResponse(query2.text.toString(), responseText)
-        }
-        query3.setOnClickListener {
-            inputField.setText(query3.text.toString())
-            checkInternetAndFetchResponse(query3.text.toString(), responseText)
+        val queryButtons = listOf(query1, query2, query3)
+        queryButtons.forEach { button ->
+            button.setOnClickListener {
+                inputField.setText(button.text.toString())
+                hideKeyboard(inputField)
+                checkInternetAndFetchResponse(button.text.toString(), responseText)
+            }
         }
     }
 
@@ -148,5 +145,10 @@ class HelpPageActivity : AppCompatActivity() {
                 .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
                 .show()
         }
+    }
+
+    private fun hideKeyboard(view: View) {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }
