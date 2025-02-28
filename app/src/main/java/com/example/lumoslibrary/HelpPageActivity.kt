@@ -17,6 +17,8 @@ import okhttp3.Request
 import okhttp3.RequestBody
 import org.json.JSONArray
 import org.json.JSONObject
+import java.io.BufferedReader
+import java.io.InputStreamReader
 import kotlin.concurrent.thread
 
 class HelpPageActivity : AppCompatActivity() {
@@ -26,6 +28,8 @@ class HelpPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_help_page)
+
+        val jsonData = loadJSONFromAssets("items.json")
 
         val inputField: EditText = findViewById(R.id.input_field)
         val responseText: TextView = findViewById(R.id.response_text)
@@ -42,7 +46,7 @@ class HelpPageActivity : AppCompatActivity() {
                 if (userInput.isNotEmpty()) {
                     inputField.text.clear()
                     hideKeyboard(inputField)
-                    checkInternetAndFetchResponse(userInput, responseText)
+                    checkInternetAndFetchResponse(userInput, jsonData, responseText)
                 }
                 return@setOnEditorActionListener true
             }
@@ -55,30 +59,42 @@ class HelpPageActivity : AppCompatActivity() {
             button.setOnClickListener {
                 inputField.setText(button.text.toString())
                 hideKeyboard(inputField)
-                checkInternetAndFetchResponse(button.text.toString(), responseText)
+                checkInternetAndFetchResponse(button.text.toString(), jsonData, responseText)
             }
         }
     }
 
-    private fun checkInternetAndFetchResponse(userInput: String, responseText: TextView) {
+    private fun checkInternetAndFetchResponse(userInput: String, jsonData:String, responseText: TextView) {
         if (!isInternetAvailable()) {
             showNoInternetPopup()
         } else {
-            fetchAIResponse(userInput, responseText)
+            fetchAIResponse(userInput, jsonData, responseText)
         }
     }
 
-    private fun fetchAIResponse(userInput: String, responseText: TextView) {
+    private fun fetchAIResponse(userInput: String, jsonData: String, responseText: TextView) {
         thread {
             try {
                 val client = OkHttpClient()
                 val json = JSONObject()
+                val items = JSONArray(jsonData)
 
                 json.put("model", "gpt-4")
                 json.put("messages", JSONArray().apply {
                     put(JSONObject().apply {
                         put("role", "system")
-                        put("content", "You are a cutting-edge AI assistant for a library. Provide answers based on available books and equipment.")
+                        put("content", "You are a NAITHAN, AI assistant for LumosLibrary. Provide answers based on available books and equipment.")
+                    })
+                    put(JSONObject().apply {
+                        put("role", "system")
+                        put("content", "Library Items: $items")
+                    })
+                    put(JSONObject().apply {
+                        put("role", "system")
+                        put("content", "Instructions:\n" +
+                                "- **Search:** Use the search bar under the LumosLibrary logo on the home page to access the Search page. Users can search by category, author, location, ISBN-13, or description. You cannot rent or return book when searching for books and items\n" +
+                                "- **Rent:** Click the left button below the search bar to access the Scan User ID page. Users scan their barcode ID or enter an 8-digit ID. Next, they scan the item, proceed to payment (a refundable deposit is required), and confirm the rental.\n" +
+                                "- **Return:** Click the right button below the search bar to return items. Users scan their ID, scan items to return, and confirm. Late fees are applied if overdue.")
                     })
                     put(JSONObject().apply {
                         put("role", "user")
@@ -127,6 +143,22 @@ class HelpPageActivity : AppCompatActivity() {
                     responseText.text = "Error: ${e.message}"
                 }
             }
+        }
+    }
+
+    private fun loadJSONFromAssets(filename: String): String {
+        return try {
+            val inputStream = assets.open(filename)
+            val reader = BufferedReader(InputStreamReader(inputStream))
+            val stringBuilder = StringBuilder()
+            var line: String?
+            while (reader.readLine().also { line = it } != null) {
+                stringBuilder.append(line)
+            }
+            reader.close()
+            stringBuilder.toString()
+        } catch (e: Exception) {
+            "{}" // Return an empty JSON object if file not found
         }
     }
 
