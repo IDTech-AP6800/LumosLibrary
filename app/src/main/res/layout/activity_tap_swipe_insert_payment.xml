@@ -8,6 +8,7 @@
 
     tools:context=".TapSwipeInsertPaymentActivity">
 
+
     <include layout="@layout/back_button"/>
 
     <!-- Total Due text-->
