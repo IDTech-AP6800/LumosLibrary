@@ -26,11 +26,11 @@
         android:fontFamily="@font/robotoslab_medium"
         android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/rentConf_item"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!--Checked out items-->
+
+    <!--Checked out items
     <include
         layout="@layout/item_display_due_date"
         android:id="@+id/rentConf_item"
@@ -38,7 +38,8 @@
         android:layout_width="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/rentConf_horizGuide_list"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <include
         layout="@layout/item_display_due_date"
@@ -48,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@id/rentConf_item"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
-
+-->
 
     <!--Logout Button-->
     <androidx.appcompat.widget.AppCompatButton
@@ -62,7 +63,6 @@
         android:textAllCaps="false"
         android:background="@drawable/blue_rounded_square"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rentConf_item2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />

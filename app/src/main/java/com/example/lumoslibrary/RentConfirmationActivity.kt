@@ -4,7 +4,9 @@ import android.content.Intent
 import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Layout
 import androidx.appcompat.widget.AppCompatButton
+import androidx.constraintlayout.widget.ConstraintSet
 
 class RentConfirmationActivity : AppCompatActivity() {
 
@@ -26,7 +28,7 @@ class RentConfirmationActivity : AppCompatActivity() {
 
     private fun playConfirmationCompleteAudio() {
         mediaPlayer?.release()
-        mediaPlayer = MediaPlayer.create(this, R.raw.super_fanfare)
+        mediaPlayer = MediaPlayer.create(this, R.raw.short_success)
         mediaPlayer?.start()
     }
 
