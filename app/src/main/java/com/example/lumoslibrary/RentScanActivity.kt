@@ -216,16 +216,25 @@ class RentScanActivity : AppCompatActivity() {
         continueButton.setOnClickListener {
             val depositTotal = findViewById<View>(R.id.total_due_amount) as TextView
             val totalDueString = depositTotal.text.toString()
-                .replace("Total due: $", "")
+//                .replace("$0.00", "")
+                .replace(Regex("[^0-9.]"), "")
                 .trim()
 
             CurrentSession.checkedOut = scannedItemsList
             RentSession.totalDue = totalDueString.toDouble()
 
-            // Create an Intent to navigate to the PaymentOptions activity
-            val intent = Intent(this@RentScanActivity, TapSwipeInsertPaymentActivity::class.java)
-            startActivity(intent)
+            Log.d(TAG, "depositTotal: ${depositTotal.text} /n " +
+                    "totalDueString: $totalDueString")
 
+            // Create an Intent to navigate to the PaymentOptions activity
+//            val intent = Intent(this@RentScanActivity, TapSwipeInsertPaymentActivity::class.java)
+//            startActivity(intent)
+
+            Handler(Looper.getMainLooper()).postDelayed({
+                startActivity(Intent(this, TapSwipeInsertPaymentActivity::class.java))
+                Log.d("RentScanActivity", "Navigating to NextActivity after delay")
+                finish()
+            }, 300) // Delay by 300ms
         }
     }
 
@@ -237,7 +246,7 @@ class RentScanActivity : AppCompatActivity() {
 
         var total = 0f
 
-        Log.d(TAG, "in here!")
+//        Log.d(TAG, "in here!")
         for (item in scannedItemsList) {
             if (item.security_deposit > 0) {
 //                Log.d(TAG, "${item.title}: has desposit of ${item.security_deposit}")
@@ -265,6 +274,7 @@ class RentScanActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        Log.d("RentScanActivity", "RentScanActivity is being destroyed")
         barcodeScanner.close()
     }
 
