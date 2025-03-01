@@ -76,6 +76,7 @@ class TapSwipeInsertPaymentActivity : AppCompatActivity() {
             cancelTransaction()
             val intent = Intent(this, QrCodeActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 

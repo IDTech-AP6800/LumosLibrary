@@ -238,7 +238,6 @@ class RentScanActivity : AppCompatActivity() {
                     startActivity(Intent(this, TapSwipeInsertPaymentActivity::class.java))
                     Log.d(TAG, "Navigating to TapSwipeInsertPaymentActivity")
                 }
-                finish()
             }, 300) // Delay by 300ms
 
         }
@@ -282,6 +281,14 @@ class RentScanActivity : AppCompatActivity() {
         super.onDestroy()
         Log.d("RentScanActivity", "RentScanActivity is being destroyed")
         barcodeScanner.close()
+        scanDelayHandler.removeCallbacksAndMessages(null)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (allPermissionsGranted()) {
+            startCamera() // Restart scanning when activity is resumed
+        }
     }
 
     companion object {

@@ -121,6 +121,7 @@ class QrCodeActivity : AppCompatActivity() {
 
                     val intent = Intent(this@QrCodeActivity, RentConfirmationActivity::class.java)
                     startActivity(intent)
+                    finish()
                 }
 
                 val qrCodeViewModel = QrCodeViewModel(barcodeResults[0])
