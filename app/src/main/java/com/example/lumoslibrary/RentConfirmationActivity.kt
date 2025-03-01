@@ -18,7 +18,8 @@ class RentConfirmationActivity : AppCompatActivity() {
         val button = findViewById<AppCompatButton>(R.id.rentConf_button)
 
         button.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
+//            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LandingPageActivity::class.java)
             startActivity(intent)
         }
 

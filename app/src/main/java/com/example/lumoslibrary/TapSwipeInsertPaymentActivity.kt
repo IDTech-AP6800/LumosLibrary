@@ -6,6 +6,7 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.widget.ImageButton
+import android.widget.TextView
 import com.idtech.zsdk_client.CancelTransactionAsync
 import com.idtech.zsdk_client.Client
 import com.idtech.zsdk_client.GetDevicesAsync
@@ -37,6 +38,9 @@ class TapSwipeInsertPaymentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tap_swipe_insert_payment)
         BackButton(this)
+
+        val totalDueTextView: TextView = findViewById(R.id.heading)
+        totalDueTextView.text = "Total Due: $${String.format("%.2f", RentSession.totalDue)}"
 
         insertCardOption = findViewById(R.id.insert_card_option)
         swipeCardOption = findViewById(R.id.swipe_card_option)

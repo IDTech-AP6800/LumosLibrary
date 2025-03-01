@@ -13,6 +13,7 @@ import android.content.Intent
 import android.util.Log
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.camera.core.CameraSelector
@@ -42,6 +43,9 @@ class QrCodeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_scan_to_pay)
         BackButton(this)
 
+        val totalDueTextView: TextView = findViewById(R.id.total_due_text)
+        totalDueTextView.text = "Total Due: $${String.format("%.2f", RentSession.totalDue)}"
+
         imageCam = findViewById(R.id.camera_preview)
         cardButton = findViewById(R.id.card_button)
 
@@ -50,12 +54,6 @@ class QrCodeActivity : AppCompatActivity() {
             val intent = Intent(this, TapSwipeInsertPaymentActivity::class.java)
             startActivity(intent)
         }
-
-        /* TODO: Set text for value above payment
-        private lateinit var amountText: TextView
-        //private var totalDue = CarWashSession.totalDue
-        amountText.text = "Amount Due: $" + String.format("%.2f", totalDue)
-        */
 
         // Request camera permissions
         if (allPermissionsGranted()) {

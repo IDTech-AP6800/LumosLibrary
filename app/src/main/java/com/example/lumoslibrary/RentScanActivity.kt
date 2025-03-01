@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import android.Manifest
 import android.content.Intent
-import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -232,11 +231,16 @@ class RentScanActivity : AppCompatActivity() {
 //            startActivity(intent)
 
             Handler(Looper.getMainLooper()).postDelayed({
-                startActivity(Intent(this, TapSwipeInsertPaymentActivity::class.java))
-                Log.d("RentScanActivity", "Navigating to NextActivity after delay")
-                Log.d(TAG, "RentSession - totalDue: ${RentSession.totalDue}")
+                if (RentSession.totalDue == 0.0) {
+                    startActivity(Intent(this, RentConfirmationActivity::class.java)) // Replace with your intended activity
+                    Log.d(TAG, "Total due is zero, navigating to SomeOtherActivity")
+                } else {
+                    startActivity(Intent(this, TapSwipeInsertPaymentActivity::class.java))
+                    Log.d(TAG, "Navigating to TapSwipeInsertPaymentActivity")
+                }
                 finish()
             }, 300) // Delay by 300ms
+
         }
     }
 
