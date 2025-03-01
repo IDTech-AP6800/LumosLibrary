@@ -38,6 +38,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        BackButton(this)
 
         searchUsers = UserData(this, "users.json")
 
@@ -161,7 +162,7 @@ class LoginActivity : AppCompatActivity() {
         val intent = if (CurrentSession.state == 1) { // Return
             Intent(this, RentScanActivity::class.java)
         } else { // Rent
-            Intent(this, ReturnScanItemActivity::class.java)
+            Intent(this, ReturnScanActivity::class.java)
         }
         startActivity(intent)
     }

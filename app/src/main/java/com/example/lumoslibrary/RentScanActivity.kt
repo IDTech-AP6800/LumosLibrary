@@ -47,6 +47,7 @@ class RentScanActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rent_scan_item)
 //        HelpButton(this)
+        BackButton(this)
 
         imageCam = findViewById(R.id.item_camera_preview)
 

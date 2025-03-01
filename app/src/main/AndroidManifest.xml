@@ -16,7 +16,7 @@
         android:theme="@style/Theme.LumosLibrary"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".LandingPageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,9 +37,6 @@
             android:name=".ReturnConfirmationActivity"
             android:exported="false" />
         <activity
-            android:name=".ReturnScanItemActivity"
-            android:exported="true" />
-        <activity
             android:name=".RentConfirmationActivity"
             android:launchMode="singleInstance"
             android:exported="false" />
@@ -56,13 +53,16 @@
             android:name=".RentScanActivity"
             android:exported="true"/>
         <activity
+            android:name=".ReturnScanActivity"
+            android:exported="true"/>
+        <activity
             android:name=".SearchResultsActivity"
             android:exported="true">
         </activity>
 
-        <activity
-            android:name=".LandingPageActivity"
-            android:exported="true" />
+<!--        <activity-->
+<!--            android:name=".LandingPageActivity"-->
+<!--            android:exported="true" />-->
 
         <activity
             android:name=".QrCodeActivity"

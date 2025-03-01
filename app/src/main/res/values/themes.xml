@@ -3,6 +3,7 @@
     <style name="Base.Theme.LumosLibrary" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:windowBackground">@color/background</item>
     </style>
 
     <style name="Theme.LumosLibrary" parent="Base.Theme.LumosLibrary" />

@@ -4,20 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     tools:context=".LoginActivity">
 
     <!-- Back Button -->
-    <ImageButton
-        android:id="@+id/back_button"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/back_arrow"
-        android:contentDescription="Back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/heading"
-        app:layout_constraintTop_toTopOf="@id/heading"
-        android:layout_marginEnd="8dp"/>
+    <include layout="@layout/back_button"/>
 
     <!-- Scan to login tex t-->
     <TextView
@@ -145,8 +135,8 @@
         />
 
     <!-- Help Button Icon -->
-    <include
-        android:id="@+id/help_button_include"
-        layout="@layout/help_button" />
+<!--    <include-->
+<!--        android:id="@+id/help_button_include"-->
+<!--        layout="@layout/help_button" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

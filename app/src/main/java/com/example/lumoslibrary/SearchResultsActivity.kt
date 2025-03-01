@@ -21,6 +21,7 @@ class SearchResultsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_search_results)
 
         HelpButton(this)
+        BackButton(this)
 
         // Initialize searchInventory and itemCardContainer
         searchInventory = SearchInventory(this, "items.json")
