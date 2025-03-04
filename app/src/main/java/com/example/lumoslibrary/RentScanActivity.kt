@@ -48,6 +48,8 @@ class RentScanActivity : AppCompatActivity() {
 //        HelpButton(this)
         BackButton(this)
 
+        Log.d(TAG, "onCreate: HERE!!!!!")
+
         imageCam = findViewById(R.id.item_camera_preview)
 
         itemCardContainer = findViewById(R.id.item_card_container)
@@ -223,8 +225,19 @@ class RentScanActivity : AppCompatActivity() {
             CurrentSession.checkedOut = scannedItemsList
             RentSession.totalDue = totalDueString.toDouble()
 
-            Log.d(TAG, "depositTotal: ${depositTotal.text} /n " +
-                    "totalDueString: $totalDueString")
+            Log.d(TAG, "depositTotal: ${depositTotal.text} \n " +
+                    "totalDueString: $totalDueString \n" +
+                    "CurrentSession.checkedOut: ${CurrentSession.checkedOut}")
+
+            val itemContainer = CurrentSession.checkedOut
+            if (itemContainer == null) {
+                Log.d(TAG, "CurrentSession.checkedOut is NULL!")
+            } else {
+                Log.d(TAG, "itemContainer! :")
+                for (item in itemContainer) {
+                    Log.d(TAG, "$item\n")
+                }
+            }
 
             // Create an Intent to navigate to the PaymentOptions activity
 //            val intent = Intent(this@RentScanActivity, TapSwipeInsertPaymentActivity::class.java)
@@ -279,7 +292,7 @@ class RentScanActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d("RentScanActivity", "RentScanActivity is being destroyed")
+        Log.d(TAG, "RentScanActivity is being destroyed")
         barcodeScanner.close()
         scanDelayHandler.removeCallbacksAndMessages(null)
     }
