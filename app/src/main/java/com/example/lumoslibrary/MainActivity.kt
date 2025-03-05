@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         val rootView = findViewById<View>(android.R.id.content)
         rootView.setOnClickListener {
             // Launch PaymentActivity on tap
-            val intent = Intent(this, TapSwipeInsertPaymentActivity::class.java)
+            val intent = Intent(this, LandingPageActivity::class.java)
             startActivity(intent)
         }
     }
