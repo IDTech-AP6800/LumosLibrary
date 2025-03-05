@@ -226,8 +226,7 @@ class RentScanActivity : AppCompatActivity() {
             RentSession.totalDue = totalDueString.toDouble()
 
             Log.d(TAG, "depositTotal: ${depositTotal.text} \n " +
-                    "totalDueString: $totalDueString \n" +
-                    "CurrentSession.checkedOut: ${CurrentSession.checkedOut}")
+                    "totalDueString: $totalDueString")
 
             val itemContainer = CurrentSession.checkedOut
             if (itemContainer == null) {
@@ -235,7 +234,7 @@ class RentScanActivity : AppCompatActivity() {
             } else {
                 Log.d(TAG, "itemContainer! :")
                 for (item in itemContainer) {
-                    Log.d(TAG, "$item\n")
+                    Log.d(TAG, "> ${item.title}\n")
                 }
             }
 

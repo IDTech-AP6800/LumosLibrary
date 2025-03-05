@@ -7,19 +7,12 @@
     android:background="@color/background"
     tools:context=".RentConfirmationActivity">
 
-    <!--Guidelines-->
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/rentConf_horizGuide_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="245dp"/>
-
     <!--Thank you message-->
     <TextView
         android:id="@+id/rentConf_text_thanks"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="@string/confirmation_thanks"
         android:textSize="32sp"
         android:textColor="@color/white"
@@ -29,33 +22,27 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/rentConf_text_thanks"
+        app:layout_constraintBottom_toTopOf="@id/rentConf_button"
+        android:overScrollMode="always">
 
-    <!--Checked out items
-    <include
-        layout="@layout/item_display_due_date"
-        android:id="@+id/rentConf_item"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/rentConf_horizGuide_list"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
-
-    <include
-        layout="@layout/item_display_due_date"
-        android:id="@+id/rentConf_item2"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/rentConf_item"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
--->
+        <LinearLayout
+            android:id="@+id/confirmation_item_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"/>
+    </ScrollView>
 
     <!--Logout Button-->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/rentConf_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
         android:padding="10dp"
         android:text="@string/logout_button"
         android:textSize="20sp"
@@ -66,6 +53,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
