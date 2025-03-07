@@ -37,6 +37,8 @@ class QrCodeActivity : AppCompatActivity() {
     private lateinit var imageCam: PreviewView
     private lateinit var cardButton: ImageButton
 
+    private val audio: Audio = Audio()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +53,7 @@ class QrCodeActivity : AppCompatActivity() {
 
         // Return back to other types of payments
         cardButton.setOnClickListener{
+            audio.playClickAudio(this)
             val intent = Intent(this, TapSwipeInsertPaymentActivity::class.java)
             startActivity(intent)
         }
@@ -153,6 +156,7 @@ class QrCodeActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         barcodeScanner.close()
+        audio.destroy()
     }
 
     companion object {

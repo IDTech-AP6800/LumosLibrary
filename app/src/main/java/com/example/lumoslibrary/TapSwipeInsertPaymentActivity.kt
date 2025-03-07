@@ -28,6 +28,7 @@ class TapSwipeInsertPaymentActivity : AppCompatActivity() {
     private lateinit var tapCardOption: LinearLayout
     private lateinit var qrCodeButton: ImageButton
     private var selectedPaymentMethod: String? = null
+    private val audio: Audio = Audio()
 
     private var devices: List<String> = emptyList()
     private var connectedDeviceId: String? = null
@@ -53,18 +54,21 @@ class TapSwipeInsertPaymentActivity : AppCompatActivity() {
         // This area changes the UI + The calls to the ZSDK
         // 1 = MSR, 2 = CTLS, 4 = EMV
         insertCardOption.setOnClickListener {
+            audio.playClickAudio(this)
             selectPaymentMethod(insertCardOption, "Insert")
             cancelTransaction() // Need to test this
             currPayment = 4
             startTransaction(currPayment)
         }
         swipeCardOption.setOnClickListener {
+            audio.playClickAudio(this)
             selectPaymentMethod(swipeCardOption, "Swipe")
             cancelTransaction()
             currPayment = 1
             startTransaction(currPayment)
         }
         tapCardOption.setOnClickListener {
+            audio.playClickAudio(this)
             selectPaymentMethod(tapCardOption, "Tap")
             cancelTransaction()
             currPayment = 2
@@ -73,6 +77,7 @@ class TapSwipeInsertPaymentActivity : AppCompatActivity() {
 
         // qrCodeButton Navigates to pay with scanner
         qrCodeButton.setOnClickListener{
+            audio.playClickAudio(this)
             cancelTransaction()
             val intent = Intent(this, QrCodeActivity::class.java)
             startActivity(intent)
@@ -184,6 +189,7 @@ class TapSwipeInsertPaymentActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         cancelTransaction()
+        audio.destroy()
     }
 
     companion object {

@@ -10,7 +10,7 @@ import androidx.constraintlayout.widget.ConstraintSet
 
 class RentConfirmationActivity : AppCompatActivity() {
 
-    private var mediaPlayer: MediaPlayer? = null
+    private val audio: Audio = Audio()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rent_confirmation)
@@ -18,25 +18,16 @@ class RentConfirmationActivity : AppCompatActivity() {
         val button = findViewById<AppCompatButton>(R.id.rentConf_button)
 
         button.setOnClickListener{
-//            val intent = Intent(this, MainActivity::class.java)
+            audio.playClickAudio(this)
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
-        playConfirmationCompleteAudio()
+        audio.playConfirmationCompleteAudio(this)
 
     }
-
-    private fun playConfirmationCompleteAudio() {
-        mediaPlayer?.release()
-        mediaPlayer = MediaPlayer.create(this, R.raw.short_success)
-        mediaPlayer?.start()
-    }
-
-
     override fun onDestroy() {
         super.onDestroy()
-        mediaPlayer?.release()
-        mediaPlayer = null
+        audio.destroy()
     }
 }

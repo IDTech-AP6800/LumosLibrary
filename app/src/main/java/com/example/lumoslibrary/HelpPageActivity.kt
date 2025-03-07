@@ -24,11 +24,13 @@ import kotlin.concurrent.thread
 class HelpPageActivity : AppCompatActivity() {
     private val API_KEY = ""
     private val API_URL = "https://api.openai.com/v1/chat/completions"
+    private val audio: Audio = Audio()
+    private lateinit var backButton: BackButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_help_page)
-        BackButton(this)
+        backButton = BackButton(this)
 
         val jsonData = loadJSONFromAssets("items.json")
 
@@ -58,6 +60,7 @@ class HelpPageActivity : AppCompatActivity() {
         val queryButtons = listOf(query1, query2, query3)
         queryButtons.forEach { button ->
             button.setOnClickListener {
+                audio.playClickAudio(this)
                 inputField.setText(button.text.toString())
                 hideKeyboard(inputField)
                 checkInternetAndFetchResponse(button.text.toString(), jsonData, responseText)
@@ -183,5 +186,11 @@ class HelpPageActivity : AppCompatActivity() {
     private fun hideKeyboard(view: View) {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        audio.destroy()
+        backButton.onDestroy()
     }
 }

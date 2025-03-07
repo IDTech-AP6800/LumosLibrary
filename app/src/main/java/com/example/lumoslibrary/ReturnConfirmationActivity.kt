@@ -8,7 +8,7 @@ import androidx.appcompat.widget.AppCompatButton
 
 class ReturnConfirmationActivity : AppCompatActivity() {
 
-    private var mediaPlayer: MediaPlayer? = null
+    private val audio: Audio = Audio()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_return_confirmation)
@@ -16,22 +16,14 @@ class ReturnConfirmationActivity : AppCompatActivity() {
         val button = findViewById<AppCompatButton>(R.id.returnConf_button)
 
         button.setOnClickListener{
+            audio.playClickAudio(this)
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
-        playConfirmationCompleteAudio()
+        audio.playConfirmationCompleteAudio(this)
     }
-
-    private fun playConfirmationCompleteAudio() {
-        mediaPlayer?.release()
-        mediaPlayer = MediaPlayer.create(this, R.raw.super_fanfare)
-        mediaPlayer?.start()
-    }
-
-
     override fun onDestroy() {
         super.onDestroy()
-        mediaPlayer?.release()
-        mediaPlayer = null
+        audio.destroy()
     }
 }

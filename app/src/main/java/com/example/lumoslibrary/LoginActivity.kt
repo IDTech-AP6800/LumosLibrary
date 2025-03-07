@@ -34,10 +34,12 @@ class LoginActivity : AppCompatActivity() {
     private var userID: String? = null
 
     private var isProcessingScan = false
+    private val audio: Audio = Audio()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
         BackButton(this)
 
         searchUsers = UserData(this, "users.json")
@@ -81,6 +83,7 @@ class LoginActivity : AppCompatActivity() {
         })
 
         continueButton.setOnClickListener {
+            audio.playClickAudio(this)
             val enteredId = userIdEditText.text.toString().replace("-", "").trim()
             if (isValidUserID(enteredId)) {
                 userID = enteredId
@@ -178,6 +181,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         barcodeScanner.close()
+        audio.destroy()
     }
 
     companion object {

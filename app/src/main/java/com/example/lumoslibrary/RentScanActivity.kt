@@ -42,6 +42,8 @@ class RentScanActivity : AppCompatActivity() {
     private val scanDelayHandler = Handler(Looper.getMainLooper())
     private val delayScanTime : Long = 3000 // 3 seconds
 
+    private val audio: Audio = Audio()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rent_scan_item)
@@ -214,6 +216,7 @@ class RentScanActivity : AppCompatActivity() {
     private fun listenContinueButton() {
         val continueButton = findViewById<Button>(R.id.continue_button)
         continueButton.setOnClickListener {
+            audio.playClickAudio(this)
             val depositTotal = findViewById<View>(R.id.total_due_amount) as TextView
             val totalDueString = depositTotal.text.toString()
 //                .replace("$0.00", "")
@@ -226,9 +229,6 @@ class RentScanActivity : AppCompatActivity() {
             Log.d(TAG, "depositTotal: ${depositTotal.text} /n " +
                     "totalDueString: $totalDueString")
 
-            // Create an Intent to navigate to the PaymentOptions activity
-//            val intent = Intent(this@RentScanActivity, TapSwipeInsertPaymentActivity::class.java)
-//            startActivity(intent)
 
             Handler(Looper.getMainLooper()).postDelayed({
                 if (RentSession.totalDue == 0.0) {
@@ -281,6 +281,7 @@ class RentScanActivity : AppCompatActivity() {
         super.onDestroy()
         Log.d("RentScanActivity", "RentScanActivity is being destroyed")
         barcodeScanner.close()
+        audio.destroy()
         scanDelayHandler.removeCallbacksAndMessages(null)
     }
 

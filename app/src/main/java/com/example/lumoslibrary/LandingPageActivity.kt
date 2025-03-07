@@ -17,6 +17,8 @@ class LandingPageActivity : AppCompatActivity() {
     private lateinit var rentButton: Button
     private lateinit var returnButton: Button
     private lateinit var searchButton: Button
+    private val audio: Audio = Audio()
+    private lateinit var helpButton: HelpButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,14 +29,18 @@ class LandingPageActivity : AppCompatActivity() {
         rentButton = findViewById(R.id.rent_button)
         returnButton = findViewById(R.id.return_button)
 
-        HelpButton(this)
+        helpButton = HelpButton(this)
 
         // Find views
 //        motionLayout = findViewById(R.id.motion_layout_books)
 
-        searchButton.setOnClickListener{startActivity(Intent(this, SearchResultsActivity::class.java))}
+        searchButton.setOnClickListener{
+            audio.playClickAudio(this)
+            startActivity(Intent(this, SearchResultsActivity::class.java))}
 
-        rentButton.setOnClickListener { navigateToLogin(1) }
+        rentButton.setOnClickListener {
+            audio.playClickAudio(this)
+            navigateToLogin(1) }
         returnButton.setOnClickListener { navigateToLogin(2) }
 
     }
@@ -42,6 +48,12 @@ class LandingPageActivity : AppCompatActivity() {
     private fun navigateToLogin(state: Int) {
         CurrentSession.state = state
         startActivity(Intent(this, LoginActivity::class.java))
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        audio.destroy()
+        helpButton.onDestroy()
     }
 
 }
