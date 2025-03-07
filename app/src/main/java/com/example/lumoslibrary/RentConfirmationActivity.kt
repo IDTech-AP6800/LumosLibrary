@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
+import kotlin.random.Random
 
 class RentConfirmationActivity : AppCompatActivity() {
 
@@ -69,6 +70,13 @@ class RentConfirmationActivity : AppCompatActivity() {
 
         button.setOnClickListener{
 //            val intent = Intent(this, MainActivity::class.java)
+            val userData = UserData(this, "users.json")
+            val currentUserId = CurrentSession.userID  // Get current user ID
+            val newCheckedOutItems = CurrentSession.checkedOut?.map { item ->
+                CheckedOutItem(item.title, isLate = Random.nextBoolean())
+            } ?: emptyList()
+
+            userData.addItem(currentUserId, newCheckedOutItems)
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
