@@ -38,12 +38,12 @@ class QrCodeActivity : AppCompatActivity() {
     private lateinit var cardButton: ImageButton
 
     private val audio: Audio = Audio()
-
+    private lateinit var backButton: BackButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scan_to_pay)
-        BackButton(this)
+        backButton = BackButton(this)
 
         val totalDueTextView: TextView = findViewById(R.id.total_due_text)
         totalDueTextView.text = "Total Due: $${String.format("%.2f", RentSession.totalDue)}"
@@ -157,6 +157,7 @@ class QrCodeActivity : AppCompatActivity() {
         super.onDestroy()
         barcodeScanner.close()
         audio.destroy()
+        backButton.onDestroy()
     }
 
     companion object {

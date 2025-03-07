@@ -8,8 +8,8 @@ class BackButton(activity: AppCompatActivity) {
     private val backButton: ImageButton? = activity.findViewById(R.id.back_button)
     private val audio: Audio = Audio()
     init{
-        audio.playClickAudio(activity.baseContext)
         backButton?.setOnClickListener {
+            audio.playClickAudio(activity.baseContext)
             activity.onBackPressedDispatcher.onBackPressed()
         }
     }

@@ -35,13 +35,14 @@ class LandingPageActivity : AppCompatActivity() {
 //        motionLayout = findViewById(R.id.motion_layout_books)
 
         searchButton.setOnClickListener{
-            audio.playClickAudio(this)
             startActivity(Intent(this, SearchResultsActivity::class.java))}
 
         rentButton.setOnClickListener {
             audio.playClickAudio(this)
             navigateToLogin(1) }
-        returnButton.setOnClickListener { navigateToLogin(2) }
+        returnButton.setOnClickListener {
+            audio.playClickAudio(this)
+            navigateToLogin(2) }
 
     }
 

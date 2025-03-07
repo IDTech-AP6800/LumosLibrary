@@ -35,12 +35,13 @@ class LoginActivity : AppCompatActivity() {
 
     private var isProcessingScan = false
     private val audio: Audio = Audio()
+    private lateinit var backButton: BackButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        BackButton(this)
+        backButton = BackButton(this)
 
         searchUsers = UserData(this, "users.json")
 
@@ -182,6 +183,7 @@ class LoginActivity : AppCompatActivity() {
         super.onDestroy()
         barcodeScanner.close()
         audio.destroy()
+        backButton.onDestroy()
     }
 
     companion object {

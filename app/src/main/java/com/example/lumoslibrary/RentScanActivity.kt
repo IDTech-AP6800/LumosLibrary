@@ -43,12 +43,13 @@ class RentScanActivity : AppCompatActivity() {
     private val delayScanTime : Long = 3000 // 3 seconds
 
     private val audio: Audio = Audio()
+    private lateinit var backButton: BackButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rent_scan_item)
 //        HelpButton(this)
-        BackButton(this)
+        backButton = BackButton(this)
 
         imageCam = findViewById(R.id.item_camera_preview)
 
@@ -282,6 +283,7 @@ class RentScanActivity : AppCompatActivity() {
         Log.d("RentScanActivity", "RentScanActivity is being destroyed")
         barcodeScanner.close()
         audio.destroy()
+        backButton.onDestroy()
         scanDelayHandler.removeCallbacksAndMessages(null)
     }
 

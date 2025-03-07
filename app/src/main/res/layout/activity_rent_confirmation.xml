@@ -29,6 +29,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!--Confetti-->
+    <nl.dionsegijn.konfetti.xml.KonfettiView
+        android:id = "@+id/rentConf_konfettiView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <!--Checked out items
     <include

@@ -29,6 +29,7 @@ class TapSwipeInsertPaymentActivity : AppCompatActivity() {
     private lateinit var qrCodeButton: ImageButton
     private var selectedPaymentMethod: String? = null
     private val audio: Audio = Audio()
+    private lateinit var backButton: BackButton
 
     private var devices: List<String> = emptyList()
     private var connectedDeviceId: String? = null
@@ -38,7 +39,7 @@ class TapSwipeInsertPaymentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tap_swipe_insert_payment)
-        BackButton(this)
+        backButton = BackButton(this)
 
         val totalDueTextView: TextView = findViewById(R.id.heading)
         totalDueTextView.text = "Total Due: $${String.format("%.2f", RentSession.totalDue)}"
@@ -190,6 +191,7 @@ class TapSwipeInsertPaymentActivity : AppCompatActivity() {
         super.onDestroy()
         cancelTransaction()
         audio.destroy()
+        backButton.onDestroy()
     }
 
     companion object {
