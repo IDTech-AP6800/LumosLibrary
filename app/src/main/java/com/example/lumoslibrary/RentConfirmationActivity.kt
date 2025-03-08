@@ -73,7 +73,7 @@ class RentConfirmationActivity : AppCompatActivity() {
             val userData = UserData(this, "users.json")
             val currentUserId = CurrentSession.userID  // Get current user ID
             val newCheckedOutItems = CurrentSession.checkedOut?.map { item ->
-                CheckedOutItem(item.title, isLate = Random.nextBoolean())
+                CheckedOutItem(item.title, isLate = if (item.security_deposit == 0) false else Random.nextBoolean())
             } ?: emptyList()
 
             userData.addItem(currentUserId, newCheckedOutItems)
