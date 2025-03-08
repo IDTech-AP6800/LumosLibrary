@@ -1,5 +1,6 @@
 package com.example.lumoslibrary
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,8 @@ import com.idtech.zsdk_client.GetDevicesAsync
 import android.widget.ImageView
 import androidx.activity.viewModels
 import com.idtech.zsdk_client.GetDevicesAsync
+import java.io.File
+import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val jsonFile = copyJsonToInternalStorage(this, "users.json")
         // Observe connection status
         viewModel.connectionStatus.observe(this) { status ->
             Log.d("ConnectionStatus", "Connection status: $status")
@@ -41,6 +45,23 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, LandingPageActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun copyJsonToInternalStorage(context: Context, fileName: String): File {
+        val file = File(context.filesDir, fileName)
+
+        if (!file.exists()) {
+            try {
+                context.assets.open(fileName).use { inputStream ->
+                    file.outputStream().use { outputStream ->
+                        inputStream.copyTo(outputStream)
+                    }
+                }
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }
+        return file
     }
 
     companion object{

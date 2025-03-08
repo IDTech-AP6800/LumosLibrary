@@ -38,10 +38,7 @@
             android:exported="false" />
         <activity
             android:name=".RentConfirmationActivity"
-            android:launchMode="singleInstance"
-            android:exported="true"
-            >
-
+            android:exported="true" />
         </activity>
         <activity
             android:name=".ScanToPayActivity"
