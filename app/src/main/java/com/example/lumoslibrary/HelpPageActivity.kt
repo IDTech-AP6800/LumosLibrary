@@ -59,7 +59,7 @@ class HelpPageActivity : AppCompatActivity() {
         // Handle Suggested Query Button Clicks
         val queryButtons = listOf(query1, query2, query3)
         queryButtons.forEach { button ->
-            button.setOnClickListener {
+            button.setOnClickListener(1000L) {
                 audio.playClickAudio(this)
                 inputField.setText(button.text.toString())
                 hideKeyboard(inputField)

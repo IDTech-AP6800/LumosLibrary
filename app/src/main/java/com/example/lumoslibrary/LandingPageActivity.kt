@@ -37,10 +37,10 @@ class LandingPageActivity : AppCompatActivity() {
         searchButton.setOnClickListener{
             startActivity(Intent(this, SearchResultsActivity::class.java))}
 
-        rentButton.setOnClickListener {
+        rentButton.setOnClickListener(1000L){
             audio.playClickAudio(this)
             navigateToLogin(1) }
-        returnButton.setOnClickListener {
+        returnButton.setOnClickListener(1000L){
             audio.playClickAudio(this)
             navigateToLogin(2) }
 

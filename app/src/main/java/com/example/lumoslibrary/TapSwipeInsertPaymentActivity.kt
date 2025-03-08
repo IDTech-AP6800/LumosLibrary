@@ -54,21 +54,21 @@ class TapSwipeInsertPaymentActivity : AppCompatActivity() {
 
         // This area changes the UI + The calls to the ZSDK
         // 1 = MSR, 2 = CTLS, 4 = EMV
-        insertCardOption.setOnClickListener {
+        insertCardOption.setOnClickListener(1000L) {
             audio.playClickAudio(this)
             selectPaymentMethod(insertCardOption, "Insert")
             cancelTransaction() // Need to test this
             currPayment = 4
             startTransaction(currPayment)
         }
-        swipeCardOption.setOnClickListener {
+        swipeCardOption.setOnClickListener(1000L) {
             audio.playClickAudio(this)
             selectPaymentMethod(swipeCardOption, "Swipe")
             cancelTransaction()
             currPayment = 1
             startTransaction(currPayment)
         }
-        tapCardOption.setOnClickListener {
+        tapCardOption.setOnClickListener(1000L) {
             audio.playClickAudio(this)
             selectPaymentMethod(tapCardOption, "Tap")
             cancelTransaction()
@@ -77,7 +77,7 @@ class TapSwipeInsertPaymentActivity : AppCompatActivity() {
         }
 
         // qrCodeButton Navigates to pay with scanner
-        qrCodeButton.setOnClickListener{
+        qrCodeButton.setOnClickListener(1000L){
             audio.playClickAudio(this)
             cancelTransaction()
             val intent = Intent(this, QrCodeActivity::class.java)

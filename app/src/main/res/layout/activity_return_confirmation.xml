@@ -138,6 +138,11 @@
         />
 
 
+    <!--Confetti -->
+    <nl.dionsegijn.konfetti.xml.KonfettiView
+        android:id = "@+id/returnConf_konfettiView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <!--Logout Button-->
     <androidx.appcompat.widget.AppCompatButton

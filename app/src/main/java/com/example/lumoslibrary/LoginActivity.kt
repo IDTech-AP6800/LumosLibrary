@@ -83,7 +83,7 @@ class LoginActivity : AppCompatActivity() {
             }
         })
 
-        continueButton.setOnClickListener {
+        continueButton.setOnClickListener(1000L) {
             audio.playClickAudio(this)
             val enteredId = userIdEditText.text.toString().replace("-", "").trim()
             if (isValidUserID(enteredId)) {

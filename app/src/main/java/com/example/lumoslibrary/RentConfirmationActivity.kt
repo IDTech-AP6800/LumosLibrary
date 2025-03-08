@@ -24,7 +24,7 @@ class RentConfirmationActivity : AppCompatActivity() {
         val button = findViewById<AppCompatButton>(R.id.rentConf_button)
         viewKonfetti = findViewById(R.id.rentConf_konfettiView)
 
-        button.setOnClickListener{
+        button.setOnClickListener(1000L){
             audio.playClickAudio(this)
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
