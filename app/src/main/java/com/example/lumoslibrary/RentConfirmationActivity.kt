@@ -15,15 +15,22 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
 import kotlin.random.Random
+import nl.dionsegijn.konfetti.core.Party
+import nl.dionsegijn.konfetti.core.emitter.Emitter
+import nl.dionsegijn.konfetti.xml.KonfettiView
+import java.util.concurrent.TimeUnit
 
 class RentConfirmationActivity : AppCompatActivity() {
 
-    private var mediaPlayer: MediaPlayer? = null
+    private val audio: Audio = Audio()
+    private lateinit var viewKonfetti: KonfettiView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rent_confirmation)
 
         val button = findViewById<AppCompatButton>(R.id.rentConf_button)
+        viewKonfetti = findViewById(R.id.rentConf_konfettiView)
 
         val confirmedItemsContainer = findViewById<LinearLayout>(R.id.confirmation_item_container)
 
@@ -68,8 +75,7 @@ class RentConfirmationActivity : AppCompatActivity() {
             }
         }
 
-        button.setOnClickListener{
-//            val intent = Intent(this, MainActivity::class.java)
+        button.setOnClickListener(1000L) {
             val userData = UserData(this, "users.json")
             val currentUserId = CurrentSession.userID  // Get current user ID
             val newCheckedOutItems = CurrentSession.checkedOut?.map { item ->
@@ -77,24 +83,22 @@ class RentConfirmationActivity : AppCompatActivity() {
             } ?: emptyList()
 
             userData.addItem(currentUserId, newCheckedOutItems)
+            audio.playClickAudio(this)
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
-        playConfirmationCompleteAudio()
+        audio.playConfirmationCompleteAudio(this)
 
+        val party = Party(
+            emitter = Emitter(duration = 100, TimeUnit.MILLISECONDS).max(100)
+        )
+
+        viewKonfetti.start(party)
     }
-
-    private fun playConfirmationCompleteAudio() {
-        mediaPlayer?.release()
-        mediaPlayer = MediaPlayer.create(this, R.raw.short_success)
-        mediaPlayer?.start()
-    }
-
     override fun onDestroy() {
         super.onDestroy()
-        mediaPlayer?.release()
-        mediaPlayer = null
+        audio.destroy()
     }
 
     // Calculate due date (Example: Adds 14 days for books, 3 for equipment)

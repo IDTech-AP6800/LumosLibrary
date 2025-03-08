@@ -24,11 +24,15 @@ import kotlin.concurrent.thread
 class HelpPageActivity : AppCompatActivity() {
     private val API_KEY = ""
     private val API_URL = "https://api.openai.com/v1/chat/completions"
+    private val audio: Audio = Audio()
+    private lateinit var backButton: BackButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_help_page)
-        BackButton(this)
+        backButton = BackButton(this)
+
+        val loadingIndicator: ProgressBar = findViewById(R.id.loading_indicator)
 
         val jsonData = loadJSONFromAssets("items.json")
 
@@ -57,7 +61,8 @@ class HelpPageActivity : AppCompatActivity() {
         // Handle Suggested Query Button Clicks
         val queryButtons = listOf(query1, query2, query3)
         queryButtons.forEach { button ->
-            button.setOnClickListener {
+            button.setOnClickListener(1000L) {
+                audio.playClickAudio(this)
                 inputField.setText(button.text.toString())
                 hideKeyboard(inputField)
                 checkInternetAndFetchResponse(button.text.toString(), jsonData, responseText)
@@ -74,6 +79,13 @@ class HelpPageActivity : AppCompatActivity() {
     }
 
     private fun fetchAIResponse(userInput: String, jsonData: String, responseText: TextView) {
+        val loadingIndicator: ProgressBar = findViewById(R.id.loading_indicator)
+
+        runOnUiThread {
+            loadingIndicator.visibility = View.VISIBLE // Show loading
+            responseText.text = "" // Clear previous response
+        }
+
         thread {
             try {
                 val client = OkHttpClient()
@@ -84,18 +96,11 @@ class HelpPageActivity : AppCompatActivity() {
                 json.put("messages", JSONArray().apply {
                     put(JSONObject().apply {
                         put("role", "system")
-                        put("content", "You are a NAITHAN, AI assistant for LumosLibrary. Provide answers based on available books and equipment.")
+                        put("content", "You are NAITHAN, AI assistant for LumosLibrary. Provide answers based on available books and equipment.")
                     })
                     put(JSONObject().apply {
                         put("role", "system")
                         put("content", "Library Items: $items")
-                    })
-                    put(JSONObject().apply {
-                        put("role", "system")
-                        put("content", "Instructions:\n" +
-                                "- **Search:** Use the search bar under the LumosLibrary logo on the home page to access the Search page. Users can search by category, author, location, ISBN-13, or description. You cannot rent or return book when searching for books and items\n" +
-                                "- **Rent:** Click the left button below the search bar to access the Scan User ID page. Users scan their barcode ID or enter an 8-digit ID. Next, they scan the item, proceed to payment (a refundable deposit is required), and confirm the rental.\n" +
-                                "- **Return:** Click the right button below the search bar to return items. Users scan their ID, scan items to return, and confirm. Late fees are applied if overdue.")
                     })
                     put(JSONObject().apply {
                         put("role", "user")
@@ -116,31 +121,28 @@ class HelpPageActivity : AppCompatActivity() {
                 val response = client.newCall(request).execute()
                 val responseBody = response.body?.string()
 
-                if (responseBody != null) {
-                    val jsonResponse = JSONObject(responseBody)
+                runOnUiThread {
+                    loadingIndicator.visibility = View.GONE // Hide loading
 
-                    if (jsonResponse.has("error")) {
-                        val errorMessage = jsonResponse.optJSONObject("error")?.optString("message", "Unknown error")
-                        runOnUiThread {
+                    if (responseBody != null) {
+                        val jsonResponse = JSONObject(responseBody)
+                        if (jsonResponse.has("error")) {
+                            val errorMessage = jsonResponse.optJSONObject("error")?.optString("message", "Unknown error")
                             responseText.text = "API Error: $errorMessage"
-                        }
-                    } else {
-                        val aiResponse = jsonResponse.optJSONArray("choices")
-                            ?.optJSONObject(0)
-                            ?.optJSONObject("message")
-                            ?.optString("content", "No response") ?: "No response"
-
-                        runOnUiThread {
+                        } else {
+                            val aiResponse = jsonResponse.optJSONArray("choices")
+                                ?.optJSONObject(0)
+                                ?.optJSONObject("message")
+                                ?.optString("content", "No response") ?: "No response"
                             responseText.text = aiResponse.trim()
                         }
-                    }
-                } else {
-                    runOnUiThread {
+                    } else {
                         responseText.text = "Error: Empty response from API"
                     }
                 }
             } catch (e: Exception) {
                 runOnUiThread {
+                    loadingIndicator.visibility = View.GONE // Hide loading
                     responseText.text = "Error: ${e.message}"
                 }
             }
@@ -183,5 +185,11 @@ class HelpPageActivity : AppCompatActivity() {
     private fun hideKeyboard(view: View) {
         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        audio.destroy()
+        backButton.onDestroy()
     }
 }

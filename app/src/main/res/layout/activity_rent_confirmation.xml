@@ -36,6 +36,32 @@
             android:orientation="vertical"
             android:padding="16dp"/>
     </ScrollView>
+  
+    <!--Confetti-->
+    <nl.dionsegijn.konfetti.xml.KonfettiView
+        android:id = "@+id/rentConf_konfettiView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!--Checked out items
+    <include
+        layout="@layout/item_display_due_date"
+        android:id="@+id/rentConf_item"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/rentConf_horizGuide_list"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <include
+        layout="@layout/item_display_due_date"
+        android:id="@+id/rentConf_item2"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/rentConf_item"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <!--Logout Button-->
     <androidx.appcompat.widget.AppCompatButton

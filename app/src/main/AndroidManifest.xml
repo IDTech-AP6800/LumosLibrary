@@ -39,6 +39,7 @@
         <activity
             android:name=".RentConfirmationActivity"
             android:exported="true" />
+        </activity>
         <activity
             android:name=".ScanToPayActivity"
             android:exported="false" />

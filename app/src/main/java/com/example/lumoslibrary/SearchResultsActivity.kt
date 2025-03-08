@@ -16,12 +16,15 @@ class SearchResultsActivity : AppCompatActivity() {
     private lateinit var itemCardContainer: LinearLayout
     private lateinit var searchQueryEditText: EditText
 
+    private lateinit var helpButton: HelpButton
+    private lateinit var backButton: BackButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_results)
 
-        HelpButton(this)
-        BackButton(this)
+        helpButton = HelpButton(this)
+        backButton = BackButton(this)
 
         // Initialize searchInventory and itemCardContainer
         searchInventory = SearchInventory(this, "items.json")
@@ -89,5 +92,12 @@ class SearchResultsActivity : AppCompatActivity() {
                 itemCardContainer.addView(itemView)
             }
         }
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        helpButton.onDestroy()
+        backButton.onDestroy()
     }
 }
