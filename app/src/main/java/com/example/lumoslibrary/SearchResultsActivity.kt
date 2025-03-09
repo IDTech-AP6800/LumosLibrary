@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -77,7 +78,7 @@ class SearchResultsActivity : AppCompatActivity() {
                     itemView.findViewById<TextView>(R.id.card_field1).text = item.itemType
                     itemView.findViewById<TextView>(R.id.card_field2).text = item.title
                     itemView.findViewById<TextView>(R.id.card_field3).text = item.author
-                    itemView.findViewById<TextView>(R.id.card_field4).text = "Aisle: ${item.location}"
+                    itemView.findViewById<TextView>(R.id.card_field4).text = item.location
                 }
                 else if (item.itemType == "equipment") {
                     itemView.findViewById<TextView>(R.id.card_field1).text = item.itemType
@@ -104,6 +105,8 @@ class SearchResultsActivity : AppCompatActivity() {
         val itemImage = dialogView.findViewById<ImageView>(R.id.popup_image)
         val itemLocation = dialogView.findViewById<TextView>(R.id.popup_location)
 
+        val closeButton = dialogView.findViewById<ImageButton>(R.id.close_icon)
+
         // Set item details
         itemTitle.text = item.title
         itemDesc.text = item.description
@@ -118,7 +121,15 @@ class SearchResultsActivity : AppCompatActivity() {
             .setCancelable(true)
             .create()
 
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
         dialog.show()
+
+        closeButton.setOnClickListener{
+            dialog.dismiss()
+        }
+
+
     }
 
 }
