@@ -77,7 +77,7 @@ class SearchResultsActivity : AppCompatActivity() {
                     itemView.findViewById<TextView>(R.id.card_field1).text = item.itemType
                     itemView.findViewById<TextView>(R.id.card_field2).text = item.title
                     itemView.findViewById<TextView>(R.id.card_field3).text = item.author
-                    itemView.findViewById<TextView>(R.id.card_field4).text = "Aisle:  ${item.location}"
+                    itemView.findViewById<TextView>(R.id.card_field4).text = "Aisle: ${item.location}"
                 }
                 else if (item.itemType == "equipment") {
                     itemView.findViewById<TextView>(R.id.card_field1).text = item.itemType
@@ -86,8 +86,39 @@ class SearchResultsActivity : AppCompatActivity() {
                     itemView.findViewById<TextView>(R.id.card_field4).text = item.location
                 }
 
+                // Set Click Listener to Open Popup
+                itemView.setOnClickListener {
+                    showItemPopup(item)
+                }
+
                 itemCardContainer.addView(itemView)
             }
         }
     }
+
+    private fun showItemPopup(item: Item) {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.item_popup, null)
+
+        val itemTitle = dialogView.findViewById<TextView>(R.id.popup_title)
+        val itemDesc = dialogView.findViewById<TextView>(R.id.popup_description)
+        val itemImage = dialogView.findViewById<ImageView>(R.id.popup_image)
+        val itemLocation = dialogView.findViewById<TextView>(R.id.popup_location)
+
+        // Set item details
+        itemTitle.text = item.title
+        itemDesc.text = item.description
+        itemLocation.text = "Location: ${item.location}"
+        val imageResId = resources.getIdentifier(item.image.replace(".jpg", ""), "drawable", packageName)
+        if (imageResId != 0) {
+            itemImage.setImageResource(imageResId)
+        }
+
+        val dialog = android.app.AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setCancelable(true)
+            .create()
+
+        dialog.show()
+    }
+
 }
