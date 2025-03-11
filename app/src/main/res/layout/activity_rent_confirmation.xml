@@ -36,6 +36,12 @@
             android:orientation="vertical"
             android:padding="16dp"/>
     </ScrollView>
+  
+    <!--Confetti-->
+    <nl.dionsegijn.konfetti.xml.KonfettiView
+        android:id = "@+id/rentConf_konfettiView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <!--Logout Button-->
     <androidx.appcompat.widget.AppCompatButton

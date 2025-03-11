@@ -28,6 +28,8 @@ class TapSwipeInsertPaymentActivity : AppCompatActivity() {
     private lateinit var tapCardOption: LinearLayout
     private lateinit var qrCodeButton: ImageButton
     private var selectedPaymentMethod: String? = null
+    private val audio: Audio = Audio()
+    private lateinit var backButton: BackButton
 
     private var devices: List<String> = emptyList()
     private var connectedDeviceId: String? = null
@@ -37,7 +39,7 @@ class TapSwipeInsertPaymentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tap_swipe_insert_payment)
-        BackButton(this)
+        backButton = BackButton(this)
 
         val totalDueTextView: TextView = findViewById(R.id.heading)
         totalDueTextView.text = "Total Due: $${String.format("%.2f", RentSession.totalDue)}"
@@ -52,19 +54,22 @@ class TapSwipeInsertPaymentActivity : AppCompatActivity() {
 
         // This area changes the UI + The calls to the ZSDK
         // 1 = MSR, 2 = CTLS, 4 = EMV
-        insertCardOption.setOnClickListener {
+        insertCardOption.setOnClickListener(1000L) {
+            audio.playClickAudio(this)
             selectPaymentMethod(insertCardOption, "Insert")
             cancelTransaction() // Need to test this
             currPayment = 4
             startTransaction(currPayment)
         }
-        swipeCardOption.setOnClickListener {
+        swipeCardOption.setOnClickListener(1000L) {
+            audio.playClickAudio(this)
             selectPaymentMethod(swipeCardOption, "Swipe")
             cancelTransaction()
             currPayment = 1
             startTransaction(currPayment)
         }
-        tapCardOption.setOnClickListener {
+        tapCardOption.setOnClickListener(1000L) {
+            audio.playClickAudio(this)
             selectPaymentMethod(tapCardOption, "Tap")
             cancelTransaction()
             currPayment = 2
@@ -72,7 +77,8 @@ class TapSwipeInsertPaymentActivity : AppCompatActivity() {
         }
 
         // qrCodeButton Navigates to pay with scanner
-        qrCodeButton.setOnClickListener{
+        qrCodeButton.setOnClickListener(1000L){
+            audio.playClickAudio(this)
             cancelTransaction()
             val intent = Intent(this, QrCodeActivity::class.java)
             startActivity(intent)
@@ -184,6 +190,8 @@ class TapSwipeInsertPaymentActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         cancelTransaction()
+        audio.destroy()
+        backButton.onDestroy()
     }
 
     companion object {

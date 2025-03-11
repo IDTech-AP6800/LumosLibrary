@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -16,12 +17,15 @@ class SearchResultsActivity : AppCompatActivity() {
     private lateinit var itemCardContainer: LinearLayout
     private lateinit var searchQueryEditText: EditText
 
+    private lateinit var helpButton: HelpButton
+    private lateinit var backButton: BackButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_results)
 
-        HelpButton(this)
-        BackButton(this)
+        helpButton = HelpButton(this)
+        backButton = BackButton(this)
 
         // Initialize searchInventory and itemCardContainer
         searchInventory = SearchInventory(this, "items.json")
@@ -77,7 +81,7 @@ class SearchResultsActivity : AppCompatActivity() {
                     itemView.findViewById<TextView>(R.id.card_field1).text = item.itemType
                     itemView.findViewById<TextView>(R.id.card_field2).text = item.title
                     itemView.findViewById<TextView>(R.id.card_field3).text = item.author
-                    itemView.findViewById<TextView>(R.id.card_field4).text = "Aisle:  ${item.location}"
+                    itemView.findViewById<TextView>(R.id.card_field4).text = item.location
                 }
                 else if (item.itemType == "equipment") {
                     itemView.findViewById<TextView>(R.id.card_field1).text = item.itemType
@@ -86,8 +90,56 @@ class SearchResultsActivity : AppCompatActivity() {
                     itemView.findViewById<TextView>(R.id.card_field4).text = item.location
                 }
 
+                // Set Click Listener to Open Popup
+                itemView.setOnClickListener {
+                    showItemPopup(item)
+                }
+
                 itemCardContainer.addView(itemView)
             }
         }
+
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        helpButton.onDestroy()
+        backButton.onDestroy()
+    }
+
+    private fun showItemPopup(item: Item) {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.item_popup, null)
+
+        val itemTitle = dialogView.findViewById<TextView>(R.id.popup_title)
+        val itemDesc = dialogView.findViewById<TextView>(R.id.popup_description)
+        val itemImage = dialogView.findViewById<ImageView>(R.id.popup_image)
+        val itemLocation = dialogView.findViewById<TextView>(R.id.popup_location)
+
+        val closeButton = dialogView.findViewById<ImageButton>(R.id.close_icon)
+
+        // Set item details
+        itemTitle.text = item.title
+        itemDesc.text = item.description
+        itemLocation.text = "Location: ${item.location}"
+        val imageResId = resources.getIdentifier(item.image.replace(".jpg", ""), "drawable", packageName)
+        if (imageResId != 0) {
+            itemImage.setImageResource(imageResId)
+        }
+
+        val dialog = android.app.AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setCancelable(true)
+            .create()
+
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        dialog.show()
+
+        closeButton.setOnClickListener{
+            dialog.dismiss()
+        }
+
+
+    }
+
 }
