@@ -235,7 +235,14 @@ class ReturnScanActivity : AppCompatActivity() {
                 .trim()
 
             CurrentSession.checkedOut = scannedItemsList
-            RentSession.totalDue = totalDueString.toDouble()
+//            RentSession.totalDue = totalDueString.toDouble()
+
+            // Ensure totalDueString is not empty before parsing
+            RentSession.totalDue = if (totalDueString.isNotEmpty()) {
+                totalDueString.toDouble()
+            } else {
+                0.0 // Default to 0.0 if empty
+            }
 
             Log.d(TAG, "depositTotal: ${depositTotal.text} \n " +
                     "totalDueString: $totalDueString")
@@ -255,7 +262,8 @@ class ReturnScanActivity : AppCompatActivity() {
 //            startActivity(intent)
 
             Handler(Looper.getMainLooper()).postDelayed({
-                startActivity(Intent(this, ReturnConfirmationActivity::class.java))
+                    startActivity(Intent(this, ReturnConfirmationActivity::class.java))
+                    Log.d(TAG, "Total due is zero, navigating to SomeOtherActivity")
             }, 300) // Delay by 300ms
 
         }
