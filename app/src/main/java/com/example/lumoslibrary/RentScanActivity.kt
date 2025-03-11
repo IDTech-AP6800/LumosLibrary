@@ -141,7 +141,7 @@ class RentScanActivity : AppCompatActivity() {
 
         if (matchedItem != null) {
             addScannedItem(matchedItem)
-            Toast.makeText(this, "Scanned: ${matchedItem.title}", Toast.LENGTH_LONG).show()
+//            Toast.makeText(this, "Scanned: ${matchedItem.title}", Toast.LENGTH_LONG).show()
             Log.d(TAG, "Matched Book: ${matchedItem.title}, Location: ${matchedItem.location}")
         } else {
             Toast.makeText(this, "No matching book found", Toast.LENGTH_SHORT).show()
@@ -155,7 +155,7 @@ class RentScanActivity : AppCompatActivity() {
         if (matchedItems.isNotEmpty()) {
             val matchedItem = matchedItems.first()
             addScannedItem(matchedItem)
-            Toast.makeText(this, "Scanned: ${matchedItem.title}", Toast.LENGTH_LONG).show()
+//            Toast.makeText(this, "Scanned: ${matchedItem.title}", Toast.LENGTH_LONG).show()
             Log.d(TAG, "Matched Equipment: ${matchedItem.title}, Location: ${matchedItem.location}")
         } else {
             Toast.makeText(this, "No matching equipment found", Toast.LENGTH_SHORT).show()

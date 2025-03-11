@@ -138,7 +138,7 @@ class ReturnScanActivity : AppCompatActivity() {
 
         if (matchedItem != null) {
             addScannedItem(matchedItem)
-            Toast.makeText(this, "Scanned: ${matchedItem.title}", Toast.LENGTH_LONG).show()
+//            Toast.makeText(this, "Scanned: ${matchedItem.title}", Toast.LENGTH_LONG).show()
             Log.d(TAG, "Matched Book: ${matchedItem.title}, Location: ${matchedItem.location}")
         } else {
             Toast.makeText(this, "No matching book found", Toast.LENGTH_SHORT).show()
@@ -152,7 +152,7 @@ class ReturnScanActivity : AppCompatActivity() {
         if (matchedItems.isNotEmpty()) {
             val matchedItem = matchedItems.first()
             addScannedItem(matchedItem)
-            Toast.makeText(this, "Scanned: ${matchedItem.title}", Toast.LENGTH_LONG).show()
+//            Toast.makeText(this, "Scanned: ${matchedItem.title}", Toast.LENGTH_LONG).show()
             Log.d(TAG, "Matched Equipment: ${matchedItem.title}, Location: ${matchedItem.location}")
         } else {
             Toast.makeText(this, "No matching equipment found", Toast.LENGTH_SHORT).show()
@@ -161,13 +161,25 @@ class ReturnScanActivity : AppCompatActivity() {
     }
 
     private fun addScannedItem(item: Item) {
+        val currentUser = UserData(this, "users.json").searchByUserId(CurrentSession.userID.toString())
+
+        // Check if the item is in the user's checkedOutItems
+        val isItemCheckedOut = currentUser!!.checkedOutItems.any { it.name == item.title }
+
+        if (!isItemCheckedOut) {
+            Toast.makeText(this, "This item was not checked out by you.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         if (scannedItemsSet.add(item.title)) {
             scannedItemsList.add(item)
             updateItemCards()
+//            Toast.makeText(this, "Item added: ${item.title}", Toast.LENGTH_SHORT).show()
+            Log.d(TAG, "Item added for return: ${item.title}")
         } else {
-            Toast.makeText(this, "Item already scanned", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Item already scanned.", Toast.LENGTH_SHORT).show()
         }
-        calculateSecurityDepositTotal()
+        calculateRefundTotal()
     }
 
     private fun removeScannedItem(item: Item) {
@@ -175,7 +187,7 @@ class ReturnScanActivity : AppCompatActivity() {
             scannedItemsList.remove(item)
             updateItemCards()
         }
-        calculateSecurityDepositTotal()
+        calculateRefundTotal()
     }
 
     private fun updateItemCards() {
@@ -243,36 +255,41 @@ class ReturnScanActivity : AppCompatActivity() {
 //            startActivity(intent)
 
             Handler(Looper.getMainLooper()).postDelayed({
-                if (RentSession.totalDue == 0.0) {
-                    startActivity(Intent(this, RentConfirmationActivity::class.java)) // Replace with your intended activity
-                    Log.d(TAG, "Total due is zero, navigating to SomeOtherActivity")
-                } else {
-                    startActivity(Intent(this, TapSwipeInsertPaymentActivity::class.java))
-                    Log.d(TAG, "Navigating to TapSwipeInsertPaymentActivity")
-                }
+                startActivity(Intent(this, ReturnConfirmationActivity::class.java))
             }, 300) // Delay by 300ms
 
         }
     }
 
-    private fun calculateSecurityDepositTotal() {
+    private fun calculateRefundTotal() {
 //        val totalDeposit = scannedItemsList.sumOf { it.security_deposit }
 //        Log.d(TAG, "calculateSecurityDepositTotal: $totalDeposit")
 
-        val depositTotal = findViewById<View>(R.id.total_refund_amount) as TextView
+        val refundTotal = findViewById<View>(R.id.total_refund_amount) as TextView
+        val currentUser = UserData(this, "users.json").searchByUserId(CurrentSession.userID.toString())
 
         var total = 0f
+        var deduction = 0f
 
 //        Log.d(TAG, "in here!")
         for (item in scannedItemsList) {
+            val checkedOutItem = currentUser!!.checkedOutItems.find { it.name == item.title }
+
             if (item.security_deposit > 0) {
 //                Log.d(TAG, "${item.title}: has desposit of ${item.security_deposit}")
                 total += item.security_deposit
             }
+
+            if (checkedOutItem!!.isLate) {
+                deduction += 2f
+            }
         }
 
+        // Apply penalty deduction
+        total -= deduction
+
         val totalText = String.format("$%.2f", total)
-        depositTotal.text = totalText
+        refundTotal.text = totalText
 
 //        Log.d(TAG, "total is: $total")
 //        val totalText = String.format("%.2f", totalDeposit)
@@ -291,7 +308,7 @@ class ReturnScanActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d(TAG, "RentScanActivity is being destroyed")
+        Log.d(TAG, "ReturnScanActivity is being destroyed")
         barcodeScanner.close()
         scanDelayHandler.removeCallbacksAndMessages(null)
     }
