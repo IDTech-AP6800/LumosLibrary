@@ -34,14 +34,11 @@ class LoginActivity : AppCompatActivity() {
     private var userID: String? = null
 
     private var isProcessingScan = false
-    private val audio: Audio = Audio()
-    private lateinit var backButton: BackButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
-        backButton = BackButton(this)
+        BackButton(this)
 
         searchUsers = UserData(this, "users.json")
 
@@ -83,8 +80,7 @@ class LoginActivity : AppCompatActivity() {
             }
         })
 
-        continueButton.setOnClickListener(1000L) {
-            audio.playClickAudio(this)
+        continueButton.setOnClickListener {
             val enteredId = userIdEditText.text.toString().replace("-", "").trim()
             if (isValidUserID(enteredId)) {
                 userID = enteredId
@@ -163,12 +159,20 @@ class LoginActivity : AppCompatActivity() {
 
     private fun nextActivity() {
         CurrentSession.userID = userID.toString()
-        val intent = if (CurrentSession.state == 1) { // Return
-            Intent(this, RentScanActivity::class.java)
+
+        val user = searchUsers.searchByUserId(userID.toString())
+
+        if (CurrentSession.state == 2) { // Return
+            if (user != null && user.checkedOutItems.isNotEmpty()) {
+                val intent = Intent(this, ReturnScanActivity::class.java)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "You have no checked-out items to return.", Toast.LENGTH_SHORT).show()
+            }
         } else { // Rent
-            Intent(this, ReturnScanActivity::class.java)
+            val intent = Intent(this, RentScanActivity::class.java)
+            startActivity(intent)
         }
-        startActivity(intent)
     }
 
     private fun requestPermissions() {
@@ -182,8 +186,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         barcodeScanner.close()
-        audio.destroy()
-        backButton.onDestroy()
     }
 
     companion object {
