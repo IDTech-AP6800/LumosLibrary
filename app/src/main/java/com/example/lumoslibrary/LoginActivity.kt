@@ -159,9 +159,9 @@ class LoginActivity : AppCompatActivity() {
 
     private fun nextActivity() {
         CurrentSession.userID = userID.toString()
-        val intent = if (CurrentSession.state == 1) { // Return
+        val intent = if (CurrentSession.state == 1) { // Rent
             Intent(this, RentScanActivity::class.java)
-        } else { // Rent
+        } else { // Return
             Intent(this, ReturnScanActivity::class.java)
         }
         startActivity(intent)
