@@ -9,6 +9,7 @@ import nl.dionsegijn.konfetti.core.Party
 import nl.dionsegijn.konfetti.core.emitter.Emitter
 import nl.dionsegijn.konfetti.xml.KonfettiView
 import java.util.concurrent.TimeUnit
+import kotlin.random.Random
 
 class ReturnConfirmationActivity : AppCompatActivity() {
 
@@ -22,6 +23,13 @@ class ReturnConfirmationActivity : AppCompatActivity() {
         val button = findViewById<AppCompatButton>(R.id.returnConf_button)
 
         button.setOnClickListener(1000L){
+            val userData = UserData(this, "users.json")
+            val currentUserId = CurrentSession.userID  // Get current user ID
+            val newCheckedOutItems = CurrentSession.checkedOut?.map { item ->
+                CheckedOutItem(item.title, isLate = if (item.security_deposit == 0) false else Random.nextBoolean())
+            } ?: emptyList()
+
+            userData.removeItem(currentUserId, newCheckedOutItems)
             audio.playClickAudio(this)
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
