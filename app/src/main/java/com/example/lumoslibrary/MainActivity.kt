@@ -1,6 +1,12 @@
 package com.example.lumoslibrary
 
+import android.content.Context
 import android.content.Intent
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorManager
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,17 +18,27 @@ import com.idtech.zsdk_client.Client
 import com.idtech.zsdk_client.GetDevicesAsync
 import android.view.animation.AlphaAnimation
 import android.os.Handler
+import android.provider.Settings
 import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
+import androidx.annotation.RequiresApi
 import kotlin.random.Random
+import android.hardware.SensorEventListener
 
-class MainActivity : AppCompatActivity() {
+
+class MainActivity : AppCompatActivity(), SensorEventListener{
 
     private val viewModel: MainViewModel by viewModels()
+    private lateinit var sensorManager: SensorManager
+    private var proximity: Sensor? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // Proximity sensor
+        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        proximity = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY)
 
         // Start the star fading animation in MainActivity
         startSporadicStarFadingAnimation()
@@ -431,5 +447,81 @@ class MainActivity : AppCompatActivity() {
             view.alpha = 1.0f
             view.clearAnimation()
         }
+    }
+
+    //Proxomity sensor code
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
+        //TODO? Do something if accuracy changes
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    override //-> Uncomment when doing screen brightness
+    fun onSensorChanged(event: SensorEvent?) {
+        val distance = event!!.values[0]
+        Log.d(SensorActivity.TAG, "distance=$distance")
+
+
+        //Brightness val: 0 - 255 (no brightness to full)
+
+        val context = applicationContext
+        val settingsCanWrite = hasWriteSettingsPermission(context)
+        // These values are hypothetical, and control brightness
+        val minDistance = 50
+        var farValue = 50
+        var closeValue = 255
+        if (!settingsCanWrite) {
+            changeWriteSettingsPermission(context)
+        }else {
+            if (distance < minDistance) {
+                //50 is hypothetical and refers to 50 cm
+                changeScreenBrightness(context, closeValue)
+            }
+            else {
+                changeScreenBrightness(context, farValue)
+            }
+        }
+
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        proximity?.also { proximity ->
+            sensorManager.registerListener(this, proximity,
+                SensorManager.SENSOR_DELAY_NORMAL)
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        sensorManager.unregisterListener(this)
+    }
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun hasWriteSettingsPermission(context: Context): Boolean{
+        var ret = true
+        ret = Settings.System.canWrite(context)
+        return ret
+    }
+
+    private fun changeWriteSettingsPermission(context: Context) {
+        val intent = Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS)
+        intent.setData(Uri.parse("package:$packageName"))
+        startActivity(intent)
+    }
+
+    private fun changeScreenBrightness(context: Context, screenBrightnessValue: Int) {
+        //Changes screen brightness to manual
+        Settings.System.putInt(
+            context.contentResolver,
+            Settings.System.SCREEN_BRIGHTNESS_MODE,
+            Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL
+        )
+        //Applies the given brightness
+        Settings.System.putInt(
+            context.contentResolver,
+            Settings.System.SCREEN_BRIGHTNESS, screenBrightnessValue
+        )
     }
 }

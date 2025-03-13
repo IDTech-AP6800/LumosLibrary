@@ -104,6 +104,6 @@ class SensorActivity : Activity(), SensorEventListener {
     }
 
     companion object {
-        private const val TAG = "SensorActivity"
+        const val TAG = "SensorActivity"
     }
 }
