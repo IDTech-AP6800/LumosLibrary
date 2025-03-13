@@ -3,10 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <!-- Lumos Light Icon -->
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/lumos_light"
@@ -22,581 +19,69 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.494" />
+        app:layout_constraintVertical_bias="0.17" />
 
-    <!-- Intro Star Constellation 1 -->
-
+    <!-- Swapped Elements (Initially Invisible) -->
     <ImageView
-        android:id="@+id/star1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="272dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="72dp"
-        android:maxHeight="72dp"
-        android:src="@drawable/screensaver_star"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.282" />
-
-    <ImageView
-        android:id="@+id/line1_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="200dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="90dp"
-        android:maxHeight="90dp"
-        android:rotation="-7"
-        android:src="@drawable/screensaver_line_5_1"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.289" />
-
-    <ImageView
-        android:id="@+id/star2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="184dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="72dp"
-        android:maxHeight="72dp"
-        android:src="@drawable/screensaver_star"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.284" />
-
-    <ImageView
-        android:id="@+id/line1_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="104dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="95dp"
-        android:maxHeight="95dp"
-        android:src="@drawable/screensaver_line_1_2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.298" />
-
-    <ImageView
-        android:id="@+id/star3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="88dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="72dp"
-        android:maxHeight="72dp"
-        android:src="@drawable/screensaver_star"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.298" />
-
-    <ImageView
-        android:id="@+id/line5_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="146dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="100dp"
-        android:maxHeight="100dp"
-        android:src="@drawable/screensaver_line_5_2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.682" />
-
-    <ImageView
-        android:id="@+id/line3_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="304dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="80dp"
-        android:maxHeight="80dp"
-        android:src="@drawable/screensaver_line_3_1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.476" />
-
-    <ImageView
-        android:id="@+id/line4_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="132dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="80dp"
-        android:maxHeight="70dp"
-        android:src="@drawable/screensaver_line_4_2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.629" />
-
-    <ImageView
-        android:id="@+id/star9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="165dp"
-        android:layout_marginEnd="232dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="72dp"
-        android:maxHeight="72dp"
-        android:src="@drawable/screensaver_star"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.693" />
-
-    <ImageView
-        android:id="@+id/line3_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="116dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="80dp"
-        android:maxHeight="80dp"
-        android:src="@drawable/screensaver_line_3_2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.497" />
-
-    <ImageView
-        android:id="@+id/line5_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="248dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="80dp"
-        android:maxHeight="80dp"
-        android:src="@drawable/screensaver_line_5_1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.679" />
-
-    <ImageView
-        android:id="@+id/line4_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="316dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="80dp"
-        android:maxHeight="80dp"
-        android:src="@drawable/screensaver_line_4_1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.616" />
-
-    <ImageView
-        android:id="@+id/star7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="116dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="72dp"
-        android:maxHeight="72dp"
-        android:src="@drawable/screensaver_star"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.562" />
-
-    <ImageView
-        android:id="@+id/star5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="168dp"
-        android:layout_marginEnd="100dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="72dp"
-        android:maxHeight="72dp"
-        android:src="@drawable/screensaver_star"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.43" />
-
-    <ImageView
-        android:id="@+id/star10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="133dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="72dp"
-        android:maxHeight="72dp"
-        android:src="@drawable/screensaver_star"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.681" />
-
-    <ImageView
-        android:id="@+id/line2_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="288dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="80dp"
-        android:maxHeight="80dp"
-        android:src="@drawable/screensaver_line_2_1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.338" />
-
-    <ImageView
-        android:id="@+id/star4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="288dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="72dp"
-        android:maxHeight="72dp"
-        android:src="@drawable/screensaver_star"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.416" />
-
-    <ImageView
-        android:id="@+id/line2_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="100dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="80dp"
-        android:maxHeight="80dp"
-        android:src="@drawable/screensaver_line_2_2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.35" />
-
-    <ImageView
-        android:id="@+id/star8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="316dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="72dp"
-        android:maxHeight="72dp"
-        android:src="@drawable/screensaver_star"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.674" />
-
-    <ImageView
-        android:id="@+id/star6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="302dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="72dp"
-        android:maxHeight="72dp"
-        android:src="@drawable/screensaver_star"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.546" />
-
-    <!-- Intro Star Constellation 2 -->
-
-    <ImageView
-        android:id="@+id/starv2_7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="92dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="72dp"
-        android:maxHeight="72dp"
-        android:src="@drawable/screensaver_star"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
-
-    <ImageView
-        android:id="@+id/starv2_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="264dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="72dp"
-        android:maxHeight="72dp"
-        android:src="@drawable/screensaver_star"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.453" />
-
-    <ImageView
-        android:id="@+id/starv2_10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="108dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="72dp"
-        android:maxHeight="72dp"
-        android:src="@drawable/screensaver_star"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.717" />
-
-    <ImageView
-        android:id="@+id/starv2_9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="165dp"
-        android:layout_marginEnd="204dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="72dp"
-        android:maxHeight="72dp"
-        android:src="@drawable/screensaver_star"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.729" />
-
-    <ImageView
-        android:id="@+id/linev2_3_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="278dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="80dp"
-        android:maxHeight="80dp"
-        android:src="@drawable/screensaver_line_3_1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.516" />
-
-    <ImageView
-        android:id="@+id/linev2_4_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="107dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="80dp"
-        android:maxHeight="70dp"
-        android:src="@drawable/screensaver_line_4_2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.668" />
-
-    <ImageView
-        android:id="@+id/linev2_2_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="264dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="80dp"
-        android:maxHeight="80dp"
-        android:src="@drawable/screensaver_line_2_1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.378" />
-
-    <ImageView
-        android:id="@+id/starv2_5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="168dp"
-        android:layout_marginEnd="76dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="72dp"
-        android:maxHeight="72dp"
-        android:src="@drawable/screensaver_star"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.468" />
-
-    <ImageView
-        android:id="@+id/starv2_8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="291dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="72dp"
-        android:maxHeight="72dp"
-        android:src="@drawable/screensaver_star"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.71" />
-
-    <ImageView
-        android:id="@+id/linev2_3_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="92dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="80dp"
-        android:maxHeight="80dp"
-        android:src="@drawable/screensaver_line_3_2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.537" />
-
-    <ImageView
-        android:id="@+id/starv2_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="248dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="72dp"
-        android:maxHeight="72dp"
-        android:src="@drawable/screensaver_star"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.321" />
-
-    <ImageView
-        android:id="@+id/linev2_5_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="223dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="80dp"
-        android:maxHeight="80dp"
-        android:src="@drawable/screensaver_line_5_1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.714" />
-
-    <ImageView
-        android:id="@+id/starv2_6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="276dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="72dp"
-        android:maxHeight="72dp"
-        android:src="@drawable/screensaver_star"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.583" />
-
-    <ImageView
-        android:id="@+id/linev2_4_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="290dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="80dp"
-        android:maxHeight="80dp"
-        android:src="@drawable/screensaver_line_4_1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.656" />
-
-    <ImageView
-        android:id="@+id/starv2_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="160dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="72dp"
-        android:maxHeight="72dp"
-        android:src="@drawable/screensaver_star"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.321" />
-
-    <ImageView
-        android:id="@+id/starv2_3"
+        android:id="@+id/lumos_library_dimmed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="166dp"
         android:layout_marginEnd="60dp"
         android:adjustViewBounds="true"
+        android:maxWidth="290dp"
+        android:maxHeight="63dp"
+        android:src="@drawable/screensaver_lumos_library_dimmed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.523"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/lumos_light_glow"
+        android:layout_width="73dp"
+        android:layout_height="82dp"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="168dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="72dp"
+        android:maxHeight="72dp"
+        android:src="@drawable/screensaver_lightbulb_glow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.158"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/lumos_library"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="60dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="290dp"
+        android:maxHeight="63dp"
+        android:src="@drawable/screensaver_lumos_library"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.523"
+        android:visibility="gone"/>
+
+    <!-- Book Star Constellation -->
+
+    <ImageView
+        android:id="@+id/star_book1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="356dp"
+        android:adjustViewBounds="true"
         android:maxWidth="72dp"
         android:maxHeight="72dp"
         android:src="@drawable/screensaver_star"
@@ -604,78 +89,558 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.335" />
+        app:layout_constraintVertical_bias="0.225" />
 
     <ImageView
-        android:id="@+id/linev2_5_2"
+        android:id="@+id/book_line1_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="166dp"
-        android:layout_marginEnd="120dp"
+        android:layout_marginEnd="258dp"
         android:adjustViewBounds="true"
-        android:maxWidth="100dp"
-        android:maxHeight="100dp"
-        android:src="@drawable/screensaver_line_5_2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.715" />
-
-    <ImageView
-        android:id="@+id/linev2_1_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="78dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="95dp"
-        android:maxHeight="95dp"
-        android:src="@drawable/screensaver_line_1_2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.333" />
-
-    <ImageView
-        android:id="@+id/linev2_1_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="166dp"
-        android:layout_marginEnd="172dp"
-        android:adjustViewBounds="true"
-        android:maxWidth="90dp"
-        android:maxHeight="90dp"
-        android:rotation="-7"
-        android:src="@drawable/screensaver_line_5_1"
+        android:maxWidth="115dp"
+        android:maxHeight="130dp"
+        android:rotation="0"
+        android:src="@drawable/screensaver_book_line1_1"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.326" />
+        app:layout_constraintVertical_bias="0.242" />
 
     <ImageView
-        android:id="@+id/linev2_2_2"
+        android:id="@+id/star_book2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="166dp"
-        android:layout_marginEnd="76dp"
+        android:layout_marginEnd="240dp"
         android:adjustViewBounds="true"
-        android:maxWidth="80dp"
-        android:maxHeight="80dp"
-        android:src="@drawable/screensaver_line_2_2"
+        android:maxWidth="72dp"
+        android:maxHeight="72dp"
+        android:src="@drawable/screensaver_star"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.39" />
+        app:layout_constraintVertical_bias="0.241" />
+
+    <ImageView
+        android:id="@+id/book_line1_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="204dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="52dp"
+        android:maxHeight="62dp"
+        android:rotation="3"
+        android:src="@drawable/screensaver_book_line1_2"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.264" />
+
+    <ImageView
+        android:id="@+id/star_book3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="138dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="72dp"
+        android:maxHeight="72dp"
+        android:src="@drawable/screensaver_star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.241" />
+
+    <ImageView
+        android:id="@+id/book_line1_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="152dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="52dp"
+        android:maxHeight="62dp"
+        android:rotation="-3"
+        android:src="@drawable/screensaver_book_line1_3"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.264" />
+
+    <ImageView
+        android:id="@+id/star_book4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="36dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="72dp"
+        android:maxHeight="72dp"
+        android:src="@drawable/screensaver_star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.224" />
+
+    <ImageView
+        android:id="@+id/book_line1_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="52dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="100dp"
+        android:maxHeight="130dp"
+        android:rotation="0"
+        android:src="@drawable/screensaver_book_line1_4"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.24" />
+
+    <ImageView
+        android:id="@+id/star_book5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="190dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="72dp"
+        android:maxHeight="72dp"
+        android:src="@drawable/screensaver_star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.287" />
+
+    <ImageView
+        android:id="@+id/book_line2_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="370dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="92dp"
+        android:maxHeight="92dp"
+        android:rotation="0"
+        android:src="@drawable/screensaver_book_line2_1"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.270" />
+
+    <ImageView
+        android:id="@+id/star_book6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="356dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="72dp"
+        android:maxHeight="72dp"
+        android:src="@drawable/screensaver_star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.359" />
+
+    <ImageView
+        android:id="@+id/book_line2_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="204dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="91dp"
+        android:maxHeight="92dp"
+        android:rotation="0"
+        android:src="@drawable/screensaver_book_line2_2"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.340" />
+
+    <ImageView
+        android:id="@+id/star_book7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="168dp"
+        android:layout_marginEnd="190dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="72dp"
+        android:maxHeight="72dp"
+        android:src="@drawable/screensaver_star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.425" />
+
+    <ImageView
+        android:id="@+id/book_line2_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="50dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="92dp"
+        android:maxHeight="92dp"
+        android:rotation="0"
+        android:src="@drawable/screensaver_book_line2_3"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.268" />
+
+    <ImageView
+        android:id="@+id/star_book8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="36dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="72dp"
+        android:maxHeight="72dp"
+        android:src="@drawable/screensaver_star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.359" />
+
+    <ImageView
+        android:id="@+id/book_line3_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="370dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="92dp"
+        android:maxHeight="160dp"
+        android:rotation="0"
+        android:src="@drawable/screensaver_book_line3_1"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.49" />
+
+    <ImageView
+        android:id="@+id/star_book9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="356dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="72dp"
+        android:maxHeight="72dp"
+        android:src="@drawable/screensaver_star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.624" />
+
+    <ImageView
+        android:id="@+id/book_line3_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="204dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="92dp"
+        android:maxHeight="160dp"
+        android:rotation="0"
+        android:src="@drawable/screensaver_book_line3_2"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.570" />
+
+    <ImageView
+        android:id="@+id/star_book10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="168dp"
+        android:layout_marginEnd="190dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="72dp"
+        android:maxHeight="72dp"
+        android:src="@drawable/screensaver_star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.689" />
+
+    <ImageView
+        android:id="@+id/book_line3_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="50dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="92dp"
+        android:maxHeight="160dp"
+        android:rotation="0"
+        android:src="@drawable/screensaver_book_line3_3"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.488" />
+
+    <ImageView
+        android:id="@+id/star_book11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="36dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="72dp"
+        android:maxHeight="72dp"
+        android:src="@drawable/screensaver_star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.623" />
+
+    <ImageView
+        android:id="@+id/book_line4_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="370dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="92dp"
+        android:maxHeight="160dp"
+        android:rotation="0"
+        android:src="@drawable/screensaver_book_line4_1"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.720" />
+
+    <ImageView
+        android:id="@+id/star_book12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="356dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="72dp"
+        android:maxHeight="72dp"
+        android:src="@drawable/screensaver_star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.772" />
+
+    <ImageView
+        android:id="@+id/book_line5_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="168dp"
+        android:layout_marginEnd="256dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="120dp"
+        android:maxHeight="160dp"
+        android:rotation="3"
+        android:src="@drawable/screensaver_book_line5_1"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.777" />
+
+    <ImageView
+        android:id="@+id/star_book13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="240dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="72dp"
+        android:maxHeight="72dp"
+        android:src="@drawable/screensaver_star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.802" />
+
+    <ImageView
+        android:id="@+id/book_line5_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="156dp"
+        android:layout_marginEnd="206dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="52dp"
+        android:maxHeight="27dp"
+        android:rotation="7"
+        android:src="@drawable/screensaver_book_line5_2"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.818" />
+
+    <ImageView
+        android:id="@+id/book_line5_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="162dp"
+        android:layout_marginEnd="152dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="52dp"
+        android:maxHeight="27dp"
+        android:rotation="-7"
+        android:src="@drawable/screensaver_book_line5_3"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.820" />
+
+    <ImageView
+        android:id="@+id/star_book14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="136dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="72dp"
+        android:maxHeight="72dp"
+        android:src="@drawable/screensaver_star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.801" />
+
+    <ImageView
+        android:id="@+id/book_line5_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="160dp"
+        android:layout_marginEnd="52dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="100dp"
+        android:maxHeight="27dp"
+        android:rotation="-5"
+        android:src="@drawable/screensaver_book_line5_4"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.777" />
+
+    <ImageView
+        android:id="@+id/book_line4_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="152dp"
+        android:layout_marginEnd="50dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="52dp"
+        android:maxHeight="92dp"
+        android:rotation="0"
+        android:src="@drawable/screensaver_book_line4_3"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.723" />
+
+    <ImageView
+        android:id="@+id/star_book15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="36dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="72dp"
+        android:maxHeight="72dp"
+        android:src="@drawable/screensaver_star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.771" />
+
+    <ImageView
+        android:id="@+id/book_line4_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="204dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="100dp"
+        android:maxHeight="260dp"
+        android:rotation="0"
+        android:src="@drawable/screensaver_book_line4_2"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.797" />
+
+    <ImageView
+        android:id="@+id/star_book16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="166dp"
+        android:layout_marginEnd="190dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="72dp"
+        android:maxHeight="72dp"
+        android:src="@drawable/screensaver_star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.847" />
 
     <!-- Background stars -->
 
     <ImageView
-        android:id="@+id/bg_star1"
+        android:id="@+id/bg2_star1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="166dp"
@@ -692,75 +657,75 @@
         app:layout_constraintVertical_bias="0.122" />
 
     <ImageView
-        android:id="@+id/bg_star2"
+        android:id="@+id/bg2_star2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="166dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginEnd="36dp"
         android:adjustViewBounds="true"
+        android:alpha="0.5"
         android:maxWidth="72dp"
         android:maxHeight="72dp"
-        android:alpha="0.5"
         android:src="@drawable/screensaver_star"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.903" />
+        app:layout_constraintVertical_bias="0.93" />
 
     <ImageView
-        android:id="@+id/bg_star3"
+        android:id="@+id/bg2_star3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="166dp"
-        android:layout_marginEnd="332dp"
+        android:layout_marginEnd="364dp"
         android:adjustViewBounds="true"
+        android:alpha="0.5"
         android:maxWidth="72dp"
         android:maxHeight="72dp"
-        android:alpha="0.5"
         android:src="@drawable/screensaver_star"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.826" />
+        app:layout_constraintVertical_bias="0.868" />
 
     <ImageView
-        android:id="@+id/bg_star4"
+        android:id="@+id/bg2_star4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="166dp"
-        android:layout_marginEnd="88dp"
+        android:layout_marginEnd="92dp"
         android:adjustViewBounds="true"
+        android:alpha="0.5"
         android:maxWidth="72dp"
         android:maxHeight="72dp"
-        android:alpha="0.5"
         android:src="@drawable/screensaver_star"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.201" />
+        app:layout_constraintVertical_bias="0.176" />
 
     <ImageView
-        android:id="@+id/bg_star5"
+        android:id="@+id/bg2_star5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="166dp"
-        android:layout_marginEnd="344dp"
+        android:layout_marginEnd="272dp"
         android:adjustViewBounds="true"
+        android:alpha="0.5"
         android:maxWidth="72dp"
         android:maxHeight="72dp"
-        android:alpha="0.5"
         android:src="@drawable/screensaver_star"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.473" />
+        app:layout_constraintVertical_bias="0.389" />
 
     <ImageView
-        android:id="@+id/bg_star6"
+        android:id="@+id/bg2_star6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="166dp"
@@ -777,41 +742,41 @@
         app:layout_constraintVertical_bias="0.917" />
 
     <ImageView
-        android:id="@+id/bg_star7"
+        android:id="@+id/bg2_star7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="166dp"
-        android:layout_marginEnd="192dp"
+        android:layout_marginEnd="172dp"
         android:adjustViewBounds="true"
+        android:alpha="0.5"
         android:maxWidth="72dp"
         android:maxHeight="72dp"
-        android:alpha="0.5"
         android:src="@drawable/screensaver_star"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.108" />
+        app:layout_constraintVertical_bias="0.093" />
 
     <ImageView
-        android:id="@+id/bg_star8"
+        android:id="@+id/bg2_star8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="166dp"
-        android:layout_marginEnd="140dp"
+        android:layout_marginEnd="92dp"
         android:adjustViewBounds="true"
+        android:alpha="0.5"
         android:maxWidth="72dp"
         android:maxHeight="72dp"
-        android:alpha="0.5"
         android:src="@drawable/screensaver_star"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.813" />
+        app:layout_constraintVertical_bias="0.866" />
 
     <ImageView
-        android:id="@+id/bg_star9"
+        android:id="@+id/bg2_star9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="166dp"
@@ -828,92 +793,92 @@
         app:layout_constraintVertical_bias="0.286" />
 
     <ImageView
-        android:id="@+id/bg_star10"
+        android:id="@+id/bg2_star10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="166dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginEnd="88dp"
         android:adjustViewBounds="true"
+        android:alpha="0.5"
         android:maxWidth="72dp"
         android:maxHeight="72dp"
-        android:alpha="0.5"
         android:src="@drawable/screensaver_star"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.643" />
+        app:layout_constraintVertical_bias="0.686" />
 
     <ImageView
-        android:id="@+id/bg_star11"
+        android:id="@+id/bg2_star11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="166dp"
-        android:layout_marginEnd="108dp"
+        android:layout_marginEnd="92dp"
         android:adjustViewBounds="true"
+        android:alpha="0.5"
         android:maxWidth="72dp"
         android:maxHeight="72dp"
-        android:alpha="0.5"
         android:src="@drawable/screensaver_star"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.076" />
+        app:layout_constraintVertical_bias="0.073" />
 
     <ImageView
-        android:id="@+id/bg_star12"
+        android:id="@+id/bg2_star12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="166dp"
-        android:layout_marginEnd="248dp"
+        android:layout_marginEnd="272dp"
         android:adjustViewBounds="true"
+        android:alpha="0.5"
         android:maxWidth="72dp"
         android:maxHeight="72dp"
-        android:alpha="0.5"
         android:src="@drawable/screensaver_star"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.837" />
+        app:layout_constraintVertical_bias="0.882" />
 
     <ImageView
-        android:id="@+id/bg_star13"
+        android:id="@+id/bg2_star13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="166dp"
-        android:layout_marginEnd="256dp"
+        android:layout_marginEnd="276dp"
         android:adjustViewBounds="true"
+        android:alpha="0.5"
         android:maxWidth="72dp"
         android:maxHeight="72dp"
-        android:alpha="0.5"
         android:src="@drawable/screensaver_star"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.19" />
+        app:layout_constraintVertical_bias="0.176" />
 
     <ImageView
-        android:id="@+id/bg_star14"
+        android:id="@+id/bg2_star14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="166dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="104dp"
         android:adjustViewBounds="true"
+        android:alpha="0.5"
         android:maxWidth="72dp"
         android:maxHeight="72dp"
-        android:alpha="0.5"
         android:src="@drawable/screensaver_star"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.446" />
+        app:layout_constraintVertical_bias="0.357" />
 
     <ImageView
-        android:id="@+id/bg_star15"
+        android:id="@+id/bg2_star15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="166dp"
@@ -930,7 +895,7 @@
         app:layout_constraintVertical_bias="0.949" />
 
     <ImageView
-        android:id="@+id/bg_star16"
+        android:id="@+id/bg2_star16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="166dp"
@@ -947,24 +912,24 @@
         app:layout_constraintVertical_bias="0.06" />
 
     <ImageView
-        android:id="@+id/bg_star17"
+        android:id="@+id/bg2_star17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="166dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginEnd="144dp"
         android:adjustViewBounds="true"
+        android:alpha="0.5"
         android:maxWidth="72dp"
         android:maxHeight="72dp"
-        android:alpha="0.5"
         android:src="@drawable/screensaver_star"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.788" />
+        app:layout_constraintVertical_bias="0.732" />
 
     <ImageView
-        android:id="@+id/bg_star18"
+        android:id="@+id/bg2_star18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="166dp"
@@ -981,24 +946,24 @@
         app:layout_constraintVertical_bias="0.141" />
 
     <ImageView
-        android:id="@+id/bg_star19"
+        android:id="@+id/bg2_star19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="166dp"
-        android:layout_marginEnd="364dp"
+        android:layout_marginEnd="300dp"
         android:adjustViewBounds="true"
+        android:alpha="0.5"
         android:maxWidth="72dp"
         android:maxHeight="72dp"
-        android:alpha="0.5"
         android:src="@drawable/screensaver_star"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.632" />
+        app:layout_constraintVertical_bias="0.705" />
 
     <ImageView
-        android:id="@+id/bg_star20"
+        android:id="@+id/bg2_star20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="166dp"
