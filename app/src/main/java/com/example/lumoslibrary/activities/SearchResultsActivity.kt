@@ -1,4 +1,4 @@
-package com.example.lumoslibrary
+package com.example.lumoslibrary.activities
 
 import android.content.Context
 import android.os.Bundle
@@ -13,6 +13,11 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.lumoslibrary.BackButton
+import com.example.lumoslibrary.HelpButton
+import com.example.lumoslibrary.Item
+import com.example.lumoslibrary.R
+import com.example.lumoslibrary.SearchInventory
 
 class SearchResultsActivity : AppCompatActivity() {
 

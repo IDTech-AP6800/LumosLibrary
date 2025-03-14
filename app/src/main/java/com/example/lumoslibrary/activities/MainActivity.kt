@@ -1,4 +1,4 @@
-package com.example.lumoslibrary
+package com.example.lumoslibrary.activities
 
 import android.content.Context
 import android.content.Intent
@@ -26,6 +26,8 @@ import androidx.annotation.RequiresApi
 import kotlin.random.Random
 import android.provider.Settings
 import android.net.Uri
+import com.example.lumoslibrary.R
+
 
 
 
@@ -53,9 +55,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
         // Enumerate devices immediately;
         // if the server is not yet connected, this may complete after.
         Client.GetDevicesAsync()
-
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         val jsonFile = copyJsonToInternalStorage(this, "users.json")
         // Observe connection status
@@ -402,7 +401,9 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
     }
 
     companion object {
-    private const val TAG = "MainActivity"
+        private const val TAG = "MainActivity"
+    }
+
     private fun copyJsonToInternalStorage(context: Context, fileName: String): File {
         val file = File(context.filesDir, fileName)
 
@@ -472,7 +473,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
         }
     }
 
-    //Proxomity sensor code
+    //Proximity sensor code
 
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
         //TODO? Do something if accuracy changes

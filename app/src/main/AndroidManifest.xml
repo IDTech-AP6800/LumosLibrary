@@ -20,7 +20,7 @@
         android:theme="@style/Theme.LumosLibrary"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,40 +35,37 @@
             android:name=".HelpButton"
             android:exported="false" />
         <activity
-            android:name=".HelpPageActivity"
+            android:name=".activities.HelpPageActivity"
             android:exported="false" />
         <activity
-            android:name=".ReturnConfirmationActivity"
+            android:name=".activities.ReturnConfirmationActivity"
             android:exported="true" />
         <activity
-            android:name=".RentConfirmationActivity"
+            android:name=".activities.RentConfirmationActivity"
             android:exported="true" />
         <activity
-            android:name=".ScanToPayActivity"
-            android:exported="false" />
-        <activity
-            android:name=".TapSwipeInsertPaymentActivity"
+            android:name=".activities.TapSwipeInsertPaymentActivity"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".activities.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".RentScanActivity"
+            android:name=".activities.RentScanActivity"
             android:exported="true" />
         <activity
-            android:name=".ReturnScanActivity"
+            android:name=".activities.ReturnScanActivity"
             android:exported="true" />
         <activity
-            android:name=".SearchResultsActivity"
+            android:name=".activities.SearchResultsActivity"
             android:exported="true"></activity>
         <activity
-            android:name=".LandingPageActivity"
+            android:name=".activities.LandingPageActivity"
             android:exported="true" />
         <activity
-            android:name=".UserItemsCheckedOutActivity"
+            android:name=".activities.UserItemsCheckedOutActivity"
             android:exported="true" />
         <activity
-            android:name=".QrCodeActivity"
+            android:name=".activities.QrCodeActivity"
             android:exported="true"></activity>
     </application>
 

@@ -1,4 +1,4 @@
-package com.example.lumoslibrary
+package com.example.lumoslibrary.activities
 
 import android.content.Context
 import android.net.ConnectivityManager
@@ -11,6 +11,10 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.lumoslibrary.Audio
+import com.example.lumoslibrary.BackButton
+import com.example.lumoslibrary.R
+import com.example.lumoslibrary.setOnClickListener
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request

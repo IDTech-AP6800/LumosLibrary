@@ -3,6 +3,7 @@ package com.example.lumoslibrary
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.ImageView
+import com.example.lumoslibrary.activities.HelpPageActivity
 
 class HelpButton (activity: AppCompatActivity) {
     private val helpButton: ImageView? = activity.findViewById(R.id.help_button)

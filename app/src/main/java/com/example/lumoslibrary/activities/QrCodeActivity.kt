@@ -1,18 +1,13 @@
-package com.example.lumoslibrary
+package com.example.lumoslibrary.activities
 
 import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import android.Manifest
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
 import android.content.Intent
 import android.util.Log
 import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -21,6 +16,11 @@ import androidx.camera.core.ImageAnalysis.COORDINATE_SYSTEM_VIEW_REFERENCED
 import androidx.camera.mlkit.vision.MlKitAnalyzer
 import androidx.camera.view.LifecycleCameraController
 import androidx.camera.view.PreviewView
+import com.example.lumoslibrary.Audio
+import com.example.lumoslibrary.BackButton
+import com.example.lumoslibrary.QrCodeDrawable
+import com.example.lumoslibrary.R
+import com.example.lumoslibrary.RentSession
 import com.example.lumoslibrary.viewmodels.QrCodeViewModel
 import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
@@ -119,7 +119,8 @@ class QrCodeActivity : AppCompatActivity() {
                 }
                 if (barcodeValue != null) {
                     //If it has a value, that is it scanner
-                    Log.d(TAG, "startCamera:\ncodeValue:$barcodeValue" +
+                    Log.d(
+                        TAG, "startCamera:\ncodeValue:$barcodeValue" +
                             "\nbarcodeFormat:$barcodeFormat")
 
                     val intent = Intent(this@QrCodeActivity, RentConfirmationActivity::class.java)

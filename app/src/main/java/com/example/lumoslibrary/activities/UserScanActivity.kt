@@ -1,4 +1,4 @@
-package com.example.lumoslibrary
+package com.example.lumoslibrary.activities
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -15,6 +15,8 @@ import androidx.camera.mlkit.vision.MlKitAnalyzer
 import androidx.camera.view.LifecycleCameraController
 import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
+import com.example.lumoslibrary.R
+import com.example.lumoslibrary.UserData
 import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning

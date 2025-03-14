@@ -1,4 +1,4 @@
-package com.example.lumoslibrary
+package com.example.lumoslibrary.activities
 
 import android.Manifest
 import android.content.Intent
@@ -18,6 +18,11 @@ import androidx.camera.mlkit.vision.MlKitAnalyzer
 import androidx.camera.view.LifecycleCameraController
 import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
+import com.example.lumoslibrary.BackButton
+import com.example.lumoslibrary.CurrentSession
+import com.example.lumoslibrary.QrCodeDrawable
+import com.example.lumoslibrary.R
+import com.example.lumoslibrary.UserData
 import com.example.lumoslibrary.viewmodels.QrCodeViewModel
 import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions

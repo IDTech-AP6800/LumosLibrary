@@ -1,4 +1,4 @@
-package com.example.lumoslibrary
+package com.example.lumoslibrary.activities
 
 import android.app.Activity
 import android.content.Context
@@ -13,6 +13,7 @@ import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
 import androidx.annotation.RequiresApi
+import com.example.lumoslibrary.R
 
 
 /* A sample class to handle sensor activity, uses code from ID TECH SDK
