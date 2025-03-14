@@ -164,7 +164,8 @@ class LoginActivity : AppCompatActivity() {
 
         if (CurrentSession.state == 2) { // Return
             if (user != null && user.checkedOutItems.isNotEmpty()) {
-                val intent = Intent(this, ReturnScanActivity::class.java)
+//                val intent = Intent(this, ReturnScanActivity::class.java)
+                val intent = Intent(this, UserItemsCheckedOutActivity::class.java)
                 startActivity(intent)
             } else {
                 Toast.makeText(this, "You have no checked-out items to return.", Toast.LENGTH_SHORT).show()
