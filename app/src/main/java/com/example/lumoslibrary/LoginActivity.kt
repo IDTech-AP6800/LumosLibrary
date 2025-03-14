@@ -190,6 +190,13 @@ class LoginActivity : AppCompatActivity() {
         barcodeScanner.close()
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (allPermissionsGranted()) {
+            startCamera() // Restart scanning when activity is resumed
+        }
+    }
+
     companion object {
         private const val TAG = "LoginActivity"
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)

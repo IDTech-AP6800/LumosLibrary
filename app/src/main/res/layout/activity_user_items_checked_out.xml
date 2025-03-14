@@ -52,6 +52,7 @@
         android:text="Continue Your Return"
         android:textSize="20sp"
         android:fontFamily="@font/robotoslab_regular"
+        android:textColor="@color/black"
         android:textAllCaps="false"
         android:background="@drawable/blue_rounded_square"
         app:layout_constraintBottom_toBottomOf="parent"
