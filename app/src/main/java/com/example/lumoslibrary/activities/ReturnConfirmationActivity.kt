@@ -105,7 +105,7 @@ class ReturnConfirmationActivity : AppCompatActivity() {
 
             userData.removeItem(currentUserId, newCheckedOutItems)
             audio.playClickAudio(this)
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LandingPageActivity::class.java)
             startActivity(intent)
         }
         audio.playConfirmationCompleteAudio(this)

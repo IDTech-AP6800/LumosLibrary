@@ -88,7 +88,7 @@ class RentConfirmationActivity : AppCompatActivity() {
 
             userData.addItem(currentUserId, newCheckedOutItems)
             audio.playClickAudio(this)
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LandingPageActivity::class.java)
             startActivity(intent)
         }
 
