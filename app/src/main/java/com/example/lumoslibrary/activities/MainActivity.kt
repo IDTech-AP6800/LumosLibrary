@@ -271,7 +271,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
         // After light flicker animation is complete, navigate to the landing page
         handler.postDelayed({
             navigateToLandingPage()
-        }, delay + 4000)  // Adjust this delay based on animation duration
+        }, delay + 3700)  // Adjust this delay based on animation duration
     }
 
     // Method to apply fade-in animation
@@ -492,8 +492,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
         val settingsCanWrite = hasWriteSettingsPermission(context)
         // These values are hypothetical, and control brightness
         val minDistance = 50
-        var farValue = 50
-        var closeValue = 255
+        var farValue = 70
+        var closeValue = 200
         if (!settingsCanWrite) {
             changeWriteSettingsPermission(context)
         }else {
