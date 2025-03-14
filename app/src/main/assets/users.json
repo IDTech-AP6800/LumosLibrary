@@ -1,19 +1,17 @@
 [
     {
       "userId": "00000001",
-      "checkoutItems": []
+      "checkedOutItems": []
     },
     {
       "userId": "00000002",
       "checkedOutItems": [
         {
           "name": "Harry Potter and the Philosopher's Stone",
-          "isReturned": false,
           "isLate": false
         },
         {
           "name": "Apple iPad Air",
-          "isReturned": false,
           "isLate": false
         }
       ]
@@ -23,13 +21,11 @@
       "checkedOutItems": [
         {
           "name": "Introduction to Database Systems",
-          "isReturned": false,
-          "isLate": true
+          "isLate": false
         },
         {
           "name": "HP Chromebook",
-          "isReturned": false,
-          "isLate": false
+          "isLate": true
         }
       ]
     }

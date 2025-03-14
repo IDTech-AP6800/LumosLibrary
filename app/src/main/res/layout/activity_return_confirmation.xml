@@ -56,52 +56,26 @@
         app:layout_constraintEnd_toEndOf="@id/returnConf_text_refund"/>
 
     <!--Returned Items-->
-
-    <ImageView
-        android:id="@+id/display_image_item"
-        android:layout_height="100dp"
-        android:layout_width="100dp"
-        android:src="@drawable/equipment_apple_ipad_air"
-        app:layout_constraintStart_toStartOf="parent"
+    <!-- Returned Items Section -->
+    <ScrollView
+        android:id="@+id/returned_items_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:overScrollMode="always"
         app:layout_constraintTop_toBottomOf="@id/returnConf_text_instructions"
-       />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/returnConf_div">
 
-    <TextView
-        android:id="@+id/display_text_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Device"
-        android:textSize="12sp"
-        android:textColor="@color/primaryBlue"
-        android:fontFamily="@font/robotoslab_regular"
-        app:layout_constraintTop_toTopOf="@id/display_image_item"
-        app:layout_constraintBottom_toTopOf="@id/display_text_name"
-        app:layout_constraintStart_toEndOf="@id/display_image_item"/>
+        <LinearLayout
+            android:id="@+id/returned_items_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
 
-    <TextView
-        android:id="@+id/display_text_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Device Name"
-        android:textSize="16sp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/robotoslab_bold"
-        app:layout_constraintTop_toBottomOf="@id/display_text_type"
-        app:layout_constraintBottom_toTopOf="@id/display_text_loan"
-        app:layout_constraintStart_toEndOf="@id/display_image_item"/>
+    </ScrollView>
 
-    <TextView
-        android:id="@+id/display_text_loan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Return Area: Front Desk"
-        android:textSize="16sp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/robotoslab_light"
-        app:layout_constraintTop_toBottomOf="@id/display_text_name"
-        app:layout_constraintStart_toEndOf="@id/display_image_item"/>
-
-
+    <!-- White Line -->
     <View
         android:id="@+id/returnConf_div"
         android:layout_width="400dp"
@@ -125,19 +99,32 @@
         android:textColor="@color/white"
         android:fontFamily="@font/robotoslab_medium"
         app:layout_constraintTop_toBottomOf="@id/returnConf_div"
-        app:layout_constraintStart_toStartOf="@id/returnConf_div"
-        app:layout_constraintEnd_toEndOf="@id/returnConf_div"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         />
 
-    <include layout="@layout/item_display_due_date"
-        android:id="@+id/returnConf_item"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:id="@+id/checked_out_items_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:overScrollMode="always"
         app:layout_constraintTop_toBottomOf="@id/returnConf_text_checked"
-        app:layout_constraintStart_toStartOf="@id/returnConf_text_checked"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/returnConf_button">
 
+        <LinearLayout
+            android:id="@+id/checked_out_items_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+    </ScrollView>
 
+    <!--Confetti -->
+    <nl.dionsegijn.konfetti.xml.KonfettiView
+        android:id = "@+id/returnConf_konfettiView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
     <!--Logout Button-->
     <androidx.appcompat.widget.AppCompatButton
@@ -145,12 +132,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
+        android:layout_marginBottom="15dp"
         android:text="@string/logout_button"
         android:textSize="20sp"
         android:fontFamily="@font/robotoslab_regular"
         android:textAllCaps="false"
         android:background="@drawable/blue_rounded_square"
-        app:layout_constraintTop_toBottomOf="@id/returnConf_item"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

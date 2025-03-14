@@ -159,12 +159,22 @@ class LoginActivity : AppCompatActivity() {
 
     private fun nextActivity() {
         CurrentSession.userID = userID.toString()
-        val intent = if (CurrentSession.state == 1) { // Return
-            Intent(this, RentScanActivity::class.java)
+
+        val user = searchUsers.searchByUserId(userID.toString())
+
+        if (CurrentSession.state == 2) { // Return
+            if (user != null && user.checkedOutItems.isNotEmpty()) {
+//                val intent = Intent(this, ReturnScanActivity::class.java)
+                val intent = Intent(this, UserItemsCheckedOutActivity::class.java)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "You have no checked-out items to return.", Toast.LENGTH_SHORT).show()
+                Log.d(TAG, "You have no checked-out items to return.")
+            }
         } else { // Rent
-            Intent(this, ReturnScanActivity::class.java)
+            val intent = Intent(this, RentScanActivity::class.java)
+            startActivity(intent)
         }
-        startActivity(intent)
     }
 
     private fun requestPermissions() {

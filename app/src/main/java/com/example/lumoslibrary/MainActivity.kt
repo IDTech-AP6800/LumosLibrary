@@ -5,25 +5,28 @@ import android.content.Intent
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorManager
-import android.net.Uri
+import android.hardware.SensorEventListener
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AlphaAnimation
+import android.view.animation.TranslateAnimation
+import java.io.File
+import java.io.IOException
+import com.idtech.zsdk_client.Client
+import com.idtech.zsdk_client.GetDevicesAsync
 import android.widget.ImageView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.lumoslibrary.viewmodels.MainViewModel
-import com.idtech.zsdk_client.Client
-import com.idtech.zsdk_client.GetDevicesAsync
-import android.view.animation.AlphaAnimation
-import android.os.Handler
-import android.provider.Settings
-import android.view.animation.Animation
-import android.view.animation.TranslateAnimation
 import androidx.annotation.RequiresApi
 import kotlin.random.Random
-import android.hardware.SensorEventListener
+import android.provider.Settings
+import android.net.Uri
+
 
 
 class MainActivity : AppCompatActivity(), SensorEventListener{
@@ -51,6 +54,10 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
         // if the server is not yet connected, this may complete after.
         Client.GetDevicesAsync()
 
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val jsonFile = copyJsonToInternalStorage(this, "users.json")
         // Observe connection status
         viewModel.connectionStatus.observe(this) { status ->
             Log.d("ConnectionStatus", "Connection status: $status")
@@ -395,7 +402,22 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
     }
 
     companion object {
-        private const val TAG = "MainActivity"
+    private const val TAG = "MainActivity"
+    private fun copyJsonToInternalStorage(context: Context, fileName: String): File {
+        val file = File(context.filesDir, fileName)
+
+        if (!file.exists()) {
+            try {
+                context.assets.open(fileName).use { inputStream ->
+                    file.outputStream().use { outputStream ->
+                        inputStream.copyTo(outputStream)
+                    }
+                }
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+        }
+        return file
     }
 
     private fun resetViews() {

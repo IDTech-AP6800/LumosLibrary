@@ -14,7 +14,7 @@
         android:layout_marginEnd="16dp"
         android:contentDescription="Item Image"
         android:scaleType="centerCrop"
-        android:src="@drawable/book_harry_potter_philosophers_stone" />
+        android:src="@drawable/book_introduction_to_database_system" />
 
     <!-- Text Layout -->
     <LinearLayout
