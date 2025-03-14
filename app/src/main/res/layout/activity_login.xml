@@ -9,7 +9,7 @@
     <!-- Back Button -->
     <include layout="@layout/back_button"/>
 
-    <!-- Scan to login tex t-->
+    <!-- Scan to login text-->
     <TextView
         android:id="@+id/heading"
         android:layout_width="wrap_content"
