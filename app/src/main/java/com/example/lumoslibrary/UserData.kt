@@ -59,6 +59,20 @@ class UserData(_context: Context, _fileName: String) {
         saveUserDataToFile()
     }
 
+    fun removeItem(userId: String, updatedItems: List<CheckedOutItem>) {
+        val userIndex = users.indexOfFirst{ it.userId == userId}
+        val existingUser = users[userIndex]
+        val updatedNames = updatedItems.map {it.name}.toSet()
+
+
+        // Remove new items in list
+        val updatedUser = existingUser.copy(
+            checkedOutItems = existingUser.checkedOutItems.filter{it.name !in updatedNames}
+        )
+        users[userIndex] = updatedUser
+        saveUserDataToFile()
+    }
+
     // Reads the users.json file
     private fun readUsersData(): String {
         val file = File(context.filesDir, fileName)

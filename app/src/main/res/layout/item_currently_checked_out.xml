@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="8dp"
+    android:padding="16dp"
     android:gravity="center_vertical">
 
     <!-- Image on the left -->
@@ -52,7 +52,7 @@
             android:textColor="@color/white"
             android:fontFamily="@font/robotoslab_light"
             android:textSize="16sp"
-            android:text="Author"
+            android:text="Loan Period"
             android:ellipsize="end"
             android:maxLines="1"/>
 
@@ -60,15 +60,12 @@
             android:id="@+id/card_field4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/background"
-            android:fontFamily="@font/robotoslab_regular"
+            android:textColor="@color/green"
+            android:fontFamily="@font/robotoslab_semibold"
             android:textSize="16sp"
-            android:text="Location"
+            android:text="Due date"
             android:ellipsize="end"
-            android:background="@drawable/blue_rounded_square"
-            android:padding="4dp"
             android:maxLines="1"/>
-
     </LinearLayout>
 
 </LinearLayout>

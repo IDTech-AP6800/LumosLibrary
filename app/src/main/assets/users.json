@@ -21,11 +21,11 @@
       "checkedOutItems": [
         {
           "name": "Introduction to Database Systems",
-          "isLate": true
+          "isLate": false
         },
         {
           "name": "HP Chromebook",
-          "isLate": false
+          "isLate": true
         }
       ]
     }
