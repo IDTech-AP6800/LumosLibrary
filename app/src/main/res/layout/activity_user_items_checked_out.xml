@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--XML layout for all items checked out by the user-->
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -16,10 +19,9 @@
         android:layout_marginTop="45dp"
         android:paddingTop="10dp"
         android:paddingHorizontal="20dp"
-        android:text="Here are your currently checked out items"
-        android:textSize="24sp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/robotoslab_medium"
+        android:text="Currently checked out"
+        android:textAppearance="@style/Heading"
+        android:textAlignment="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -49,12 +51,12 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:layout_marginBottom="15dp"
+        android:background="@drawable/big_btn_bground"
         android:text="Continue Your Return"
-        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:textSize="22sp"
         android:fontFamily="@font/robotoslab_regular"
-        android:textColor="@color/black"
         android:textAllCaps="false"
-        android:background="@drawable/blue_rounded_square"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

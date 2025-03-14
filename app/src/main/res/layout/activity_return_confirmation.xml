@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--XML layout for return confirmation -->
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -21,9 +24,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="25dp"
         android:text="Thank you!"
-        android:textSize="32sp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/robotoslab_medium"
+        android:textAppearance="@style/Heading"
         android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,12 +32,10 @@
 
     <TextView
         android:id="@+id/returnConf_text_refund"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Card will be refunded in 2-3 business days"
-        android:textSize="24sp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/robotoslab_light"
+        android:textAppearance="@style/SubHeading"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@id/returnConf_text_thanks"
         app:layout_constraintStart_toStartOf="@id/returnConf_text_thanks"
@@ -44,13 +43,13 @@
 
     <TextView
         android:id="@+id/returnConf_text_instructions"
-        android:layout_width="400dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="25dp"
+        android:padding="15dp"
         android:text="Please drop off the following item at the designated return area"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textColor="@color/white"
-        android:fontFamily="@font/robotoslab_medium"
+        android:fontFamily="@font/robotoslab_regular"
         app:layout_constraintTop_toBottomOf="@id/returnConf_text_refund"
         app:layout_constraintStart_toStartOf="@id/returnConf_text_refund"
         app:layout_constraintEnd_toEndOf="@id/returnConf_text_refund"/>
@@ -80,7 +79,6 @@
         android:id="@+id/returnConf_div"
         android:layout_width="400dp"
         android:layout_height="2dp"
-
         android:background="@color/white"
         app:layout_constraintTop_toBottomOf="@id/returnConf_horizGuideline_div"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,7 +88,7 @@
     <!--Checked out items-->
     <TextView
         android:id="@+id/returnConf_text_checked"
-        android:layout_width="400dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="25dp"
         android:paddingBottom="25dp"
@@ -134,10 +132,11 @@
         android:padding="10dp"
         android:layout_marginBottom="15dp"
         android:text="@string/logout_button"
-        android:textSize="20sp"
+        android:background="@drawable/big_btn_bground"
+        android:textColor="@color/white"
+        android:textSize="22sp"
         android:fontFamily="@font/robotoslab_regular"
         android:textAllCaps="false"
-        android:background="@drawable/blue_rounded_square"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

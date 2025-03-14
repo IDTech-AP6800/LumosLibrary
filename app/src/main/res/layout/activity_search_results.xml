@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- XML layout for searching through the database -->
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -29,11 +32,6 @@
 
     </ScrollView>
 
-    <!-- Help Button Icon -->
-<!--    <include-->
-<!--        android:id="@+id/help_button_include"-->
-<!--        layout="@layout/help_button" />-->
-
     <!-- Back Button -->
     <include
         android:id="@+id/search_back_button"
@@ -60,6 +58,5 @@
         app:layout_constraintVertical_bias="0.101"
         android:hint="Search"
         android:imeOptions="actionSearch" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

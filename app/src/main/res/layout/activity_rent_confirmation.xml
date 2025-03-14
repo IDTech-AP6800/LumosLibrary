@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--XML Layout for the confirmation page after the user has successfully rented an item
+    Contains an item list which is dynamically updated for the current session-->
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,18 +14,17 @@
     <!--Thank you message-->
     <TextView
         android:id="@+id/rentConf_text_thanks"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="@string/confirmation_thanks"
-        android:textSize="32sp"
-        android:textColor="@color/white"
-        android:fontFamily="@font/robotoslab_medium"
+        android:textAppearance="@style/Heading"
         android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <!-- Container for all rented items -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -51,10 +54,11 @@
         android:layout_marginBottom="30dp"
         android:padding="10dp"
         android:text="@string/logout_button"
-        android:textSize="20sp"
+        android:background="@drawable/big_btn_bground"
+        android:textColor="@color/white"
+        android:textSize="22sp"
         android:fontFamily="@font/robotoslab_regular"
         android:textAllCaps="false"
-        android:background="@drawable/blue_rounded_square"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

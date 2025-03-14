@@ -484,8 +484,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
     override //-> Uncomment when doing screen brightness
     fun onSensorChanged(event: SensorEvent?) {
         val distance = event!!.values[0]
-        Log.d(TAG, "distance=$distance")
-
+        Log.d(MainActivity.TAG, "distance=$distance")
 
         //Brightness val: 0 - 255 (no brightness to full)
 

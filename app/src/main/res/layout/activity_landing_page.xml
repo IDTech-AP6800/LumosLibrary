@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- XML layout for the landing page with the following features
+    Search Bar - User can search through the library database.
+    Rent button - takes the user to the rent user flow
+    Return button - takes the user to the return user flow
+    2 carousels for top reads and popular items -->
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
