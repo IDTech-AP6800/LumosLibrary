@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
+import com.example.lumoslibrary.Audio
 import com.example.lumoslibrary.BackButton
 import com.example.lumoslibrary.CurrentSession
 import com.example.lumoslibrary.Item
@@ -17,6 +18,7 @@ import com.example.lumoslibrary.R
 import com.example.lumoslibrary.SearchInventory
 import com.example.lumoslibrary.User
 import com.example.lumoslibrary.UserData
+import com.example.lumoslibrary.setOnClickListener
 
 /* Displays items user has checked out, so that they know what's pending to return */
 class UserItemsCheckedOutActivity : AppCompatActivity() {
@@ -25,10 +27,15 @@ class UserItemsCheckedOutActivity : AppCompatActivity() {
     private lateinit var searchInventory: SearchInventory
     private lateinit var checkedOutItemsContainer: LinearLayout
     private lateinit var continueButton: AppCompatButton
+
+    private lateinit var backButton: BackButton
+    private val audio: Audio = Audio()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_items_checked_out)
-        BackButton(this)
+        backButton = BackButton(this)
 
         checkedOutItemsContainer = findViewById(R.id.checked_items_list)
 
@@ -58,7 +65,8 @@ class UserItemsCheckedOutActivity : AppCompatActivity() {
         displayCheckedOutItems(currentlyCheckedOutItems)
 
 
-        continueButton.setOnClickListener {
+        continueButton.setOnClickListener(1000L) {
+            audio.playClickAudio(this)
             val intent = Intent(this, ReturnScanActivity::class.java)
             startActivity(intent)
         }
@@ -125,6 +133,12 @@ class UserItemsCheckedOutActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "UserItemsCheckedOutActivity"
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        audio.destroy()
+        backButton.onDestroy()
     }
 
 }

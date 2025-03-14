@@ -9,11 +9,13 @@ import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.lumoslibrary.Audio
 import com.example.lumoslibrary.CurrentSession
 import com.example.lumoslibrary.HelpButton
 import com.example.lumoslibrary.Item
 import com.example.lumoslibrary.R
 import com.example.lumoslibrary.SearchInventory
+import com.example.lumoslibrary.setOnClickListener
 
 class LandingPageActivity : AppCompatActivity() {
 
@@ -21,6 +23,8 @@ class LandingPageActivity : AppCompatActivity() {
     private lateinit var returnButton: Button
     private lateinit var searchButton: Button
     private lateinit var itemsFromJson: List<Item> // To hold the items loaded from the JSON file
+
+    private val audio: Audio = Audio()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -139,8 +143,12 @@ class LandingPageActivity : AppCompatActivity() {
 
         searchButton.setOnClickListener{startActivity(Intent(this, SearchResultsActivity::class.java))}
 
-        rentButton.setOnClickListener { navigateToLogin(1) }
-        returnButton.setOnClickListener { navigateToLogin(2) }
+        rentButton.setOnClickListener(1000L){
+            audio.playClickAudio(this)
+            navigateToLogin(1) }
+        returnButton.setOnClickListener(1000L) {
+            audio.playClickAudio(this)
+            navigateToLogin(2) }
 
     }
 
@@ -178,6 +186,11 @@ class LandingPageActivity : AppCompatActivity() {
         closeButton.setOnClickListener {
             dialog.dismiss()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        audio.destroy()
     }
 
     private fun navigateToLogin(state: Int) {

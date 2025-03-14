@@ -22,6 +22,7 @@ import androidx.camera.core.ImageAnalysis.COORDINATE_SYSTEM_VIEW_REFERENCED
 import androidx.camera.mlkit.vision.MlKitAnalyzer
 import androidx.camera.view.LifecycleCameraController
 import androidx.camera.view.PreviewView
+import com.example.lumoslibrary.Audio
 import com.example.lumoslibrary.BackButton
 import com.example.lumoslibrary.CheckedOutItem
 import com.example.lumoslibrary.CurrentSession
@@ -32,6 +33,7 @@ import com.example.lumoslibrary.RentSession
 import com.example.lumoslibrary.SearchInventory
 import com.example.lumoslibrary.User
 import com.example.lumoslibrary.UserData
+import com.example.lumoslibrary.setOnClickListener
 import com.example.lumoslibrary.viewmodels.QrCodeViewModel
 import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
@@ -57,6 +59,7 @@ class ReturnScanActivity : AppCompatActivity() {
     private val delayScanTime : Long = 3000 // 3 seconds
 
     private lateinit var backButton: BackButton
+    private val audio: Audio = Audio()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -198,16 +201,19 @@ class ReturnScanActivity : AppCompatActivity() {
         val isItemCheckedOut = currentUser!!.checkedOutItems.any { it.name == item.title }
 
         if (!isItemCheckedOut) {
+            audio.playScannerInvalid(this)
             Toast.makeText(this, "This item was not checked out by you.", Toast.LENGTH_SHORT).show()
             return
         }
 
         if (scannedItemsSet.add(item.title)) {
+            audio.playScannerBeep(this)
             scannedItemsList.add(item)
             updateItemCards()
 //            Toast.makeText(this, "Item added: ${item.title}", Toast.LENGTH_SHORT).show()
             Log.d(TAG, "Item added for return: ${item.title}")
         } else {
+            audio.playScannerInvalid(this)
             Toast.makeText(this, "Item already scanned.", Toast.LENGTH_SHORT).show()
         }
         calculateRefundTotal()
@@ -215,6 +221,7 @@ class ReturnScanActivity : AppCompatActivity() {
     }
 
     private fun removeScannedItem(item: Item) {
+        audio.playClickAudio(this)
         if (scannedItemsSet.remove(item.title)) {
             scannedItemsList.remove(item)
             updateItemCards()
@@ -260,7 +267,8 @@ class ReturnScanActivity : AppCompatActivity() {
     //Creates listener for the continue button
     private fun listenContinueButton() {
 //        val continueButton = findViewById<Button>(R.id.continue_button)
-        continueButton.setOnClickListener {
+        continueButton.setOnClickListener(1000L) {
+            audio.playClickAudio(this)
             val depositTotal = findViewById<View>(R.id.total_refund_text) as TextView
             val totalDueString = depositTotal.text.toString()
 //                .replace("$0.00", "")
@@ -379,6 +387,7 @@ class ReturnScanActivity : AppCompatActivity() {
         Log.d(TAG, "ReturnScanActivity is being destroyed")
         barcodeScanner.close()
         backButton.onDestroy()
+        audio.destroy()
         scanDelayHandler.removeCallbacksAndMessages(null)
     }
 

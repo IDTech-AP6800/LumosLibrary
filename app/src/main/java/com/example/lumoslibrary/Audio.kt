@@ -19,6 +19,18 @@ class Audio {
         mediaPlayer?.start()
     }
 
+    fun playScannerBeep(context: Context){
+        mediaPlayer?.release()
+        mediaPlayer = MediaPlayer.create(context, R.raw.scanner_beep)
+        mediaPlayer?.start()
+    }
+
+    fun playScannerInvalid(context: Context){
+        mediaPlayer?.release()
+        mediaPlayer = MediaPlayer.create(context, R.raw.beep_beep)
+        mediaPlayer?.start()
+    }
+
     fun destroy(){
         mediaPlayer?.release()
         mediaPlayer = null

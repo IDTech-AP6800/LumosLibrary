@@ -30,6 +30,7 @@ import com.example.lumoslibrary.QrCodeDrawable
 import com.example.lumoslibrary.R
 import com.example.lumoslibrary.RentSession
 import com.example.lumoslibrary.SearchInventory
+import com.example.lumoslibrary.setOnClickListener
 import com.example.lumoslibrary.viewmodels.QrCodeViewModel
 import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
@@ -173,10 +174,13 @@ class RentScanActivity : AppCompatActivity() {
     }
 
     private fun addScannedItem(item: Item) {
+
         if (scannedItemsSet.add(item.title)) {
+            audio.playScannerBeep(this)
             scannedItemsList.add(item)
             updateItemCards()
         } else {
+            audio.playScannerInvalid(this)
             Toast.makeText(this, "Item already scanned", Toast.LENGTH_SHORT).show()
         }
         calculateSecurityDepositTotal()
@@ -184,6 +188,7 @@ class RentScanActivity : AppCompatActivity() {
     }
 
     private fun removeScannedItem(item: Item) {
+        audio.playClickAudio(this)
         if (scannedItemsSet.remove(item.title)) {
             scannedItemsList.remove(item)
             updateItemCards()
@@ -229,7 +234,7 @@ class RentScanActivity : AppCompatActivity() {
     //Creates listener for the continue button
     private fun listenContinueButton() {
 //        val continueButton = findViewById<Button>(R.id.continue_button)
-        continueButton.setOnClickListener {
+        continueButton.setOnClickListener(1000L) {
             audio.playClickAudio(this)
             val depositTotal = findViewById<View>(R.id.total_due_amount) as TextView
             val totalDueString = depositTotal.text.toString()
