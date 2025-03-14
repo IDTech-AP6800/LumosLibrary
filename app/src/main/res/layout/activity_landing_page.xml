@@ -27,6 +27,18 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_margin="10dp"/>
 
+    <!-- Custom Landing Page Help Button Icon -->
+    <ImageView
+        android:id="@+id/help_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="7dp"
+        android:contentDescription="Help Button"
+        app:srcCompat="@drawable/help_button"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
     <!-- Search Button -->
     <Button
         android:id="@+id/search_bar"
@@ -124,41 +136,45 @@
 
         <!-- Carousel Book Images -->
         <!-- book 1 FrameLayout wrapper -->
-        <FrameLayout
-            android:id="@+id/img_book_advanced_potion_making"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center">
-
-            <!-- book 1 image -->
-            <ImageView
-                android:id="@+id/img_book_1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/book_advanced_potion_making"
-                android:scaleType="centerCrop"
-                android:paddingTop="55dp"
-            />
-
-            <!-- white border -->
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/book_item_img_border"
+            <FrameLayout
+                android:id="@+id/img_book_advanced_potion_making"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_gravity="center"
-            />
-        </FrameLayout>
+                >
+
+                <!-- book 1 image -->
+                <ImageView
+                    android:id="@+id/img_book_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/book_advanced_potion_making"
+                    android:scaleType="centerCrop"
+                    android:paddingTop="55dp"
+                />
+
+                <!-- white border -->
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/book_item_img_border"
+                    android:layout_gravity="center"
+                />
+
+            </FrameLayout>
 
         <!-- book 1 text -->
         <TextView
             android:id="@+id/title_potion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
             android:text="Potions"
+            android:background="#80000000"
             android:fontFamily="@font/robotoslab_light"
             android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/img_book_advanced_potion_making"
-            app:layout_constraintLeft_toLeftOf="@+id/img_book_advanced_potion_making"
+            app:layout_constraintBottom_toBottomOf="@id/img_book_advanced_potion_making"
+            app:layout_constraintLeft_toLeftOf="@id/img_book_advanced_potion_making"
             />
 
         <!-- book 1 location -->
@@ -166,18 +182,33 @@
             android:id="@+id/aisle_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
             android:paddingLeft="4dp"
             android:paddingRight="8dp"
             android:background="@drawable/blue_rounded_square"
-            android:text="📍Aisle B4"
+            android:text="Aisle B4"
             android:textColor="@color/black"
             android:textSize="10sp"
             android:fontFamily="@font/robotoslab_regular"
             android:textAllCaps="false"
             app:layout_constraintTop_toBottomOf="@id/title_potion"
-            app:layout_constraintLeft_toLeftOf="@+id/title_potion"
+            app:layout_constraintLeft_toLeftOf="@id/img_book_advanced_potion_making"
+            />
+
+        <!-- book 1 plus icon -->
+        <ImageView
+            android:id="@+id/plus_1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/plus_icon"
+            android:padding="5dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="5dp"
+            app:layout_constraintLeft_toRightOf="@id/aisle_1"
+            app:layout_constraintTop_toBottomOf="@id/img_book_advanced_potion_making"
+            app:layout_constraintBottom_toBottomOf="@id/aisle_1"
             />
 
         <!-- book 2 FrameLayout wrapper -->
@@ -185,7 +216,8 @@
             android:id="@+id/img_book_astrophysics_for_people_in_a_hurry"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            >
 
             <!-- book 2 image -->
             <ImageView
@@ -210,10 +242,12 @@
             android:id="@+id/title_astro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
             android:text="Astrophysics"
+            android:background="#80000000"
             android:fontFamily="@font/robotoslab_light"
             android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/img_book_astrophysics_for_people_in_a_hurry"
+            app:layout_constraintBottom_toBottomOf="@id/img_book_astrophysics_for_people_in_a_hurry"
             app:layout_constraintLeft_toLeftOf="@+id/img_book_astrophysics_for_people_in_a_hurry"
             />
 
@@ -222,18 +256,33 @@
             android:id="@+id/aisle_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
             android:paddingLeft="4dp"
             android:paddingRight="8dp"
             android:background="@drawable/blue_rounded_square"
-            android:text="📍Aisle A12"
+            android:text="Aisle A12"
             android:textColor="@color/black"
             android:textSize="10sp"
             android:fontFamily="@font/robotoslab_regular"
             android:textAllCaps="false"
             app:layout_constraintTop_toBottomOf="@+id/title_astro"
-            app:layout_constraintLeft_toLeftOf="@+id/title_astro"
+            app:layout_constraintLeft_toLeftOf="@+id/img_book_astrophysics_for_people_in_a_hurry"
+            />
+
+        <!-- book 2 plus icon -->
+        <ImageView
+            android:id="@+id/plus_2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/plus_icon"
+            android:padding="5dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="5dp"
+            app:layout_constraintLeft_toRightOf="@id/aisle_2"
+            app:layout_constraintTop_toBottomOf="@id/img_book_astrophysics_for_people_in_a_hurry"
+            app:layout_constraintBottom_toBottomOf="@id/aisle_2"
             />
 
         <!-- book 3 FrameLayout wrapper -->
@@ -241,7 +290,8 @@
             android:id="@+id/img_book_calculus_early_transcendentals"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            >
 
             <!-- book 3 image -->
             <ImageView
@@ -266,10 +316,12 @@
             android:id="@+id/title_calc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
             android:text="Calculus"
+            android:background="#80000000"
             android:fontFamily="@font/robotoslab_light"
             android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@+id/img_book_calculus_early_transcendentals"
+            app:layout_constraintBottom_toBottomOf="@+id/img_book_calculus_early_transcendentals"
             app:layout_constraintLeft_toLeftOf="@+id/img_book_calculus_early_transcendentals"
             />
 
@@ -278,18 +330,33 @@
             android:id="@+id/aisle_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
             android:paddingLeft="4dp"
             android:paddingRight="8dp"
             android:background="@drawable/blue_rounded_square"
-            android:text="📍Aisle J18"
+            android:text="Aisle J18"
             android:textColor="@color/black"
             android:textSize="10sp"
             android:fontFamily="@font/robotoslab_regular"
             android:textAllCaps="false"
             app:layout_constraintTop_toBottomOf="@+id/title_calc"
-            app:layout_constraintLeft_toLeftOf="@+id/title_calc"
+            app:layout_constraintLeft_toLeftOf="@+id/img_book_calculus_early_transcendentals"
+            />
+
+        <!-- book 3 plus icon -->
+        <ImageView
+            android:id="@+id/plus_3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/plus_icon"
+            android:padding="5dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="5dp"
+            app:layout_constraintLeft_toRightOf="@id/aisle_3"
+            app:layout_constraintTop_toBottomOf="@id/img_book_calculus_early_transcendentals"
+            app:layout_constraintBottom_toBottomOf="@id/aisle_3"
             />
 
         <!-- book 4 FrameLayout wrapper -->
@@ -297,7 +364,8 @@
             android:id="@+id/img_book_harry_potter_philosophers_stone"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            >
 
             <!-- book 4 image -->
             <ImageView
@@ -323,10 +391,12 @@
             android:id="@+id/title_harry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
             android:text="Harry Potter"
+            android:background="#80000000"
             android:fontFamily="@font/robotoslab_light"
             android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@+id/img_book_harry_potter_philosophers_stone"
+            app:layout_constraintBottom_toBottomOf="@+id/img_book_harry_potter_philosophers_stone"
             app:layout_constraintLeft_toLeftOf="@+id/img_book_harry_potter_philosophers_stone"
             />
 
@@ -335,18 +405,33 @@
             android:id="@+id/aisle_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
             android:paddingLeft="4dp"
             android:paddingRight="8dp"
             android:background="@drawable/blue_rounded_square"
-            android:text="📍Aisle K12"
+            android:text="Aisle K12"
             android:textColor="@color/black"
             android:textSize="10sp"
             android:fontFamily="@font/robotoslab_regular"
             android:textAllCaps="false"
             app:layout_constraintTop_toBottomOf="@+id/title_harry"
-            app:layout_constraintLeft_toLeftOf="@+id/title_harry"
+            app:layout_constraintLeft_toLeftOf="@+id/img_book_harry_potter_philosophers_stone"
+            />
+
+        <!-- book 4 plus icon -->
+        <ImageView
+            android:id="@+id/plus_4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/plus_icon"
+            android:padding="5dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="5dp"
+            app:layout_constraintLeft_toRightOf="@id/aisle_4"
+            app:layout_constraintTop_toBottomOf="@id/img_book_harry_potter_philosophers_stone"
+            app:layout_constraintBottom_toBottomOf="@id/aisle_4"
             />
 
         <!-- book 5 FrameLayout wrapper -->
@@ -354,7 +439,8 @@
             android:id="@+id/img_book_project_hail_mary"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            >
 
             <!-- book 5 image -->
             <ImageView
@@ -379,10 +465,12 @@
             android:id="@+id/title_hail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Project Hail Mary"
+            android:layout_marginLeft="3dp"
+            android:text="Project Hail M..."
+            android:background="#80000000"
             android:fontFamily="@font/robotoslab_light"
             android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@+id/img_book_project_hail_mary"
+            app:layout_constraintBottom_toBottomOf="@+id/img_book_project_hail_mary"
             app:layout_constraintLeft_toLeftOf="@+id/img_book_project_hail_mary"
             />
 
@@ -391,18 +479,33 @@
             android:id="@+id/aisle_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
             android:paddingLeft="4dp"
             android:paddingRight="8dp"
             android:background="@drawable/blue_rounded_square"
-            android:text="📍Aisle D11"
+            android:text="Aisle D11"
             android:textColor="@color/black"
             android:textSize="10sp"
             android:fontFamily="@font/robotoslab_regular"
             android:textAllCaps="false"
             app:layout_constraintTop_toBottomOf="@+id/title_hail"
-            app:layout_constraintLeft_toLeftOf="@+id/title_hail"
+            app:layout_constraintLeft_toLeftOf="@+id/img_book_project_hail_mary"
+            />
+
+        <!-- book 5 plus icon -->
+        <ImageView
+            android:id="@+id/plus_5"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/plus_icon"
+            android:padding="5dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginLeft="5dp"
+            app:layout_constraintLeft_toRightOf="@id/aisle_5"
+            app:layout_constraintTop_toBottomOf="@id/img_book_project_hail_mary"
+            app:layout_constraintBottom_toBottomOf="@id/aisle_5"
             />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
@@ -463,10 +566,12 @@
             android:id="@+id/title_mac"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
             android:text="Macbook"
+            android:background="#80000000"
             android:fontFamily="@font/robotoslab_light"
             android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/img_eq_macbook"
+            app:layout_constraintBottom_toBottomOf="@id/img_eq_macbook"
             app:layout_constraintLeft_toLeftOf="@+id/img_eq_macbook"
             />
 
@@ -475,20 +580,30 @@
             android:id="@+id/aisle_front_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
-            android:paddingLeft="4dp"
-            android:paddingRight="8dp"
+            android:layout_marginTop="7dp"
+            android:padding="4dp"
             android:background="@drawable/blue_rounded_square"
-            android:text="📍Front Desk"
+            android:text="Front Desk"
             android:textColor="@color/black"
             android:textSize="10sp"
             android:fontFamily="@font/robotoslab_regular"
             android:textAllCaps="false"
             app:layout_constraintTop_toBottomOf="@id/title_mac"
-            app:layout_constraintLeft_toLeftOf="@+id/title_mac"
+            app:layout_constraintLeft_toLeftOf="@+id/img_eq_macbook"
             />
 
+        <!-- item 1 plus icon -->
+        <ImageView
+            android:id="@+id/plus_eq_1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/plus_icon"
+            android:padding="5dp"
+            android:layout_marginTop="18dp"
+            app:layout_constraintLeft_toRightOf="@id/aisle_front_1"
+            app:layout_constraintTop_toBottomOf="@id/img_eq_macbook"
+            app:layout_constraintBottom_toBottomOf="@id/aisle_front_1"
+            />
 
         <!-- item 2 FrameLayout wrapper -->
         <FrameLayout
@@ -521,10 +636,12 @@
             android:id="@+id/title_ipad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
             android:text="iPad"
+            android:background="#80000000"
             android:fontFamily="@font/robotoslab_light"
             android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@id/img_eq_ipad"
+            app:layout_constraintBottom_toBottomOf="@id/img_eq_ipad"
             app:layout_constraintLeft_toLeftOf="@+id/img_eq_ipad"
             />
 
@@ -533,18 +650,29 @@
             android:id="@+id/aisle_front_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
-            android:paddingLeft="4dp"
-            android:paddingRight="8dp"
+            android:layout_marginTop="7dp"
+            android:padding="4dp"
             android:background="@drawable/blue_rounded_square"
-            android:text="📍Front Desk"
+            android:text="Front Desk"
             android:textColor="@color/black"
             android:textSize="10sp"
             android:fontFamily="@font/robotoslab_regular"
             android:textAllCaps="false"
             app:layout_constraintTop_toBottomOf="@+id/title_ipad"
-            app:layout_constraintLeft_toLeftOf="@+id/title_ipad"
+            app:layout_constraintLeft_toLeftOf="@+id/img_eq_ipad"
+            />
+
+        <!-- item 2 plus icon -->
+        <ImageView
+            android:id="@+id/plus_eq_2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/plus_icon"
+            android:padding="5dp"
+            android:layout_marginTop="18dp"
+            app:layout_constraintLeft_toRightOf="@id/aisle_front_2"
+            app:layout_constraintTop_toBottomOf="@id/img_eq_ipad"
+            app:layout_constraintBottom_toBottomOf="@id/aisle_front_2"
             />
 
         <!-- item 3 FrameLayout wrapper -->
@@ -577,10 +705,12 @@
             android:id="@+id/title_ps4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
             android:text="PlayStation 4"
+            android:background="#80000000"
             android:fontFamily="@font/robotoslab_light"
             android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@+id/img_ps4"
+            app:layout_constraintBottom_toBottomOf="@+id/img_ps4"
             app:layout_constraintLeft_toLeftOf="@+id/img_ps4"
             />
 
@@ -589,18 +719,29 @@
             android:id="@+id/aisle_front_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
-            android:paddingLeft="4dp"
-            android:paddingRight="8dp"
+            android:layout_marginTop="7dp"
+            android:padding="4dp"
             android:background="@drawable/blue_rounded_square"
-            android:text="📍Front Desk"
+            android:text="Front Desk"
             android:textColor="@color/black"
             android:textSize="10sp"
             android:fontFamily="@font/robotoslab_regular"
             android:textAllCaps="false"
             app:layout_constraintTop_toBottomOf="@+id/title_ps4"
-            app:layout_constraintLeft_toLeftOf="@+id/title_ps4"
+            app:layout_constraintLeft_toLeftOf="@+id/img_ps4"
+            />
+
+        <!-- item 3 plus icon -->
+        <ImageView
+            android:id="@+id/plus_eq_3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/plus_icon"
+            android:padding="5dp"
+            android:layout_marginTop="18dp"
+            app:layout_constraintLeft_toRightOf="@id/aisle_front_3"
+            app:layout_constraintTop_toBottomOf="@id/img_ps4"
+            app:layout_constraintBottom_toBottomOf="@id/aisle_front_3"
             />
 
         <!-- item 4 FrameLayout wrapper -->
@@ -633,10 +774,12 @@
             android:id="@+id/title_nintendo_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nintendo Switch"
+            android:layout_marginLeft="3dp"
+            android:text="Nintendo Swi..."
+            android:background="#80000000"
             android:fontFamily="@font/robotoslab_light"
             android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@+id/img_nintendo_switch"
+            app:layout_constraintBottom_toBottomOf="@+id/img_nintendo_switch"
             app:layout_constraintLeft_toLeftOf="@+id/img_nintendo_switch"
             />
 
@@ -645,18 +788,29 @@
             android:id="@+id/aisle_front_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
-            android:paddingLeft="4dp"
-            android:paddingRight="8dp"
+            android:layout_marginTop="7dp"
+            android:padding="4dp"
             android:background="@drawable/blue_rounded_square"
-            android:text="📍Front Desk"
+            android:text="Front Desk"
             android:textColor="@color/black"
             android:textSize="10sp"
             android:fontFamily="@font/robotoslab_regular"
             android:textAllCaps="false"
             app:layout_constraintTop_toBottomOf="@+id/title_nintendo_switch"
-            app:layout_constraintLeft_toLeftOf="@+id/title_nintendo_switch"
+            app:layout_constraintLeft_toLeftOf="@+id/img_nintendo_switch"
+            />
+
+        <!-- item 4 plus icon -->
+        <ImageView
+            android:id="@+id/plus_eq_4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/plus_icon"
+            android:padding="5dp"
+            android:layout_marginTop="18dp"
+            app:layout_constraintLeft_toRightOf="@id/aisle_front_4"
+            app:layout_constraintTop_toBottomOf="@id/img_nintendo_switch"
+            app:layout_constraintBottom_toBottomOf="@id/aisle_front_4"
             />
 
         <!-- item 5 FrameLayout wrapper -->
@@ -689,10 +843,12 @@
             android:id="@+id/title_1000xm5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Song WH-1000XM5"
+            android:layout_marginLeft="3dp"
+            android:text="Song WH-100..."
+            android:background="#80000000"
             android:fontFamily="@font/robotoslab_light"
             android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@+id/img_1000xm5"
+            app:layout_constraintBottom_toBottomOf="@+id/img_1000xm5"
             app:layout_constraintLeft_toLeftOf="@+id/img_1000xm5"
             />
 
@@ -701,25 +857,36 @@
             android:id="@+id/aisle_front_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="4dp"
-            android:paddingBottom="4dp"
-            android:paddingLeft="4dp"
-            android:paddingRight="8dp"
+            android:layout_marginTop="7dp"
+            android:padding="4dp"
             android:background="@drawable/blue_rounded_square"
-            android:text="📍Front Desk"
+            android:text="Front Desk"
             android:textColor="@color/black"
             android:textSize="10sp"
             android:fontFamily="@font/robotoslab_regular"
             android:textAllCaps="false"
             app:layout_constraintTop_toBottomOf="@+id/title_1000xm5"
-            app:layout_constraintLeft_toLeftOf="@+id/title_1000xm5"
+            app:layout_constraintLeft_toLeftOf="@+id/img_1000xm5"
+            />
+
+        <!-- item 4 plus icon -->
+        <ImageView
+            android:id="@+id/plus_eq_5"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/plus_icon"
+            android:padding="5dp"
+            android:layout_marginTop="18dp"
+            app:layout_constraintLeft_toRightOf="@id/aisle_front_5"
+            app:layout_constraintTop_toBottomOf="@id/img_1000xm5"
+            app:layout_constraintBottom_toBottomOf="@id/aisle_front_5"
             />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
 
-    <!-- Help Button Icon -->
-    <include
-        android:id="@+id/help_button_include"
-        layout="@layout/help_button" />
+<!--    &lt;!&ndash; Help Button Icon &ndash;&gt;-->
+<!--    <include-->
+<!--        android:id="@+id/help_button_include"-->
+<!--        layout="@layout/help_button" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
