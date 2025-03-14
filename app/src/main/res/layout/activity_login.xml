@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".activities.LoginActivity">
 
     <!-- Back Button -->
     <include layout="@layout/back_button"/>
 
-    <!-- Scan to login tex t-->
+    <!-- Scan to login text-->
     <TextView
         android:id="@+id/heading"
         android:layout_width="wrap_content"

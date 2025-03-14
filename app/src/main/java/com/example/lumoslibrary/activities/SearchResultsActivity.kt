@@ -1,16 +1,24 @@
-package com.example.lumoslibrary
+package com.example.lumoslibrary.activities
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-
+import com.example.lumoslibrary.BackButton
+import com.example.lumoslibrary.HelpButton
+import com.example.lumoslibrary.Item
+import com.example.lumoslibrary.R
+import com.example.lumoslibrary.SearchInventory
+/* Displays the search results when user is looking for books/items */
 class SearchResultsActivity : AppCompatActivity() {
 
     private lateinit var searchInventory: SearchInventory
@@ -49,6 +57,12 @@ class SearchResultsActivity : AppCompatActivity() {
 
     private fun updateItemCards() {
         runOnUiThread {
+            // Clear focus from the search bar before hiding the keyboard
+            searchQueryEditText.clearFocus()
+
+            // Hide the keyboard
+            hideKeyboard(searchQueryEditText)
+
             itemCardContainer.removeAllViews()
             val inflater = LayoutInflater.from(this)
 
@@ -98,8 +112,8 @@ class SearchResultsActivity : AppCompatActivity() {
                 itemCardContainer.addView(itemView)
             }
         }
-
     }
+
 
     override fun onDestroy() {
         super.onDestroy()
@@ -140,6 +154,10 @@ class SearchResultsActivity : AppCompatActivity() {
         }
 
 
+    }
+    private fun hideKeyboard(view: View) {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
 }

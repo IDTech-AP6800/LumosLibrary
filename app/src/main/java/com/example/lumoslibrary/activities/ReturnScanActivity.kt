@@ -1,4 +1,4 @@
-package com.example.lumoslibrary
+package com.example.lumoslibrary.activities
 
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -22,12 +22,24 @@ import androidx.camera.core.ImageAnalysis.COORDINATE_SYSTEM_VIEW_REFERENCED
 import androidx.camera.mlkit.vision.MlKitAnalyzer
 import androidx.camera.view.LifecycleCameraController
 import androidx.camera.view.PreviewView
+import com.example.lumoslibrary.BackButton
+import com.example.lumoslibrary.CheckedOutItem
+import com.example.lumoslibrary.CurrentSession
+import com.example.lumoslibrary.Item
+import com.example.lumoslibrary.QrCodeDrawable
+import com.example.lumoslibrary.R
+import com.example.lumoslibrary.RentSession
+import com.example.lumoslibrary.SearchInventory
+import com.example.lumoslibrary.User
+import com.example.lumoslibrary.UserData
 import com.example.lumoslibrary.viewmodels.QrCodeViewModel
 import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 
+/* Allows user to scan barcodes (linear and isbn) of items to return
+*  Updates layout dynamically */
 class ReturnScanActivity : AppCompatActivity() {
 
     private lateinit var currentUser: User
@@ -44,18 +56,16 @@ class ReturnScanActivity : AppCompatActivity() {
     private val scanDelayHandler = Handler(Looper.getMainLooper())
     private val delayScanTime : Long = 3000 // 3 seconds
 
+    private lateinit var backButton: BackButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_return_scan_item)
-//        HelpButton(this)
-        BackButton(this)
+        backButton = BackButton(this)
 
         continueButton = findViewById(R.id.continue_button)
         updateContinueButtonState()
 
-        // Testing purposes:
-        // - get the current user and show all their checkedout items
-//        currentUser = UserData(this, "users.json").searchByUserId(CurrentSession.userID)
         val user = UserData(this, "users.json").searchByUserId(CurrentSession.userID)
         if (user != null) {
             currentUser = user
@@ -272,7 +282,8 @@ class ReturnScanActivity : AppCompatActivity() {
                 0.0 // Default to 0.0 if empty
             }
 
-            Log.d(TAG, "depositTotal: ${depositTotal.text} \n " +
+            Log.d(
+                TAG, "depositTotal: ${depositTotal.text} \n " +
                     "totalDueString: $totalDueString")
 
             if (currentUser != null) {
@@ -367,6 +378,7 @@ class ReturnScanActivity : AppCompatActivity() {
         super.onDestroy()
         Log.d(TAG, "ReturnScanActivity is being destroyed")
         barcodeScanner.close()
+        backButton.onDestroy()
         scanDelayHandler.removeCallbacksAndMessages(null)
     }
 

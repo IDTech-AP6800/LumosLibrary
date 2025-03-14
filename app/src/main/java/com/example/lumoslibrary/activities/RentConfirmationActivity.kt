@@ -1,25 +1,29 @@
-package com.example.lumoslibrary
+package com.example.lumoslibrary.activities
 
-import android.Manifest
 import android.content.Intent
-import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Layout
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
+import com.example.lumoslibrary.Audio
+import com.example.lumoslibrary.CheckedOutItem
+import com.example.lumoslibrary.CurrentSession
+import com.example.lumoslibrary.R
+import com.example.lumoslibrary.UserData
+import com.example.lumoslibrary.setOnClickListener
 import kotlin.random.Random
 import nl.dionsegijn.konfetti.core.Party
 import nl.dionsegijn.konfetti.core.emitter.Emitter
 import nl.dionsegijn.konfetti.xml.KonfettiView
 import java.util.concurrent.TimeUnit
 
+/* Rent confirmation page that displays items rented w/ Confetti
+*  Updates json to reflect new rental */
 class RentConfirmationActivity : AppCompatActivity() {
 
     private val audio: Audio = Audio()

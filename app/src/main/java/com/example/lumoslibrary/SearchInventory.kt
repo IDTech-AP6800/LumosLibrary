@@ -8,6 +8,7 @@ import org.apache.commons.text.similarity.JaroWinklerSimilarity
 import java.io.IOException
 import java.util.Locale
 
+/* Searches the Inventory using fuzzy search from the items.json */
 class SearchInventory(private val context: Context, private val fileName: String) {
     private var items: List<Item>
 

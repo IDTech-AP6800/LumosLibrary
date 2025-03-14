@@ -1,4 +1,4 @@
-package com.example.lumoslibrary
+package com.example.lumoslibrary.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,6 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.widget.ImageButton
 import android.widget.TextView
+import com.example.lumoslibrary.Audio
+import com.example.lumoslibrary.BackButton
+import com.example.lumoslibrary.R
+import com.example.lumoslibrary.RentSession
+import com.example.lumoslibrary.setOnClickListener
 import com.idtech.zsdk_client.CancelTransactionAsync
 import com.idtech.zsdk_client.Client
 import com.idtech.zsdk_client.GetDevicesAsync

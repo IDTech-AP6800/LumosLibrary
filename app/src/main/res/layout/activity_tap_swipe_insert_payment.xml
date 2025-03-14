@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context=".TapSwipeInsertPaymentActivity">
+    tools:context=".activities.TapSwipeInsertPaymentActivity">
 
 
     <include layout="@layout/back_button"/>
