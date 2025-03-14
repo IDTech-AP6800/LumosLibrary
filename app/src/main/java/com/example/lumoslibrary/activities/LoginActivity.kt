@@ -29,6 +29,9 @@ import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 
+/* Login for users in the users.json, can enter via Barcode 128 or enter the id via numpad
+*  Will reject users not in the users.json
+*  Connects to Rent or Return depending on the CurrentSession State */
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var barcodeScanner: BarcodeScanner
@@ -169,7 +172,6 @@ class LoginActivity : AppCompatActivity() {
 
         if (CurrentSession.state == 2) { // Return
             if (user != null && user.checkedOutItems.isNotEmpty()) {
-//                val intent = Intent(this, ReturnScanActivity::class.java)
                 val intent = Intent(this, UserItemsCheckedOutActivity::class.java)
                 startActivity(intent)
             } else {

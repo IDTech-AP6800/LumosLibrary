@@ -25,6 +25,8 @@ import nl.dionsegijn.konfetti.xml.KonfettiView
 import java.util.concurrent.TimeUnit
 import kotlin.random.Random
 
+/* Return confirmation page that displays items rented w/ Confetti
+*  Updates json to reflect that user returned items */
 class ReturnConfirmationActivity : AppCompatActivity() {
 
     private val audio: Audio = Audio()
@@ -70,11 +72,6 @@ class ReturnConfirmationActivity : AppCompatActivity() {
                     // Get full item details based on name (title)
                     getItemByTitle(checkedOutItem.name)
                 }
-
-            // Now, filter based on scanned items that match `title`
-//            val remainingItems = currentlyCheckedOutItems.filter { item ->
-//                !scannedItems.any { scannedItem -> scannedItem.title == item.title }
-//            }
 
             // Filter out any null items from the list
             val remainingItems = currentlyCheckedOutItems.filterNotNull()

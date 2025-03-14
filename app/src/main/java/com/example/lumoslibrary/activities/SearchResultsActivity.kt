@@ -18,7 +18,7 @@ import com.example.lumoslibrary.HelpButton
 import com.example.lumoslibrary.Item
 import com.example.lumoslibrary.R
 import com.example.lumoslibrary.SearchInventory
-
+/* Displays the search results when user is looking for books/items */
 class SearchResultsActivity : AppCompatActivity() {
 
     private lateinit var searchInventory: SearchInventory

@@ -25,6 +25,7 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 import kotlin.concurrent.thread
 
+/* Help page that implements OpenAI, and has pre-prompts it to answer user questions*/
 class HelpPageActivity : AppCompatActivity() {
     private val API_KEY = ""
     private val API_URL = "https://api.openai.com/v1/chat/completions"

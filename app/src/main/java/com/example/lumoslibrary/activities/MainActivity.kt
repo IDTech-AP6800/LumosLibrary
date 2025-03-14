@@ -30,7 +30,8 @@ import com.example.lumoslibrary.R
 
 
 
-
+/*Starts the connection with IdTech API, Handles Screen Saver Animations,
+* and Holds the Proximity Sensor which changes brightness when the user gets closer */
 class MainActivity : AppCompatActivity(), SensorEventListener{
 
     private val viewModel: MainViewModel by viewModels()
@@ -483,7 +484,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
     override //-> Uncomment when doing screen brightness
     fun onSensorChanged(event: SensorEvent?) {
         val distance = event!!.values[0]
-        Log.d(SensorActivity.TAG, "distance=$distance")
+        Log.d(TAG, "distance=$distance")
 
 
         //Brightness val: 0 - 255 (no brightness to full)

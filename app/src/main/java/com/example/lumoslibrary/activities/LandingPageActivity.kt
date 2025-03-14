@@ -10,9 +10,11 @@ import com.example.lumoslibrary.HelpButton
 import com.example.lumoslibrary.R
 import com.example.lumoslibrary.setOnClickListener
 
+/* Landing page that holds a carousel with popular items/books
+   Links to the search of location of books/items
+*  Also links to the Rent and Return Activities via User Login */
 class LandingPageActivity : AppCompatActivity() {
 
-//    private lateinit var motionLayout: MotionLayout
 
     private lateinit var rentButton: Button
     private lateinit var returnButton: Button
@@ -30,9 +32,6 @@ class LandingPageActivity : AppCompatActivity() {
         returnButton = findViewById(R.id.return_button)
 
         helpButton = HelpButton(this)
-
-        // Find views
-//        motionLayout = findViewById(R.id.motion_layout_books)
 
         searchButton.setOnClickListener{
             startActivity(Intent(this, SearchResultsActivity::class.java))}

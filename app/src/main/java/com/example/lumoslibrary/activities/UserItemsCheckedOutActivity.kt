@@ -18,6 +18,7 @@ import com.example.lumoslibrary.SearchInventory
 import com.example.lumoslibrary.User
 import com.example.lumoslibrary.UserData
 
+/* Displays items user has checked out, so that they know what's pending to return */
 class UserItemsCheckedOutActivity : AppCompatActivity() {
 
     private lateinit var currentUser: User

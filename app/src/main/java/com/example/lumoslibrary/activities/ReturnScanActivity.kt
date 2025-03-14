@@ -38,6 +38,8 @@ import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 
+/* Allows user to scan barcodes (linear and isbn) of items to return
+*  Updates layout dynamically */
 class ReturnScanActivity : AppCompatActivity() {
 
     private lateinit var currentUser: User
@@ -53,15 +55,14 @@ class ReturnScanActivity : AppCompatActivity() {
     private val scanDelayHandler = Handler(Looper.getMainLooper())
     private val delayScanTime : Long = 3000 // 3 seconds
 
+    private lateinit var backButton: BackButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_return_scan_item)
-//        HelpButton(this)
-        BackButton(this)
+        backButton = BackButton(this)
 
-        // Testing purposes:
-        // - get the current user and show all their checkedout items
-//        currentUser = UserData(this, "users.json").searchByUserId(CurrentSession.userID)
+
         val user = UserData(this, "users.json").searchByUserId(CurrentSession.userID)
         if (user != null) {
             currentUser = user
@@ -356,6 +357,7 @@ class ReturnScanActivity : AppCompatActivity() {
         super.onDestroy()
         Log.d(TAG, "ReturnScanActivity is being destroyed")
         barcodeScanner.close()
+        backButton.onDestroy()
         scanDelayHandler.removeCallbacksAndMessages(null)
     }
 

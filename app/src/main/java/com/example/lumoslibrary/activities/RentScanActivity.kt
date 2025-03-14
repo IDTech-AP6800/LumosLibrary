@@ -36,6 +36,8 @@ import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 
+/* Allows user to scan barcodes (linear and isbn) of items to check out
+*  Updates layout dynamically */
 class RentScanActivity : AppCompatActivity() {
 
     private lateinit var barcodeScanner: BarcodeScanner
@@ -56,7 +58,6 @@ class RentScanActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rent_scan_item)
-//        HelpButton(this)
         backButton = BackButton(this)
 
         Log.d(TAG, "onCreate: HERE!!!!!")
@@ -149,7 +150,6 @@ class RentScanActivity : AppCompatActivity() {
 
         if (matchedItem != null) {
             addScannedItem(matchedItem)
-//            Toast.makeText(this, "Scanned: ${matchedItem.title}", Toast.LENGTH_LONG).show()
             Log.d(TAG, "Matched Book: ${matchedItem.title}, Location: ${matchedItem.location}")
         } else {
             Toast.makeText(this, "No matching book found", Toast.LENGTH_SHORT).show()
@@ -163,7 +163,6 @@ class RentScanActivity : AppCompatActivity() {
         if (matchedItems.isNotEmpty()) {
             val matchedItem = matchedItems.first()
             addScannedItem(matchedItem)
-//            Toast.makeText(this, "Scanned: ${matchedItem.title}", Toast.LENGTH_LONG).show()
             Log.d(TAG, "Matched Equipment: ${matchedItem.title}, Location: ${matchedItem.location}")
         } else {
             Toast.makeText(this, "No matching equipment found", Toast.LENGTH_SHORT).show()
@@ -230,7 +229,6 @@ class RentScanActivity : AppCompatActivity() {
             audio.playClickAudio(this)
             val depositTotal = findViewById<View>(R.id.total_due_amount) as TextView
             val totalDueString = depositTotal.text.toString()
-//                .replace("$0.00", "")
                 .replace(Regex("[^0-9.]"), "")
                 .trim()
 
@@ -251,9 +249,6 @@ class RentScanActivity : AppCompatActivity() {
                 }
             }
 
-            // Create an Intent to navigate to the PaymentOptions activity
-//            val intent = Intent(this@RentScanActivity, TapSwipeInsertPaymentActivity::class.java)
-//            startActivity(intent)
             Handler(Looper.getMainLooper()).postDelayed({
                 if (RentSession.totalDue == 0.0) {
                     startActivity(Intent(this, RentConfirmationActivity::class.java)) // Replace with your intended activity
@@ -268,27 +263,20 @@ class RentScanActivity : AppCompatActivity() {
     }
 
     private fun calculateSecurityDepositTotal() {
-//        val totalDeposit = scannedItemsList.sumOf { it.security_deposit }
-//        Log.d(TAG, "calculateSecurityDepositTotal: $totalDeposit")
+
 
         val depositTotal = findViewById<View>(R.id.total_due_amount) as TextView
 
         var total = 0f
 
-//        Log.d(TAG, "in here!")
         for (item in scannedItemsList) {
             if (item.security_deposit > 0) {
-//                Log.d(TAG, "${item.title}: has desposit of ${item.security_deposit}")
                 total += item.security_deposit
             }
         }
 
         val totalText = String.format("$%.2f", total)
         depositTotal.text = totalText
-
-//        Log.d(TAG, "total is: $total")
-//        val totalText = String.format("%.2f", totalDeposit)
-//        totalDueAmount.text = totalText
     }
 
 
