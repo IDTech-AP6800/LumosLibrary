@@ -236,7 +236,7 @@ class RentScanActivity : AppCompatActivity() {
             if (itemContainer == null) {
                 Log.d(TAG, "CurrentSession.checkedOut is NULL!")
             } else {
-                Log.d(TAG, "itemContainer! :")
+                Log.d(TAG, "items scanned for rent! :")
                 for (item in itemContainer) {
                     Log.d(TAG, "> ${item.title}\n")
                 }

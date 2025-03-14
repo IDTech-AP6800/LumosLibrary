@@ -30,6 +30,7 @@ import com.google.mlkit.vision.barcode.common.Barcode
 
 class ReturnScanActivity : AppCompatActivity() {
 
+    private lateinit var currentUser: User
     private lateinit var barcodeScanner: BarcodeScanner
     private lateinit var imageCam: PreviewView
     private lateinit var totalRefundAmount: TextView
@@ -48,7 +49,23 @@ class ReturnScanActivity : AppCompatActivity() {
 //        HelpButton(this)
         BackButton(this)
 
-        Log.d(TAG, "onCreate: HERE in return!!!!!")
+        // Testing purposes:
+        // - get the current user and show all their checkedout items
+//        currentUser = UserData(this, "users.json").searchByUserId(CurrentSession.userID)
+        val user = UserData(this, "users.json").searchByUserId(CurrentSession.userID)
+        if (user != null) {
+            currentUser = user
+        } else {
+            Log.e(TAG, "User not found in users.json for ID: ${CurrentSession.userID}")
+            // Handle the missing user case (e.g., show an error message or navigate back)
+        }
+
+        if (currentUser != null) {
+            Log.d(TAG, "** ReturnScanActivity - onCreate. HERE is USER ${currentUser.userId}'s checkedOutItems: \n")
+                    for (a in currentUser.checkedOutItems) {
+                Log.d(TAG, ">>>> ${a.name}\n")
+            }
+        }
 
         imageCam = findViewById(R.id.item_camera_preview)
 
@@ -139,10 +156,10 @@ class ReturnScanActivity : AppCompatActivity() {
         if (matchedItem != null) {
             addScannedItem(matchedItem)
 //            Toast.makeText(this, "Scanned: ${matchedItem.title}", Toast.LENGTH_LONG).show()
-            Log.d(TAG, "Matched Book: ${matchedItem.title}, Location: ${matchedItem.location}")
+//            Log.d(TAG, "Matched Book: ${matchedItem.title}, Location: ${matchedItem.location}")
         } else {
             Toast.makeText(this, "No matching book found", Toast.LENGTH_SHORT).show()
-            Log.d(TAG, "No match for ISBN: $value")
+            Log.d(TAG, "!!! No match for ISBN: $value")
         }
     }
 
@@ -234,8 +251,13 @@ class ReturnScanActivity : AppCompatActivity() {
                 .replace(Regex("[^0-9.]"), "")
                 .trim()
 
+            Log.d(TAG, "listenContinueButton: scannedItemsList: \n")
+            for (e in scannedItemsList) {
+                Log.d(TAG, "   title: ${e.title}")
+            }
+
+            // Set list of scanned items to the CurrentSession list so it can be accessed in ReturnConfirmationActivity
             CurrentSession.checkedOut = scannedItemsList
-//            RentSession.totalDue = totalDueString.toDouble()
 
             // Ensure totalDueString is not empty before parsing
             RentSession.totalDue = if (totalDueString.isNotEmpty()) {
@@ -247,11 +269,16 @@ class ReturnScanActivity : AppCompatActivity() {
             Log.d(TAG, "depositTotal: ${depositTotal.text} \n " +
                     "totalDueString: $totalDueString")
 
-            val itemContainer = CurrentSession.checkedOut
+            if (currentUser != null) {
+                // Remove the items that are scanned from the user's checked-out items
+                UserData(this, "users.json").removeItem(currentUser.userId, scannedItemsList.map { CheckedOutItem(it.title, false) })
+            }
+
+            val itemContainer = scannedItemsList
             if (itemContainer == null) {
                 Log.d(TAG, "CurrentSession.checkedOut is NULL!")
             } else {
-                Log.d(TAG, "itemContainer! :")
+                Log.d(TAG, "items added for return! :")
                 for (item in itemContainer) {
                     Log.d(TAG, "> ${item.title}\n")
                 }
@@ -262,8 +289,8 @@ class ReturnScanActivity : AppCompatActivity() {
 //            startActivity(intent)
 
             Handler(Looper.getMainLooper()).postDelayed({
-                    startActivity(Intent(this, ReturnConfirmationActivity::class.java))
-                    Log.d(TAG, "Total due is zero, navigating to SomeOtherActivity")
+                startActivity(Intent(this, ReturnConfirmationActivity::class.java))
+                Log.d(TAG, "Total due is zero, navigating to SomeOtherActivity")
             }, 300) // Delay by 300ms
 
         }

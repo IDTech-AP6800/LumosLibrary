@@ -168,6 +168,7 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(intent)
             } else {
                 Toast.makeText(this, "You have no checked-out items to return.", Toast.LENGTH_SHORT).show()
+                Log.d(TAG, "You have no checked-out items to return.")
             }
         } else { // Rent
             val intent = Intent(this, RentScanActivity::class.java)
