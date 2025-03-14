@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
     private val viewModel: MainViewModel by viewModels()
     private lateinit var sensorManager: SensorManager
     private var proximity: Sensor? = null
+    lateinit var rootView: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,7 +109,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
         )
 
         // OPTIONAL: If you want a simple “tap anywhere to proceed” approach:
-        val rootView = findViewById<View>(android.R.id.content)
+        rootView = findViewById<View>(android.R.id.content)
         rootView.setOnClickListener {
 
             // Play fade-out animation for the first layout views
@@ -476,6 +477,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
             if (distance < minDistance) {
                 //50 is hypothetical and refers to 50 cm
                 changeScreenBrightness(context, closeValue)
+                rootView.performClick()  // Trigger the onClick listener
             }
             else {
                 changeScreenBrightness(context, farValue)
