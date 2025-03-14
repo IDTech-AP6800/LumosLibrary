@@ -37,6 +37,7 @@ class RentScanActivity : AppCompatActivity() {
     private lateinit var itemCardContainer: LinearLayout
     private val scannedItemsList = mutableListOf<Item>()
     private val scannedItemsSet = mutableSetOf<String>()
+    private lateinit var continueButton: Button
 
     private var isScanning = false
     private val scanDelayHandler = Handler(Looper.getMainLooper())
@@ -51,7 +52,8 @@ class RentScanActivity : AppCompatActivity() {
 //        HelpButton(this)
         backButton = BackButton(this)
 
-        Log.d(TAG, "onCreate: HERE!!!!!")
+        continueButton = findViewById(R.id.continue_button)
+        updateContinueButtonState()
 
         imageCam = findViewById(R.id.item_camera_preview)
 
@@ -171,6 +173,7 @@ class RentScanActivity : AppCompatActivity() {
             Toast.makeText(this, "Item already scanned", Toast.LENGTH_SHORT).show()
         }
         calculateSecurityDepositTotal()
+        updateContinueButtonState()
     }
 
     private fun removeScannedItem(item: Item) {
@@ -179,6 +182,7 @@ class RentScanActivity : AppCompatActivity() {
             updateItemCards()
         }
         calculateSecurityDepositTotal()
+        updateContinueButtonState()
     }
 
     private fun updateItemCards() {
@@ -217,7 +221,7 @@ class RentScanActivity : AppCompatActivity() {
 
     //Creates listener for the continue button
     private fun listenContinueButton() {
-        val continueButton = findViewById<Button>(R.id.continue_button)
+//        val continueButton = findViewById<Button>(R.id.continue_button)
         continueButton.setOnClickListener {
             audio.playClickAudio(this)
             val depositTotal = findViewById<View>(R.id.total_due_amount) as TextView
@@ -282,6 +286,20 @@ class RentScanActivity : AppCompatActivity() {
 //        totalDueAmount.text = totalText
     }
 
+    private fun updateContinueButtonState() {
+
+        if (scannedItemsList.isNotEmpty()) {
+            continueButton.isEnabled = true
+            continueButton.setBackgroundResource(R.drawable.big_btn_bground) // Active state
+            continueButton.setTextColor(ContextCompat.getColor(this, R.color.white))
+            Log.d(TAG, "updateContinueButtonState: button enabled")
+        } else {
+            continueButton.isEnabled = false
+            continueButton.setBackgroundResource(R.drawable.button_disabled) // Greyed-out state
+            continueButton.setTextColor(ContextCompat.getColor(this, R.color.greyText))
+            Log.d(TAG, "updateContinueButtonState: button disabled")
+        }
+    }
 
     private fun requestPermissions() {
         activityResultLauncher.launch(REQUIRED_PERMISSIONS)

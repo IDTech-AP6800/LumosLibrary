@@ -38,6 +38,7 @@ class ReturnScanActivity : AppCompatActivity() {
     private lateinit var itemCardContainer: LinearLayout
     private val scannedItemsList = mutableListOf<Item>()
     private val scannedItemsSet = mutableSetOf<String>()
+    private lateinit var continueButton: Button
 
     private var isScanning = false
     private val scanDelayHandler = Handler(Looper.getMainLooper())
@@ -48,6 +49,9 @@ class ReturnScanActivity : AppCompatActivity() {
         setContentView(R.layout.activity_return_scan_item)
 //        HelpButton(this)
         BackButton(this)
+
+        continueButton = findViewById(R.id.continue_button)
+        updateContinueButtonState()
 
         // Testing purposes:
         // - get the current user and show all their checkedout items
@@ -197,6 +201,7 @@ class ReturnScanActivity : AppCompatActivity() {
             Toast.makeText(this, "Item already scanned.", Toast.LENGTH_SHORT).show()
         }
         calculateRefundTotal()
+        updateContinueButtonState() // Call function to update button state
     }
 
     private fun removeScannedItem(item: Item) {
@@ -205,6 +210,7 @@ class ReturnScanActivity : AppCompatActivity() {
             updateItemCards()
         }
         calculateRefundTotal()
+        updateContinueButtonState() // Call function to update button state
     }
 
     private fun updateItemCards() {
@@ -243,7 +249,7 @@ class ReturnScanActivity : AppCompatActivity() {
 
     //Creates listener for the continue button
     private fun listenContinueButton() {
-        val continueButton = findViewById<Button>(R.id.continue_button)
+//        val continueButton = findViewById<Button>(R.id.continue_button)
         continueButton.setOnClickListener {
             val depositTotal = findViewById<View>(R.id.total_refund_text) as TextView
             val totalDueString = depositTotal.text.toString()
@@ -331,6 +337,22 @@ class ReturnScanActivity : AppCompatActivity() {
 //        totalRefundAmount.text = totalText
     }
 
+    private fun updateContinueButtonState() {
+//        val continueButton = findViewById<Button>(R.id.continue_button)
+//        continueButton.isEnabled = scannedItemsList.isNotEmpty()
+
+        if (scannedItemsList.isNotEmpty()) {
+            continueButton.isEnabled = true
+            continueButton.setBackgroundResource(R.drawable.big_btn_bground) // Active state
+            continueButton.setTextColor(ContextCompat.getColor(this, R.color.white))
+            Log.d(TAG, "updateContinueButtonState: button enabled")
+        } else {
+            continueButton.isEnabled = false
+            continueButton.setBackgroundResource(R.drawable.button_disabled) // Greyed-out state
+            continueButton.setTextColor(ContextCompat.getColor(this, R.color.greyText))
+            Log.d(TAG, "updateContinueButtonState: button disabled")
+        }
+    }
 
     private fun requestPermissions() {
         activityResultLauncher.launch(REQUIRED_PERMISSIONS)

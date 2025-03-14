@@ -9,4 +9,6 @@
     <color name="background">#22262F</color>
     <color name="primaryBlue">#56678D</color>
     <color name="secondaryBlue">#A7C2FF</color>
+    <color name="greyBackground">#999999</color>
+    <color name="greyText">#5b5b5b</color>
 </resources>
