@@ -3,6 +3,8 @@ package com.example.lumoslibrary.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.ImageView
@@ -28,6 +30,9 @@ class RentConfirmationActivity : AppCompatActivity() {
 
     private val audio: Audio = Audio()
     private lateinit var viewKonfetti: KonfettiView
+
+    private val handler = Handler(Looper.getMainLooper())
+    private lateinit var timeoutRunnable: Runnable
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,15 +84,18 @@ class RentConfirmationActivity : AppCompatActivity() {
             }
         }
 
-        button.setOnClickListener(1000L) {
-            val userData = UserData(this, "users.json")
-            val currentUserId = CurrentSession.userID  // Get current user ID
-            val newCheckedOutItems = CurrentSession.checkedOut?.map { item ->
-                CheckedOutItem(item.title, isLate = if (item.security_deposit == 0) false else Random.nextBoolean())
-            } ?: emptyList()
+        val userData = UserData(this, "users.json")
+        val currentUserId = CurrentSession.userID  // Get current user ID
+        val newCheckedOutItems = CurrentSession.checkedOut?.map { item ->
+            CheckedOutItem(item.title, isLate = if (item.security_deposit == 0) false else Random.nextBoolean())
+        } ?: emptyList()
 
-            userData.addItem(currentUserId, newCheckedOutItems)
+        userData.addItem(currentUserId, newCheckedOutItems)
+
+        button.setOnClickListener(1000L) {
             audio.playClickAudio(this)
+            // Cancel the timeout when the user click on confirm button
+            cancelTimeout()
             val intent = Intent(this, LandingPageActivity::class.java)
             startActivity(intent)
         }
@@ -99,10 +107,27 @@ class RentConfirmationActivity : AppCompatActivity() {
         )
 
         viewKonfetti.start(party)
+
+        // Set up timeout runnable to navigate after 1 minute
+        timeoutRunnable = Runnable {
+            // Navigate to the next activity after the timeout
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        // Start the timeout countdown
+        handler.postDelayed(timeoutRunnable, TimeUnit.MINUTES.toMillis(1))
     }
+
+    private fun cancelTimeout() {
+        handler.removeCallbacks(timeoutRunnable)
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         audio.destroy()
+        cancelTimeout()
     }
 
     // Calculate due date (Example: Adds 14 days for books, 3 for equipment)

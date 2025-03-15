@@ -40,6 +40,7 @@ class QrCodeActivity : AppCompatActivity() {
     private val audio: Audio = Audio()
     private lateinit var backButton: BackButton
 
+    private var isQrCodeScanned = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scan_to_pay)
@@ -67,9 +68,6 @@ class QrCodeActivity : AppCompatActivity() {
         }
     }
 
-
-
-    /*Qr Code detection and the yellow box*/
     private val activityResultLauncher =
         registerForActivityResult(
             ActivityResultContracts.RequestMultiplePermissions())
@@ -88,6 +86,7 @@ class QrCodeActivity : AppCompatActivity() {
                 startCamera()
             }
         }
+
     private fun startCamera() {
         val cameraController = LifecycleCameraController(baseContext)
         val previewView: PreviewView = findViewById(R.id.camera_preview)
@@ -104,6 +103,9 @@ class QrCodeActivity : AppCompatActivity() {
                 COORDINATE_SYSTEM_VIEW_REFERENCED,
                 ContextCompat.getMainExecutor(this)
             ) { result: MlKitAnalyzer.Result? ->
+
+                if (isQrCodeScanned) return@MlKitAnalyzer
+
                 val barcodeResults =
                     result?.getValue(barcodeScanner)
                 val barcodeValue =
@@ -123,6 +125,9 @@ class QrCodeActivity : AppCompatActivity() {
                         TAG, "startCamera:\ncodeValue:$barcodeValue" +
                             "\nbarcodeFormat:$barcodeFormat")
 
+                    // Mark the QR code as scanned and stop further scanning
+                    isQrCodeScanned = true
+
                     val intent = Intent(this@QrCodeActivity, RentConfirmationActivity::class.java)
                     startActivity(intent)
                     finish()
@@ -134,25 +139,22 @@ class QrCodeActivity : AppCompatActivity() {
                 previewView.overlay.clear()
                 previewView.overlay.add(qrCodeDrawable)
             }
-
         )
 
         cameraController.bindToLifecycle(this)
         previewView.setController(cameraController)
 
-        /* The back camera is the one for qr codes
-           If you want to use the front camera, change the selector
-           to use DEFAULT_FRONT_CAMERA */
-        cameraController.cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+        cameraController.cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
     }
+
     private fun requestPermissions() {
         activityResultLauncher.launch(REQUIRED_PERMISSIONS)
     }
+
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(
             baseContext, it) == PackageManager.PERMISSION_GRANTED
     }
-
 
     override fun onDestroy() {
         super.onDestroy()

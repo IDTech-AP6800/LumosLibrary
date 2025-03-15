@@ -3,6 +3,8 @@ package com.example.lumoslibrary.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.ImageView
@@ -34,6 +36,10 @@ class ReturnConfirmationActivity : AppCompatActivity() {
     private lateinit var searchInventory: SearchInventory
     private lateinit var returnedItemsContainer: LinearLayout
     private lateinit var checkedOutItemsContainer: LinearLayout
+
+    private val handler = Handler(Looper.getMainLooper())
+    private lateinit var timeoutRunnable: Runnable
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_return_confirmation)
@@ -93,18 +99,21 @@ class ReturnConfirmationActivity : AppCompatActivity() {
             Log.e(TAG, "User data not found!")
         }
 
+        val userData = UserData(this, "users.json")
+        val currentUserId = CurrentSession.userID  // Get current user ID
+
+        val newCheckedOutItems = CurrentSession.checkedOut?.map { item ->
+            CheckedOutItem(item.title, isLate = if (item.security_deposit == 0) false else Random.nextBoolean())
+        } ?: emptyList()
+
+        userData.removeItem(currentUserId, newCheckedOutItems)
+
         val button = findViewById<AppCompatButton>(R.id.returnConf_button)
 
         button.setOnClickListener(1000L){
-            val userData = UserData(this, "users.json")
-            val currentUserId = CurrentSession.userID  // Get current user ID
-
-            val newCheckedOutItems = CurrentSession.checkedOut?.map { item ->
-                CheckedOutItem(item.title, isLate = if (item.security_deposit == 0) false else Random.nextBoolean())
-            } ?: emptyList()
-
-            userData.removeItem(currentUserId, newCheckedOutItems)
             audio.playClickAudio(this)
+            // Cancel the timeout when the user click on confirm button
+            cancelTimeout()
             val intent = Intent(this, LandingPageActivity::class.java)
             startActivity(intent)
         }
@@ -115,6 +124,21 @@ class ReturnConfirmationActivity : AppCompatActivity() {
         )
 
         konfettiView.start(party)
+
+        // Set up timeout runnable to navigate after 1 minute
+        timeoutRunnable = Runnable {
+            // Navigate to the next activity after the timeout
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        // Start the timeout countdown
+        handler.postDelayed(timeoutRunnable, TimeUnit.MINUTES.toMillis(1))
+    }
+
+    private fun cancelTimeout() {
+        handler.removeCallbacks(timeoutRunnable)
     }
 
     // Function to display items that have been returned (scanned for return)
@@ -208,6 +232,7 @@ class ReturnConfirmationActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         audio.destroy()
+        cancelTimeout()
     }
 
     companion object {
