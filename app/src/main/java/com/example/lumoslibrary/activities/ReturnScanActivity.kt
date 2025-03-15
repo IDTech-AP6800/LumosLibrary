@@ -74,7 +74,6 @@ class ReturnScanActivity : AppCompatActivity() {
             currentUser = user
         } else {
             Log.e(TAG, "User not found in users.json for ID: ${CurrentSession.userID}")
-            // Handle the missing user case (e.g., show an error message or navigate back)
         }
 
         if (currentUser != null) {
@@ -266,7 +265,6 @@ class ReturnScanActivity : AppCompatActivity() {
 
     //Creates listener for the continue button
     private fun listenContinueButton() {
-//        val continueButton = findViewById<Button>(R.id.continue_button)
         continueButton.setOnClickListener(1000L) {
             audio.playClickAudio(this)
             val depositTotal = findViewById<View>(R.id.total_refund_text) as TextView
@@ -322,14 +320,14 @@ class ReturnScanActivity : AppCompatActivity() {
     }
 
     private fun calculateRefundTotal() {
-//        val totalDeposit = scannedItemsList.sumOf { it.security_deposit }
-//        Log.d(TAG, "calculateSecurityDepositTotal: $totalDeposit")
 
         val refundTotal = findViewById<View>(R.id.total_refund_amount) as TextView
+        val lateFeeText = findViewById<TextView>(R.id.late_fee_text)
+        val lateFeeAmount = findViewById<TextView>(R.id.late_fee_amount)
         val currentUser = UserData(this, "users.json").searchByUserId(CurrentSession.userID.toString())
 
-        var total = 0f
-        var deduction = 0f
+        var totalRefund = 0f
+        var totalLateFee = 0f
 
 //        Log.d(TAG, "in here!")
         for (item in scannedItemsList) {
@@ -337,28 +335,36 @@ class ReturnScanActivity : AppCompatActivity() {
 
             if (item.security_deposit > 0) {
 //                Log.d(TAG, "${item.title}: has desposit of ${item.security_deposit}")
-                total += item.security_deposit
+                totalRefund += item.security_deposit
             }
 
             if (checkedOutItem!!.isLate) {
-                deduction += 2f
+                totalLateFee += 2f
             }
         }
 
         // Apply penalty deduction
-        total -= deduction
+        totalRefund -= totalLateFee
 
-        val totalText = String.format("$%.2f", total)
+        val totalText = String.format("$%.2f", totalRefund)
         refundTotal.text = totalText
 
 //        Log.d(TAG, "total is: $total")
 //        val totalText = String.format("%.2f", totalDeposit)
 //        totalRefundAmount.text = totalText
+
+        // Show or hide late fee amount
+        if (totalLateFee > 0) {
+            lateFeeAmount.text = String.format("$%.2f", totalLateFee)
+            lateFeeText.visibility = View.VISIBLE  // Show late fee text
+            lateFeeAmount.visibility = View.VISIBLE  // Show late fee amount
+        } else {
+            lateFeeText.visibility = View.GONE  // Hide late text if none
+            lateFeeAmount.visibility = View.GONE  // Hide late fee amount if none
+        }
     }
 
     private fun updateContinueButtonState() {
-//        val continueButton = findViewById<Button>(R.id.continue_button)
-//        continueButton.isEnabled = scannedItemsList.isNotEmpty()
 
         if (scannedItemsList.isNotEmpty()) {
             continueButton.isEnabled = true

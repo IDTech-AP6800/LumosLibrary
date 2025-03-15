@@ -56,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@id/item_camera_preview"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/line"
+        app:layout_constraintBottom_toTopOf="@id/late_fee_text"
         android:overScrollMode="always">
 
         <!-- Container for scanned item cards -->
@@ -69,6 +69,35 @@
         </LinearLayout>
 
     </ScrollView>
+
+    <!-- Late Fee text (hidden when no late fee) -->
+    <TextView
+        android:id="@+id/late_fee_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Late Fee:"
+        android:fontFamily="@font/robotoslab_regular"
+        android:textSize="24sp"
+        android:textColor="@color/red"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/line"
+        app:layout_constraintLeft_toLeftOf="@id/line"
+        />
+
+    <!-- Late Fee amount (hidden when no late fee) -->
+    <TextView
+        android:id="@+id/late_fee_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$0.00"
+        android:fontFamily="@font/robotoslab_regular"
+        android:textSize="24sp"
+        android:textColor="@color/red"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/line"
+        app:layout_constraintRight_toRightOf="@id/line"/>
 
     <!-- Line -->
     <View

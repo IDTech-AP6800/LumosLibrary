@@ -233,7 +233,6 @@ class RentScanActivity : AppCompatActivity() {
 
     //Creates listener for the continue button
     private fun listenContinueButton() {
-//        val continueButton = findViewById<Button>(R.id.continue_button)
         continueButton.setOnClickListener(1000L) {
             audio.playClickAudio(this)
             val depositTotal = findViewById<View>(R.id.total_due_amount) as TextView
@@ -260,7 +259,7 @@ class RentScanActivity : AppCompatActivity() {
 
             Handler(Looper.getMainLooper()).postDelayed({
                 if (RentSession.totalDue == 0.0) {
-                    startActivity(Intent(this, RentConfirmationActivity::class.java)) // Replace with your intended activity
+                    startActivity(Intent(this, RentConfirmationActivity::class.java))
                     Log.d(TAG, "Total due is zero, navigating to SomeOtherActivity")
                 } else {
                     startActivity(Intent(this, TapSwipeInsertPaymentActivity::class.java))
@@ -272,7 +271,6 @@ class RentScanActivity : AppCompatActivity() {
     }
 
     private fun calculateSecurityDepositTotal() {
-
 
         val depositTotal = findViewById<View>(R.id.total_due_amount) as TextView
 
