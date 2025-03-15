@@ -140,7 +140,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
                     })
                 }, delay)
 
-                delay += 70
+                delay += 40
             }
         }
     }
@@ -148,7 +148,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
     // Method to apply fade-out animation
     private fun applyFadeOutAnimation(view: ImageView, listener: Animation.AnimationListener) {
         val fadeOut = AlphaAnimation(1.0f, 0.0f).apply {
-            duration = 1000
+            duration = 400
             setAnimationListener(listener)
         }
         view.startAnimation(fadeOut)
@@ -161,7 +161,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
 
         // Create the translate animation (500 pixels upwards)
         val translateAnimation = TranslateAnimation(0f, 0f, 0f, -214f) // Move 214px upwards
-        translateAnimation.duration = 1000 // 1-second duration
+        translateAnimation.duration = 800 // 1-second duration
 
         // Start the translate animation
         view.startAnimation(translateAnimation)
@@ -173,7 +173,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
         // After fade-out animation is complete, switch views and start 2nd animation
         handler.postDelayed({
             switchToNewLayout()
-        }, delay + 1000)  // Adjust this delay based on animation duration
+        }, delay + 800)  // Adjust this delay based on animation duration
     }
 
     // Method to navigate to LandingPageActivity
@@ -249,35 +249,35 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
                 applyFadeInAnimation(view)
             }, delay)
 
-            delay += 70
+            delay += 40
         }
 
         // After fade-in animations are complete, swap the elements for 1 second
         handler.postDelayed({
             swapViews(lumosLightView, lumosLightGlow, lumosLibraryTitle, lumosLibraryTitle2)
-        }, 3000) // Delay timing
+        }, 1300) // Delay timing
 
         // After the swap happens, reset them after 1 second
         handler.postDelayed({
             resetSwap(lumosLightView, lumosLightGlow, lumosLibraryTitle, lumosLibraryTitle2)
-        }, 3200) // Delay timing
+        }, 1400) // Delay timing
 
         // After reset, swap the elements for 1 second to ending state
         handler.postDelayed({
             swapViews(lumosLightView, lumosLightGlow, lumosLibraryTitle, lumosLibraryTitle2)
-        }, 3275) // Delay timing
+        }, 1475) // Delay timing
 
 
         // After light flicker animation is complete, navigate to the landing page
         handler.postDelayed({
             navigateToLandingPage()
-        }, delay + 3700)  // Adjust this delay based on animation duration
+        }, delay + 1700)  // Adjust this delay based on animation duration
     }
 
     // Method to apply fade-in animation
     private fun applyFadeInAnimation(view: ImageView) {
         val fadeIn = AlphaAnimation(0.0f, 1.0f).apply {
-            duration = 1000 // Duration of fade-in animation
+            duration = 400 // Duration of fade-in animation
             setAnimationListener(object : Animation.AnimationListener {
                 override fun onAnimationStart(animation: Animation?) {
                     // Set visibility to VISIBLE right at the start of the animation
