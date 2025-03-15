@@ -38,6 +38,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
     private lateinit var sensorManager: SensorManager
     private var proximity: Sensor? = null
     lateinit var rootView: View
+    private var isClicked = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -475,7 +477,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
     }
 
     //Proximity sensor code
-
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
         //TODO? Do something if accuracy changes
     }
@@ -501,14 +502,12 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
                 //50 is hypothetical and refers to 50 cm
                 changeScreenBrightness(context, closeValue)
                 rootView.performClick()  // Trigger the onClick listener
+                isClicked = true  // Set the flag to true after click is triggered
             }
             else {
                 changeScreenBrightness(context, farValue)
             }
         }
-
-
-
     }
 
     override fun onResume() {
