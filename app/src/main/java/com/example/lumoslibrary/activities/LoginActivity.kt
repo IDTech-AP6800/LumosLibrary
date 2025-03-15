@@ -1,6 +1,7 @@
 package com.example.lumoslibrary.activities
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -28,6 +29,9 @@ import com.google.mlkit.vision.barcode.BarcodeScanner
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
+import android.view.inputmethod.InputMethodManager
+import android.view.View
+import android.view.inputmethod.EditorInfo
 
 /* Login for users in the users.json, can enter via Barcode 128 or enter the id via numpad
 *  Will reject users not in the users.json
@@ -53,6 +57,14 @@ class LoginActivity : AppCompatActivity() {
         imageCam = findViewById(R.id.camera_preview)
         continueButton = findViewById(R.id.login_continue)
         userIdEditText = findViewById(R.id.user_id_text_box)
+        userIdEditText.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT) {
+                hideKeyboard(v)
+                continueButton.performClick() // Simulate clicking the Continue button
+                return@setOnEditorActionListener true
+            }
+            false
+        }
 
         if (allPermissionsGranted()) {
             startCamera()
@@ -207,5 +219,10 @@ class LoginActivity : AppCompatActivity() {
     companion object {
         private const val TAG = "LoginActivity"
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
+    }
+
+    private fun hideKeyboard(view: View) {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }
