@@ -98,6 +98,7 @@ class RentConfirmationActivity : AppCompatActivity() {
             cancelTimeout()
             val intent = Intent(this, LandingPageActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         audio.playConfirmationCompleteAudio(this)
