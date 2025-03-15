@@ -200,8 +200,8 @@
         <!-- book 1 plus icon -->
         <ImageView
             android:id="@+id/plus_1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/plus_icon"
             android:padding="5dp"
             android:layout_marginTop="18dp"
@@ -274,8 +274,8 @@
         <!-- book 2 plus icon -->
         <ImageView
             android:id="@+id/plus_2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/plus_icon"
             android:padding="5dp"
             android:layout_marginTop="18dp"
@@ -348,8 +348,8 @@
         <!-- book 3 plus icon -->
         <ImageView
             android:id="@+id/plus_3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/plus_icon"
             android:padding="5dp"
             android:layout_marginTop="18dp"
@@ -423,8 +423,8 @@
         <!-- book 4 plus icon -->
         <ImageView
             android:id="@+id/plus_4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/plus_icon"
             android:padding="5dp"
             android:layout_marginTop="18dp"
@@ -497,8 +497,8 @@
         <!-- book 5 plus icon -->
         <ImageView
             android:id="@+id/plus_5"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/plus_icon"
             android:padding="5dp"
             android:layout_marginTop="18dp"
@@ -595,8 +595,8 @@
         <!-- item 1 plus icon -->
         <ImageView
             android:id="@+id/plus_eq_1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/plus_icon"
             android:padding="5dp"
             android:layout_marginTop="18dp"
@@ -665,8 +665,8 @@
         <!-- item 2 plus icon -->
         <ImageView
             android:id="@+id/plus_eq_2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/plus_icon"
             android:padding="5dp"
             android:layout_marginTop="18dp"
@@ -734,8 +734,8 @@
         <!-- item 3 plus icon -->
         <ImageView
             android:id="@+id/plus_eq_3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/plus_icon"
             android:padding="5dp"
             android:layout_marginTop="18dp"
@@ -803,8 +803,8 @@
         <!-- item 4 plus icon -->
         <ImageView
             android:id="@+id/plus_eq_4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/plus_icon"
             android:padding="5dp"
             android:layout_marginTop="18dp"
@@ -872,8 +872,8 @@
         <!-- item 4 plus icon -->
         <ImageView
             android:id="@+id/plus_eq_5"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/plus_icon"
             android:padding="5dp"
             android:layout_marginTop="18dp"
