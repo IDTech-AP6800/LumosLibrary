@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
     private lateinit var sensorManager: SensorManager
     private var proximity: Sensor? = null
     lateinit var rootView: View
-    private var isClicked = false
+    private var isAnimating = false  // Flag to track animation state
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -120,29 +120,37 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
         // OPTIONAL: If you want a simple “tap anywhere to proceed” approach:
         rootView = findViewById<View>(android.R.id.content)
         rootView.setOnClickListener {
+            if (!isAnimating) {
+                // Set to animating to block subsequent animations
+                isAnimating = true
 
-            // Play fade-out animation for the first layout views
-            val handler = Handler(mainLooper)
-            var delay = 0L
+                val handler = Handler(mainLooper)
+                var delay = 0L
+                var animationsCompleted = 0
 
-            var animationsCompleted = 0
-
-            views.forEach { view ->
-                handler.postDelayed({
-                    applyFadeOutAnimation(view, object : Animation.AnimationListener {
-                        override fun onAnimationStart(animation: Animation?) {}
-                        override fun onAnimationRepeat(animation: Animation?) {}
-                        override fun onAnimationEnd(animation: Animation?) {
-                            view.visibility = View.INVISIBLE
-                            animationsCompleted++
-                            if (animationsCompleted == views.size) {
-                                applyTranslateAnimation(lumosLightView)
+                views.forEach { view ->
+                    handler.postDelayed({
+                        applyFadeOutAnimation(view, object : Animation.AnimationListener {
+                            override fun onAnimationStart(animation: Animation?) {}
+                            override fun onAnimationRepeat(animation: Animation?) {}
+                            override fun onAnimationEnd(animation: Animation?) {
+                                view.visibility = View.GONE
+                                animationsCompleted++
+                                if (animationsCompleted == views.size) {
+                                    applyTranslateAnimation(lumosLightView)
+                                }
                             }
-                        }
-                    })
-                }, delay)
+                        })
+                    }, delay)
 
-                delay += 40
+                    delay += 40
+                }
+
+                // After all animations are completed, reset the animation flag
+                handler.postDelayed({
+                    // Animation finished, set the flag back to false
+                    isAnimating = false
+                }, delay + 800) // 800ms based on your animation duration
             }
         }
     }
@@ -502,7 +510,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
                 //50 is hypothetical and refers to 50 cm
                 changeScreenBrightness(context, closeValue)
                 rootView.performClick()  // Trigger the onClick listener
-                isClicked = true  // Set the flag to true after click is triggered
             }
             else {
                 changeScreenBrightness(context, farValue)
