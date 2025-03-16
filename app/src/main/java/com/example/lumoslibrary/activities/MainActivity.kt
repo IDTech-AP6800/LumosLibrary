@@ -1,5 +1,7 @@
 package com.example.lumoslibrary.activities
 
+import android.animation.ObjectAnimator
+import android.animation.ValueAnimator
 import android.content.Context
 import android.content.Intent
 import android.hardware.Sensor
@@ -26,6 +28,8 @@ import androidx.annotation.RequiresApi
 import kotlin.random.Random
 import android.provider.Settings
 import android.net.Uri
+import android.view.animation.LinearInterpolator
+import android.widget.TextView
 import com.example.lumoslibrary.R
 
 
@@ -500,7 +504,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
         val context = applicationContext
         val settingsCanWrite = hasWriteSettingsPermission(context)
         // These values are hypothetical, and control brightness
-        val minDistance = 50
+        val minDistance = 105
         var farValue = 70
         var closeValue = 200
         if (!settingsCanWrite) {
